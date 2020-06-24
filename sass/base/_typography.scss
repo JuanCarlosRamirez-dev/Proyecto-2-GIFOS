@@ -1,0 +1,13 @@
+body {
+  font-family: Open-Sans;
+  font-size: 16px;
+  color: #000000;
+}
+
+@font-face {
+  font-family: "Open-Sans";
+  src: url("/fonts/OpenSans.woff") format("woff"),
+    url("/fonts/OpenSans-bold.woff") format("woff"),
+    url("/fonts/OpenSans-light.woff") format("woff"),
+    url("/fonts/OpenSans-semibold.woff") format("woff");
+}
