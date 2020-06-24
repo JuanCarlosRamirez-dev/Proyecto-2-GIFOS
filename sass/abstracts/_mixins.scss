@@ -1,6 +1,6 @@
-@mixin themify($themes: $themes) {
+@mixin themed() {
   @each $theme, $map in $themes {
-    .theme-#{$theme} & {
+    .theme--#{$theme} & {
       $theme-map: () !global;
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), "#{$key}");
@@ -11,13 +11,12 @@
           )
         ) !global;
       }
-
       @content;
       $theme-map: null !global;
     }
   }
 }
 
-@function themed($key) {
+@function t($key) {
   @return map-get($theme-map, $key);
 }
