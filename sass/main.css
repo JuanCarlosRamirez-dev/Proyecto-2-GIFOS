@@ -12,6 +12,8 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   color: #000000;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 body.dark {
@@ -104,6 +106,8 @@ body.dark .border {
   height: 95px;
   position: -webkit-sticky;
   position: sticky;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 .header .logo-mobile {
@@ -172,8 +176,8 @@ body.dark .border {
 .header .menu {
   clear: both;
   max-height: 0;
-  -webkit-transition: max-height 0.2s ease-out;
-  transition: max-height 0.2s ease-out;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 /* menu icon */
@@ -409,6 +413,8 @@ body.dark .border {
 .trending-GIFOS {
   background: #f3f5f8;
   height: 430px;
+  -webkit-transition: 0.4s ease all;
+  transition: 0.4s ease all;
 }
 
 .title-and-text h2 {

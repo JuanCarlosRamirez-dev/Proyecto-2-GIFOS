@@ -5,6 +5,7 @@
   width: 100%;
   height: 95px;
   position: sticky;
+  transition: 0.3s ease all;
   & .logo-mobile {
     margin: 25px 0 0 0;
   }
@@ -71,7 +72,7 @@
   .menu {
     clear: both;
     max-height: 0;
-    transition: max-height 0.2s ease-out;
+    transition: 0.3s ease all;
   }
 }
 
