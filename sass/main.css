@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 *,
 *::after,
 *::before {
@@ -8,14 +9,92 @@
 }
 
 body {
-  font-family: Open-Sans;
-  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
   color: #000000;
 }
 
-@font-face {
-  font-family: "Open-Sans";
-  src: url("/fonts/OpenSans.woff") format("woff"), url("/fonts/OpenSans-bold.woff") format("woff"), url("/fonts/OpenSans-light.woff") format("woff"), url("/fonts/OpenSans-semibold.woff") format("woff");
+body.dark {
+  background-color: #37383c;
+}
+
+body.dark .header {
+  background-color: #37383c;
+}
+
+body.dark .header .border {
+  background-color: #000;
+}
+
+body.dark .header ul {
+  background-color: #000;
+}
+
+body.dark .header .logo-mobile {
+  display: none;
+}
+
+body.dark .header .menu-icon .nav-icon {
+  background: #ffffff;
+}
+
+body.dark .header .menu-icon .nav-icon:before,
+body.dark .header .menu-icon .nav-icon:after {
+  background: #ffffff;
+}
+
+body.dark .title-searchbar-trending h1 {
+  color: #ffffff;
+}
+
+body.dark .title-searchbar-trending .searchbar {
+  background: #37383c;
+  border: 1px solid #ffffff;
+}
+
+body.dark .title-searchbar-trending .searchbar-input {
+  background: #37383c;
+}
+
+body.dark .trending-topics {
+  color: #ffffff;
+}
+
+body.dark .trending-topics a {
+  color: #fff;
+}
+
+body.dark .trending-GIFOS {
+  background: #222326;
+}
+
+body.dark .title-and-text h2 {
+  color: #ffffff;
+}
+
+body.dark .title-and-text p {
+  color: #ffffff;
+}
+
+body.dark .footer h3 {
+  color: #ffffff;
+}
+
+body.dark .footer .copyright {
+  color: #ffffff;
+}
+
+body.dark .border {
+  background-color: #000;
+}
+
+@media screen and (min-width: 1220px) {
+  body.dark .header ul {
+    background: #37383c;
+  }
+  body.dark .header li a {
+    color: #ffffff;
+  }
 }
 
 /* mobile version*/
@@ -74,6 +153,10 @@ body {
 }
 
 .header .logo-desktop {
+  display: none;
+}
+
+.header .logo-mobile-dark {
   display: none;
 }
 
@@ -238,22 +321,7 @@ body {
 }
 
 /* mobile version*/
-.app-container {
-  /*tablet version*/
-  /*desktop version*/
-}
-
-.theme--default .app-container {
-  color: #572ee5;
-  background-color: #fff;
-}
-
-.theme--dark .app-container {
-  color: #fff;
-  background-color: #37383c;
-}
-
-.app-container .title-searchbar-trending .title-container {
+.title-searchbar-trending .title-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -262,21 +330,22 @@ body {
           justify-content: center;
 }
 
-.app-container .title-searchbar-trending h1 {
+.title-searchbar-trending h1 {
   width: 286px;
   height: 108px;
   margin: 10px 0 27px 0;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
+  color: #572ee5;
   text-align: center;
   line-height: 35px;
 }
 
-.app-container .title-searchbar-trending .GIFOS {
+.title-searchbar-trending .GIFOS {
   color: #50e3c2;
 }
 
-.app-container .title-searchbar-trending .searchbar-section {
+.title-searchbar-trending .searchbar-section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -290,12 +359,12 @@ body {
   width: 100%;
 }
 
-.app-container .title-searchbar-trending .hello-img {
+.title-searchbar-trending .hello-img {
   width: 273px;
   height: 130px;
 }
 
-.app-container .title-searchbar-trending .searchbar {
+.title-searchbar-trending .searchbar {
   width: 310px;
   height: 50px;
   background: #fff;
@@ -303,14 +372,14 @@ body {
   border-radius: 27px;
 }
 
-.app-container .title-searchbar-trending .searchbar .search-btn {
+.title-searchbar-trending .searchbar .search-btn {
   margin: 15px 15px;
   float: right;
   width: 20px;
   height: 20px;
 }
 
-.app-container .title-searchbar-trending .searchbar .searchbar-input {
+.title-searchbar-trending .searchbar .searchbar-input {
   width: 76%;
   height: 100%;
   border: none;
@@ -319,47 +388,47 @@ body {
   color: #9cafc3;
 }
 
-.app-container .trending-topics {
+.trending-topics {
   text-align: center;
   margin: 30px 55px 48px 55px;
   line-height: 28px;
-  font-size: 18px;
+  font-size: 14px;
   color: #572ee5;
 }
 
-.app-container .trending-topics h2 {
+.trending-topics h2 {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
 }
 
-.app-container .trending-topics a {
+.trending-topics a {
   text-decoration: none;
   color: #572ee5;
 }
 
-.app-container .trending-GIFOS {
+.trending-GIFOS {
   background: #f3f5f8;
   height: 430px;
 }
 
-.app-container .title-and-text h2 {
+.title-and-text h2 {
   font-weight: bold;
   padding-top: 44px;
-  font-size: 25px;
+  font-size: 20px;
   color: #572ee5;
   text-align: center;
   line-height: 30px;
   margin-bottom: 10px;
 }
 
-.app-container .title-and-text p {
+.title-and-text p {
   font-size: 16px;
   color: #000000;
   text-align: center;
   line-height: 23px;
 }
 
-.app-container .footer {
+.footer {
   margin: 50px 0 50px 0;
   text-align: center;
   display: -webkit-box;
@@ -374,17 +443,17 @@ body {
           align-items: center;
 }
 
-.app-container .footer h3 {
+.footer h3 {
   font-size: 15px;
   letter-spacing: 0;
 }
 
-.app-container .footer .copyright {
+.footer .copyright {
   font-size: 14px;
   line-height: 20px;
 }
 
-.app-container .socials {
+.socials {
   margin: 24px 0 46px 0;
   width: 130px;
   height: 27px;
@@ -402,47 +471,48 @@ body {
           justify-content: space-evenly;
 }
 
-.app-container .socials a {
+.socials a {
   font-size: 20px;
   color: #cdd6e0;
 }
 
-.app-container .socials a:hover {
+.socials a:hover {
   color: #572ee5;
 }
 
-.app-container .socials .fa:hover {
+.socials .fa:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
 
-.app-container .border {
+.border {
   width: 100%;
   height: 5px;
   background-color: #572ee5;
 }
 
+/*tablet version*/
 @media screen and (min-width: 600px) {
-  .app-container .title-searchbar-trending h1 {
+  .title-searchbar-trending h1 {
     width: 460px;
     height: 75px;
   }
-  .app-container .title-searchbar-trending .hello-img {
+  .title-searchbar-trending .hello-img {
     width: initial;
     height: initial;
   }
-  .app-container .title-searchbar-trending .searchbar {
+  .title-searchbar-trending .searchbar {
     width: 550px;
     height: 50px;
   }
-  .app-container .title-searchbar-trending .searchbar .searchbar-input {
+  .title-searchbar-trending .searchbar .searchbar-input {
     width: 86%;
     margin-left: 4%;
   }
-  .app-container .trending-GIFOS {
+  .trending-GIFOS {
     height: 640px;
   }
-  .app-container .footer {
+  .footer {
     padding: 0 5% 0 5%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -452,16 +522,17 @@ body {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  .app-container .footer .socials {
+  .footer .socials {
     margin: 0;
   }
-  .app-container .footer .copyright {
+  .footer .copyright {
     margin-left: auto;
   }
 }
 
+/*desktop version*/
 @media screen and (min-width: 1220px) {
-  .app-container .title-searchbar-trending h1 {
+  .title-searchbar-trending h1 {
     width: 934px;
     height: 100px;
     padding: 0 135px 0 135px;
