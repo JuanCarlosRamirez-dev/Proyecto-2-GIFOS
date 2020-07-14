@@ -4,7 +4,7 @@
 @import "abstracts/mixins";
 
 // 2. Base
-@import "base/reset", "base/typography", "base/color-themes";
+@import "base/reset", "base/typography", "base/dark-mode";
 
 // 3. Layout
 @import "layout/menu", "layout/home";
