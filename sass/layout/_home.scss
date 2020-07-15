@@ -34,6 +34,7 @@
     background: #fff;
     border: 1px solid #572ee5;
     border-radius: 27px;
+    transition: 0.3s ease all;
     & .search-btn {
       margin: 15px 15px;
       float: right;
@@ -47,6 +48,7 @@
       margin-left: 7%;
       font-size: 16px;
       color: #9cafc3;
+      transition: 0.3s ease all;
     }
   }
 }
