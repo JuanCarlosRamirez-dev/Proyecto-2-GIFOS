@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     ((localStorage.getItem('mode') || 'dark') === 'dark') ? (
         document.querySelector('body').classList.add('dark'),
         document.getElementById('logoMobileId').src = "imagenes/logo-mobile-modo-noc.svg",
-        document.getElementById('logoDesktopId').src = "imagenes/logo-desktop-modo-noc.svg"
+        document.getElementById('logoDesktopId').src = "imagenes/logo-desktop-modo-noc.svg",
+        document.getElementById('searchBtnId').src = "imagenes/icon-search-mod-noc.svg"
     ) : (
             document.querySelector('body').classList.remove('dark'),
             document.getElementById('logoMobileId').src = "imagenes/logo-mobile.svg",
-            document.getElementById('logoDesktopId').src = "imagenes/logo-desktop.svg"
+            document.getElementById('logoDesktopId').src = "imagenes/logo-desktop.svg",
+            document.getElementById('searchBtnId').src = "imagenes/icon-search.svg"
         );
 });
 
@@ -31,5 +33,13 @@ darkMode.addEventListener('click', (event) => {
     ((localStorage.getItem('mode') || 'dark') === 'dark') ?
         document.getElementById('logoDesktopId').src = "imagenes/logo-desktop-modo-noc.svg"
         : document.getElementById('logoDesktopId').src = "imagenes/logo-desktop.svg";
+
+});
+
+//funcion que intercambia la lupa de buscar entre dark mode y light mode
+darkMode.addEventListener('click', (event) => {
+    ((localStorage.getItem('mode') || 'dark') === 'dark') ?
+        document.getElementById('searchBtnId').src = "imagenes/icon-search-mod-noc.svg"
+        : document.getElementById('searchBtnId').src = "imagenes/icon-search.svg";
 
 });
