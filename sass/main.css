@@ -32,10 +32,6 @@ body.dark .header ul {
   background-color: #000;
 }
 
-body.dark .header .logo-mobile {
-  display: none;
-}
-
 body.dark .header .menu-icon .nav-icon {
   background: #ffffff;
 }
@@ -56,6 +52,7 @@ body.dark .title-searchbar-trending .searchbar {
 
 body.dark .title-searchbar-trending .searchbar-input {
   background: #37383c;
+  color: #fff;
 }
 
 body.dark .trending-topics {
@@ -391,7 +388,7 @@ body.dark .border {
   border: none;
   margin-left: 7%;
   font-size: 16px;
-  color: #9cafc3;
+  color: #000;
   -webkit-transition: 0.3s ease all;
   transition: 0.3s ease all;
 }

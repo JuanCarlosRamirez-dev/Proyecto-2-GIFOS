@@ -9,9 +9,6 @@ body.dark {
     ul {
       background-color: #000;
     }
-    .logo-mobile {
-      display: none;
-    }
   }
 
   .header .menu-icon .nav-icon {
@@ -32,6 +29,7 @@ body.dark {
     }
     .searchbar-input {
       background: #37383c;
+      color: #fff;
     }
   }
   .trending-topics {
