@@ -70,5 +70,35 @@ body.dark {
         color: #ffffff;
       }
     }
+
+    & .createGIF {
+      text-decoration: none;
+      width: 54px;
+      height: 54px;
+      display: block;
+      border-radius: 100%;
+      border: 1px solid #fff;
+      background-image: url("/imagenes/button-crear-gifo-white.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .header .createGIF:hover,
+    .header .menu-btn:hover {
+      background-color: #fff;
+      border-color: #000;
+      background-image: url("/imagenes/button-crear-gifo-black.svg");
+    }
+    .header li a:active,
+    .header .menu-btn:active {
+      color: #9cafc3;
+      text-decoration: none;
+    }
+    .header .createGIF:active,
+    .header .menu-btn:active {
+      background-color: #9cafc3;
+      background-image: url("/imagenes/button-crear-gifo-white.svg");
+      border: none;
+    }
   }
 }

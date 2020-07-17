@@ -94,6 +94,34 @@ body.dark .border {
   body.dark .header li a {
     color: #ffffff;
   }
+  body.dark .createGIF {
+    text-decoration: none;
+    width: 54px;
+    height: 54px;
+    display: block;
+    border-radius: 100%;
+    border: 1px solid #fff;
+    background-image: url("/imagenes/button-crear-gifo-white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  body.dark .header .createGIF:hover,
+  body.dark .header .menu-btn:hover {
+    background-color: #fff;
+    border-color: #000;
+    background-image: url("/imagenes/button-crear-gifo-black.svg");
+  }
+  body.dark .header li a:active,
+  body.dark .header .menu-btn:active {
+    color: #9cafc3;
+    text-decoration: none;
+  }
+  body.dark .header .createGIF:active,
+  body.dark .header .menu-btn:active {
+    background-color: #9cafc3;
+    background-image: url("/imagenes/button-crear-gifo-white.svg");
+    border: none;
+  }
 }
 
 /* mobile version*/
