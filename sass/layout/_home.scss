@@ -1,8 +1,4 @@
 /* mobile version*/
-@include themify($themes) {
-  color: themed("textColor");
-  background-color: themed("backgroundColor");
-}
 
 .title-searchbar-trending {
   & .title-container {
@@ -14,7 +10,7 @@
     height: 108px;
     margin: 10px 0 27px 0;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
     color: #572ee5;
     text-align: center;
     line-height: 35px;
@@ -38,6 +34,7 @@
     background: #fff;
     border: 1px solid #572ee5;
     border-radius: 27px;
+    transition: 0.3s ease all;
     & .search-btn {
       margin: 15px 15px;
       float: right;
@@ -50,7 +47,8 @@
       border: none;
       margin-left: 7%;
       font-size: 16px;
-      color: #9cafc3;
+      color: #000;
+      transition: 0.3s ease all;
     }
   }
 }
@@ -59,11 +57,11 @@
   text-align: center;
   margin: 30px 55px 48px 55px;
   line-height: 28px;
-  font-size: 18px;
+  font-size: 14px;
   color: #572ee5;
   & h2 {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
   }
   & a {
     text-decoration: none;
@@ -74,13 +72,14 @@
 .trending-GIFOS {
   background: #f3f5f8;
   height: 430px;
+  transition: 0.4s ease all;
 }
 
 .title-and-text {
   & h2 {
     font-weight: bold;
     padding-top: 44px;
-    font-size: 25px;
+    font-size: 20px;
     color: #572ee5;
     text-align: center;
     line-height: 30px;

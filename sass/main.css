@@ -1,6 +1,4 @@
-/*
-@import "abstracts/variables", "abstracts/mixins";
-*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 *,
 *::after,
 *::before {
@@ -11,14 +9,119 @@
 }
 
 body {
-  font-family: Open-Sans;
-  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
   color: #000000;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
-@font-face {
-  font-family: "Open-Sans";
-  src: url("/fonts/OpenSans.woff") format("woff"), url("/fonts/OpenSans-bold.woff") format("woff"), url("/fonts/OpenSans-light.woff") format("woff"), url("/fonts/OpenSans-semibold.woff") format("woff");
+body.dark {
+  background-color: #37383c;
+}
+
+body.dark .header {
+  background-color: #37383c;
+}
+
+body.dark .header .border {
+  background-color: #000;
+}
+
+body.dark .header ul {
+  background-color: #000;
+}
+
+body.dark .header .menu-icon .nav-icon {
+  background: #ffffff;
+}
+
+body.dark .header .menu-icon .nav-icon:before,
+body.dark .header .menu-icon .nav-icon:after {
+  background: #ffffff;
+}
+
+body.dark .title-searchbar-trending h1 {
+  color: #ffffff;
+}
+
+body.dark .title-searchbar-trending .searchbar {
+  background: #37383c;
+  border: 1px solid #ffffff;
+}
+
+body.dark .title-searchbar-trending .searchbar-input {
+  background: #37383c;
+  color: #fff;
+}
+
+body.dark .trending-topics {
+  color: #ffffff;
+}
+
+body.dark .trending-topics a {
+  color: #fff;
+}
+
+body.dark .trending-GIFOS {
+  background: #222326;
+}
+
+body.dark .title-and-text h2 {
+  color: #ffffff;
+}
+
+body.dark .title-and-text p {
+  color: #ffffff;
+}
+
+body.dark .footer h3 {
+  color: #ffffff;
+}
+
+body.dark .footer .copyright {
+  color: #ffffff;
+}
+
+body.dark .border {
+  background-color: #000;
+}
+
+@media screen and (min-width: 1220px) {
+  body.dark .header ul {
+    background: #37383c;
+  }
+  body.dark .header li a {
+    color: #ffffff;
+  }
+  body.dark .createGIF {
+    text-decoration: none;
+    width: 54px;
+    height: 54px;
+    display: block;
+    border-radius: 100%;
+    border: 1px solid #fff;
+    background-image: url("/imagenes/button-crear-gifo-white.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  body.dark .header .createGIF:hover,
+  body.dark .header .menu-btn:hover {
+    background-color: #fff;
+    border-color: #000;
+    background-image: url("/imagenes/button-crear-gifo-black.svg");
+  }
+  body.dark .header li a:active,
+  body.dark .header .menu-btn:active {
+    color: #9cafc3;
+    text-decoration: none;
+  }
+  body.dark .header .createGIF:active,
+  body.dark .header .menu-btn:active {
+    background-color: #9cafc3;
+    background-image: url("/imagenes/button-crear-gifo-white.svg");
+    border: none;
+  }
 }
 
 /* mobile version*/
@@ -28,6 +131,8 @@ body {
   height: 95px;
   position: -webkit-sticky;
   position: sticky;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 .header .logo-mobile {
@@ -80,6 +185,10 @@ body {
   display: none;
 }
 
+.header .logo-mobile-dark {
+  display: none;
+}
+
 .header .logo-mobile {
   display: block;
   float: left;
@@ -92,8 +201,8 @@ body {
 .header .menu {
   clear: both;
   max-height: 0;
-  -webkit-transition: max-height 0.2s ease-out;
-  transition: max-height 0.2s ease-out;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 /* menu icon */
@@ -255,7 +364,7 @@ body {
   height: 108px;
   margin: 10px 0 27px 0;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
   color: #572ee5;
   text-align: center;
   line-height: 35px;
@@ -287,9 +396,11 @@ body {
 .title-searchbar-trending .searchbar {
   width: 310px;
   height: 50px;
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #572ee5;
   border-radius: 27px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 .title-searchbar-trending .searchbar .search-btn {
@@ -305,20 +416,22 @@ body {
   border: none;
   margin-left: 7%;
   font-size: 16px;
-  color: #9cafc3;
+  color: #000;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 .trending-topics {
   text-align: center;
   margin: 30px 55px 48px 55px;
   line-height: 28px;
-  font-size: 18px;
+  font-size: 14px;
   color: #572ee5;
 }
 
 .trending-topics h2 {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .trending-topics a {
@@ -329,12 +442,14 @@ body {
 .trending-GIFOS {
   background: #f3f5f8;
   height: 430px;
+  -webkit-transition: 0.4s ease all;
+  transition: 0.4s ease all;
 }
 
 .title-and-text h2 {
   font-weight: bold;
   padding-top: 44px;
-  font-size: 25px;
+  font-size: 20px;
   color: #572ee5;
   text-align: center;
   line-height: 30px;

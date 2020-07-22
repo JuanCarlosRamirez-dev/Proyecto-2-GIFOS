@@ -7,21 +7,22 @@
     <link rel="stylesheet" href="sass/main.css" />
     <title>GIFOS</title>
   </head>
-  <body>
+  <body >
+    <section class="app-container">
     <header class="header">
       <div class="border"></div>
-      <a class="logo-mobile"><img src="imagenes/logo-mobile.svg" alt="logo" /></a>
-      <a class="logo-desktop"><img src="imagenes/logo-desktop.svg" alt="logo" /></a>
+      <a class="logo-mobile "><img src="" alt="logo" id="logoMobileId"/></a>
+      <a class="logo-desktop"><img src="" alt="logo" id="logoDesktopId"/></a>
       <nav>
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"
           ><span class="nav-icon"></span
         ></label>
         <ul class="menu">
-          <li><a href="">Modo Nocturno</a></li>
-          <li><a href="">Favoritos</a></li>
-          <li><a href="">Mis GIFOS</a></li>
-          <li><a href="" class="createGIF"></a></li>
+          <li><a href="#" id="darkModeId">Modo Nocturno</a></li>
+          <li><a href="#">Favoritos</a></li>
+          <li><a href="#">Mis GIFOS</a></li>
+          <li><a href="#" class="createGIF"></a></li>
         </ul>
       </nav>
     </header>
@@ -33,17 +34,17 @@
             <nav class="searchbar-section">
                 <img src="/imagenes/ilustra_header.svg" alt="hello" class="hello-img">
                 <div class="searchbar">
-                  <div><img src="imagenes/icon-search.svg" alt="search" class="search-btn"></div>
+                  <div><img src="" alt="search" class="search-btn" id="searchBtnId"></div>
                   <input type="text" name="search" placeholder="Busca GIFOS y más" class="searchbar-input"> 
                 </div>
               </nav>
             <nav class="trending-topics">
               <h2>Trending:</h2>
-              <span class="trend"><a href="" target="">Reactions,</a></span>
-              <span class="trend"><a href="">Entertaiment,</a></span>
-              <span class="trend"><a href="">Sports,</a></span>
-              <span class="trend"><a href="">Stickers,</a></span>
-              <span class="trend"><a href="">Artist</a></span>
+              <span class="trend"><a href="#" target="">Reactions,</a></span>
+              <span class="trend"><a href="#">Entertaiment,</a></span>
+              <span class="trend"><a href="#">Sports,</a></span>
+              <span class="trend"><a href="#">Stickers,</a></span>
+              <span class="trend"><a href="#">Artist</a></span>
             </nav>
       </section>
       <section class="trending-GIFOS">
@@ -69,5 +70,7 @@
     </section>
       <div class="border"></div>
     </footer>
+  </section>
+  <script src="/js/darkmode.js"></script>
   </body>
 </html>

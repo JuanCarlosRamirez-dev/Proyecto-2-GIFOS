@@ -1,13 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 body {
-  font-family: Open-Sans;
-  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
   color: #000000;
-}
-
-@font-face {
-  font-family: "Open-Sans";
-  src: url("/fonts/OpenSans.woff") format("woff"),
-    url("/fonts/OpenSans-bold.woff") format("woff"),
-    url("/fonts/OpenSans-light.woff") format("woff"),
-    url("/fonts/OpenSans-semibold.woff") format("woff");
+  transition: 0.3s ease all;
 }
