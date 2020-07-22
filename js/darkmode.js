@@ -42,14 +42,19 @@ darkMode.addEventListener('click', (event) => {
         : document.getElementById('searchBtnId').src = "imagenes/icon-search.svg";
 });
 
+//obtener el contenedor de los gifs y el boton de busqueda
 let gifContainer = document.querySelector('.gif-container');
 let searchBtn = document.getElementById('searchBtnId');
+
 searchBtn.addEventListener('click', () => {
     var searchInput = document.querySelector('.searchbar-input').value;
+    //elimina los nodos hijos del contenedor al hacer otra busqueda 
     while (gifContainer.firstChild) {
         gifContainer.removeChild(gifContainer.firstChild);
-    }
+    };
+    //obtiene la URL de la API y se modifica el parametro de busqueda
     let url = "https://api.giphy.com/v1/gifs/search?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&q=" + searchInput + "&limit=12&offset=0&rating=g&lang=en";
+    //llamada AJAX
     let giphyAjaxCall = new XMLHttpRequest();
     giphyAjaxCall.open('GET', url);
     giphyAjaxCall.send();
@@ -60,6 +65,17 @@ searchBtn.addEventListener('click', () => {
     });
 });
 
+
+//stuck -- como hacer el mismo codigo de click sin repetir todo??
+document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
+    if (event.which === 13) {
+        searchInput = document.querySelector('.searchbar-input').value;
+    }
+});
+
+
+
+//funcion que muestra los gifs 
 function pushToDom(value) {
     let response = JSON.parse(value);
     let imageURL = response.data;
