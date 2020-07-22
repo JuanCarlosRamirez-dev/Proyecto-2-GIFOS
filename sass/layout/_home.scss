@@ -54,13 +54,13 @@
 }
 
 .gif-container {
-  margin: 60px 156px 78px 156px;
+  margin: 0 5px 0 5px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
-  column-gap: 30px;
-  row-gap: 30px;
+  column-gap: 5px;
+  row-gap: 10px;
 }
 
 .trending-topics {
@@ -167,6 +167,15 @@
       }
     }
   }
+  .gif-container {
+    margin: 0 22px 0 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    column-gap: auto;
+    row-gap: 20px;
+  }
   .trending-GIFOS {
     height: 640px;
   }
@@ -195,5 +204,11 @@
       font-size: 40px;
       line-height: 50px;
     }
+  }
+  .gif-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    column-gap: 30px;
+    row-gap: 30px;
   }
 }

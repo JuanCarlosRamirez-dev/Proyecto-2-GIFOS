@@ -65,7 +65,7 @@ function pushToDom(value) {
     let imageURL = response.data;
 
     imageURL.forEach((image) => {
-        let srcImage = image.images.fixed_height.url;
+        let srcImage = image.images.fixed_height_small.url;
         console.log(srcImage);
         gifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"gif-container-child\">";
     });

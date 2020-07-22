@@ -422,17 +422,17 @@ body.dark .border {
 }
 
 .gif-container {
-  margin: 60px 156px 78px 156px;
+  margin: 0 5px 0 5px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
-  -webkit-column-gap: 30px;
-          column-gap: 30px;
-  row-gap: 30px;
+  -webkit-column-gap: 5px;
+          column-gap: 5px;
+  row-gap: 10px;
 }
 
 .trending-topics {
@@ -558,6 +558,19 @@ body.dark .border {
     width: 86%;
     margin-left: 4%;
   }
+  .gif-container {
+    margin: 0 22px 0 22px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    -webkit-column-gap: auto;
+            column-gap: auto;
+    row-gap: 20px;
+  }
   .trending-GIFOS {
     height: 640px;
   }
@@ -587,6 +600,15 @@ body.dark .border {
     padding: 0 135px 0 135px;
     font-size: 40px;
     line-height: 50px;
+  }
+  .gif-container {
+    -ms-grid-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    -webkit-column-gap: 30px;
+            column-gap: 30px;
+    row-gap: 30px;
   }
 }
 /*# sourceMappingURL=main.css.map */
