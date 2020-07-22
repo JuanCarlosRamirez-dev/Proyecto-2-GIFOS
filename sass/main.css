@@ -421,6 +421,20 @@ body.dark .border {
   transition: 0.3s ease all;
 }
 
+.gif-container {
+  margin: 60px 156px 78px 156px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  -webkit-column-gap: 30px;
+          column-gap: 30px;
+  row-gap: 30px;
+}
+
 .trending-topics {
   text-align: center;
   margin: 30px 55px 48px 55px;
@@ -442,8 +456,8 @@ body.dark .border {
 .trending-GIFOS {
   background: #f3f5f8;
   height: 430px;
-  -webkit-transition: 0.4s ease all;
-  transition: 0.4s ease all;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 .title-and-text h2 {
