@@ -40,6 +40,7 @@
       float: right;
       width: 20px;
       height: 20px;
+      cursor: pointer;
     }
     & .searchbar-input {
       width: 76%;
@@ -53,14 +54,28 @@
   }
 }
 
+.search-title-container {
+  font-size: 25px;
+  color: #572ee5;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
 .gif-container {
   margin: 0 5px 0 5px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
-  column-gap: 5px;
-  row-gap: 10px;
+  column-gap: 10px;
+  row-gap: 15px;
+}
+
+.gif-container-child {
+  width: 150px;
+  height: 120px;
 }
 
 .trending-topics {
@@ -167,15 +182,28 @@
       }
     }
   }
+
+  .search-title-container {
+    font-size: 35px;
+    line-height: 30px;
+    margin-bottom: 70px;
+  }
+
   .gif-container {
     margin: 0 22px 0 22px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     justify-items: center;
-    column-gap: auto;
-    row-gap: 20px;
+    column-gap: 20px;
+    row-gap: 25px;
   }
+
+  .gif-container-child {
+    width: 173px;
+    height: 143px;
+  }
+
   .trending-GIFOS {
     height: 640px;
   }
@@ -206,9 +234,14 @@
     }
   }
   .gif-container {
+    margin: 0 11% 0 11%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     column-gap: 30px;
     row-gap: 30px;
+  }
+  .gif-container-child {
+    width: 260px;
+    height: 200px;
   }
 }

@@ -42,18 +42,29 @@ darkMode.addEventListener('click', (event) => {
         : document.getElementById('searchBtnId').src = "imagenes/icon-search.svg";
 });
 
-//obtener el contenedor de los gifs y el boton de busqueda
+let searchTitleContainer = document.getElementById('search-title-container');
 let gifContainer = document.querySelector('.gif-container');
+
 let searchBtn = document.getElementById('searchBtnId');
 
-searchBtn.addEventListener('click', () => {
-    var searchInput = document.querySelector('.searchbar-input').value;
+searchBtn.addEventListener('click', searchBtnRequest());
+document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
+    if (event.which === 13) {
+        searchBtnRequest();
+    }
+});
+
+//
+function searchBtnRequest() {
+
+    let searchInput = document.querySelector('.searchbar-input').value;
     //elimina los nodos hijos del contenedor al hacer otra busqueda 
     while (gifContainer.firstChild) {
         gifContainer.removeChild(gifContainer.firstChild);
     };
+
     //obtiene la URL de la API y se modifica el parametro de busqueda
-    let url = "https://api.giphy.com/v1/gifs/search?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&q=" + searchInput + "&limit=12&offset=0&rating=g&lang=en";
+    let url = "https://api.giphy.com/v1/gifs/search?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&q=" + searchInput + "&limit=12&offset=0&rating=&lang=en";
     //llamada AJAX
     let giphyAjaxCall = new XMLHttpRequest();
     giphyAjaxCall.open('GET', url);
@@ -63,17 +74,11 @@ searchBtn.addEventListener('click', () => {
         let data = event.target.response;
         pushToDom(data);
     });
-});
-
-
-//stuck -- como hacer el mismo codigo de click sin repetir todo??
-document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
-    if (event.which === 13) {
-        searchInput = document.querySelector('.searchbar-input').value;
-    }
-});
-
-
+    //muestra el el texto ingresado
+    let searchString = searchInput;
+    let searchStringCapitalized = searchString.charAt(0).toUpperCase() + searchString.slice(1);
+    searchTitleContainer.innerHTML = searchStringCapitalized;
+}
 
 //funcion que muestra los gifs 
 function pushToDom(value) {
@@ -81,8 +86,9 @@ function pushToDom(value) {
     let imageURL = response.data;
 
     imageURL.forEach((image) => {
-        let srcImage = image.images.fixed_height_small.url;
+        let srcImage = image.images.downsized.url;
         console.log(srcImage);
         gifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"gif-container-child\">";
     });
+
 }
