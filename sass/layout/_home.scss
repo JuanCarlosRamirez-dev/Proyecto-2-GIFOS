@@ -86,8 +86,6 @@
   margin: 78px 0 78px 0;
   display: flex;
   justify-content: center;
-  cursor: pointer;
-
   & h2 {
     width: 127px;
     height: 50px;
@@ -98,6 +96,7 @@
     border-radius: 25px;
     text-align: center;
     padding-top: 16px;
+    cursor: pointer;
   }
 }
 
@@ -123,7 +122,19 @@
   transition: 0.3s ease all;
 }
 
-.title-and-text {
+.trending-GIFOS-container {
+  margin: 32px 0 82px 0;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.trending-GIFOS-container-child {
+  width: 288px;
+  height: 187px;
+}
+
+.trending-title {
   & h2 {
     font-weight: bold;
     padding-top: 44px;

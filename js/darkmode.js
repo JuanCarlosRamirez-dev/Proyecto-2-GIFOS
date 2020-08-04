@@ -42,8 +42,10 @@ darkMode.addEventListener('click', (event) => {
         : document.getElementById('searchBtnId').src = "imagenes/icon-search.svg";
 });
 
-let gifContainer = document.querySelector('.gif-container');
+let searchGifContainer = document.querySelector('.gif-container');
+
 let searchBtn = document.getElementById('searchBtnId');
+let verMasBtn = document.getElementById('ver-mas-btn');
 
 searchBtn.addEventListener('click', searchBtnRequest());
 
@@ -57,22 +59,30 @@ document.querySelector('.searchbar-input').addEventListener('keyup', (event) => 
 function searchBtnRequest() {
     let searchInput = document.querySelector('.searchbar-input').value;
     //elimina los nodos hijos del contenedor al hacer otra busqueda 
-    while (gifContainer.firstChild) {
-        gifContainer.removeChild(gifContainer.firstChild);
+    while (searchGifContainer.firstChild) {
+        searchGifContainer.removeChild(searchGifContainer.firstChild);
     };
-    let url = "https://api.giphy.com/v1/gifs/search?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&q=" + searchInput + "&limit=12&offset=0&rating=&lang=en";
-    fetch(url)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            createCard(data);
-        })
+    let searchUrl = "https://api.giphy.com/v1/gifs/search?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&q=" + searchInput + "&limit=12&offset=0&rating=&lang=en";
+    fetch(searchUrl)
+        .then(response => response.json())
+        .then(data => createCard(data))
         .catch((error) => {
             console.error("Ha habido un error", error);
         })
     showSearchTitle(searchInput);
+    verMas();
 };
+
+//funcion que muestra automaticamente los trending gifs
+(function trendingGif() {
+    let trendingUrl = "https://api.giphy.com/v1/gifs/trending?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&limit=3&rating=";
+    fetch(trendingUrl)
+        .then(response => response.json())
+        .then(data => createTrendingCard(data))
+        .catch((error) => {
+            console.error("Ha habido un error", error);
+        })
+})();
 
 //funcion que muestra el texto ingresado
 function showSearchTitle(input) {
@@ -82,15 +92,40 @@ function showSearchTitle(input) {
     return searchTitleContainer.innerHTML = "<h2 class=search-title-container>" + searchStringCapitalized + "</h2>";
 };
 
+//funcion que agrega botón "ver más"
+function verMas() {
+    if (verMasBtn.firstChild) {
+        verMasBtn.removeChild;
+    }
+    else {
+        verMasBtn.classList.add('vermas-btn')
+        let verMastxt = document.createElement('h2');
+        verMastxt.textContent = "VER MÁS";
+        verMasBtn.appendChild(verMastxt);
+    }
+}
+
 //funcion que muestra los gifs 
 function createCard(value) {
     let imageURL = value.data;
     imageURL.forEach((image) => {
         let srcImage = image.images.downsized.url;
         console.log(srcImage);
-        gifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"gif-container-child\">";
+        searchGifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"gif-container-child\">";
     });
 };
 
+//funcion que crea las tarjetas
+function createTrendingCard(value) {
+    let imageURL = value.data;
+    imageURL.forEach((image) => {
+        let srcImage = image.images.downsized.url;
+        console.log(srcImage);
+        let trendingGifContainer = document.querySelector(".trending-GIFOS-container");
+        trendingGifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"trending-GIFOS-container-child\">";
+    });
+}
+
+
 /* agregar clase en un if cuando no haya resultados
-    gifContainer.classList.add("gif-container-margin"); */
+    searchGifContainer.classList.add("gif-container-margin"); */

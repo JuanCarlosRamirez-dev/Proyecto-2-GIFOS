@@ -462,7 +462,6 @@ body.dark .border {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  cursor: pointer;
 }
 
 .vermas-btn h2 {
@@ -475,6 +474,7 @@ body.dark .border {
   border-radius: 25px;
   text-align: center;
   padding-top: 16px;
+  cursor: pointer;
 }
 
 .trending-topics {
@@ -502,7 +502,24 @@ body.dark .border {
   transition: 0.3s ease all;
 }
 
-.title-and-text h2 {
+.trending-GIFOS-container {
+  margin: 32px 0 82px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow: hidden;
+}
+
+.trending-GIFOS-container-child {
+  width: 288px;
+  height: 187px;
+}
+
+.trending-title h2 {
   font-weight: bold;
   padding-top: 44px;
   font-size: 20px;
@@ -512,7 +529,7 @@ body.dark .border {
   margin-bottom: 10px;
 }
 
-.title-and-text p {
+.trending-title p {
   font-size: 16px;
   color: #000000;
   text-align: center;
