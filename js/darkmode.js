@@ -42,53 +42,55 @@ darkMode.addEventListener('click', (event) => {
         : document.getElementById('searchBtnId').src = "imagenes/icon-search.svg";
 });
 
-let searchTitleContainer = document.getElementById('search-title-container');
 let gifContainer = document.querySelector('.gif-container');
-
 let searchBtn = document.getElementById('searchBtnId');
 
 searchBtn.addEventListener('click', searchBtnRequest());
+
 document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
     if (event.which === 13) {
         searchBtnRequest();
     }
 });
 
-//
+//funcion que conecta con la API de Giphy
 function searchBtnRequest() {
-
     let searchInput = document.querySelector('.searchbar-input').value;
     //elimina los nodos hijos del contenedor al hacer otra busqueda 
     while (gifContainer.firstChild) {
         gifContainer.removeChild(gifContainer.firstChild);
     };
-
-    //obtiene la URL de la API y se modifica el parametro de busqueda
     let url = "https://api.giphy.com/v1/gifs/search?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&q=" + searchInput + "&limit=12&offset=0&rating=&lang=en";
-    //llamada AJAX
-    let giphyAjaxCall = new XMLHttpRequest();
-    giphyAjaxCall.open('GET', url);
-    giphyAjaxCall.send();
+    fetch(url)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            createCard(data);
+        })
+        .catch((error) => {
+            console.error("Ha habido un error", error);
+        })
+    showSearchTitle(searchInput);
+};
 
-    giphyAjaxCall.addEventListener('load', (event) => {
-        let data = event.target.response;
-        pushToDom(data);
-    });
-    //muestra el el texto ingresado
-    let searchString = searchInput;
+//funcion que muestra el texto ingresado
+function showSearchTitle(input) {
+    let searchTitleContainer = document.getElementById('search-title-container');
+    let searchString = input;
     let searchStringCapitalized = searchString.charAt(0).toUpperCase() + searchString.slice(1);
-    searchTitleContainer.innerHTML = searchStringCapitalized;
-}
+    return searchTitleContainer.innerHTML = "<h2 class=search-title-container>" + searchStringCapitalized + "</h2>";
+};
 
 //funcion que muestra los gifs 
-function pushToDom(value) {
-    let response = JSON.parse(value);
-    let imageURL = response.data;
-
+function createCard(value) {
+    let imageURL = value.data;
     imageURL.forEach((image) => {
         let srcImage = image.images.downsized.url;
         console.log(srcImage);
         gifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"gif-container-child\">";
     });
+};
 
-}
+/* agregar clase en un if cuando no haya resultados
+    gifContainer.classList.add("gif-container-margin"); */

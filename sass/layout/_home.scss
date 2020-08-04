@@ -60,7 +60,7 @@
   text-align: center;
   line-height: 40px;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin: 48px 0 40px 0;
 }
 
 .gif-container {
@@ -73,14 +73,37 @@
   row-gap: 15px;
 }
 
+.gif-container-margin {
+  margin-bottom: 50px;
+}
+
 .gif-container-child {
   width: 150px;
   height: 120px;
 }
 
+.vermas-btn {
+  margin: 78px 0 78px 0;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
+  & h2 {
+    width: 127px;
+    height: 50px;
+    font-size: 13px;
+    color: #572ee5;
+    letter-spacing: 0;
+    border: 1px solid #572ee5;
+    border-radius: 25px;
+    text-align: center;
+    padding-top: 16px;
+  }
+}
+
 .trending-topics {
   text-align: center;
-  margin: 30px 55px 48px 55px;
+  margin: 30px 55px 0 55px;
   line-height: 28px;
   font-size: 14px;
   color: #572ee5;
