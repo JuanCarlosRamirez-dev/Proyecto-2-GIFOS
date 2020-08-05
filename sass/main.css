@@ -63,6 +63,10 @@ body.dark .trending-topics a {
   color: #fff;
 }
 
+body.dark .search-title-container {
+  color: #fff;
+}
+
 body.dark .vermas-btn h2 {
   color: #ffffff;
   border: 1px solid #fff;
@@ -78,6 +82,28 @@ body.dark .trending-title h2 {
 
 body.dark .trending-title p {
   color: #ffffff;
+}
+
+body.dark #prev {
+  background-image: url("/imagenes/button-left-white.svg");
+  background-color: #37383c;
+  border: 1px solid #fff;
+}
+
+body.dark #prev:hover {
+  background-image: url("/imagenes/button-left-black.svg");
+  background-color: #fff;
+}
+
+body.dark #next {
+  background-image: url("/imagenes/button-right-white.svg");
+  background-color: #37383c;
+  border: 1px solid #fff;
+}
+
+body.dark #next:hover {
+  background-image: url("/imagenes/button-right-black.svg");
+  background-color: #fff;
 }
 
 body.dark .footer h3 {
@@ -628,7 +654,7 @@ body.dark .border {
     height: 143px;
   }
   .trending-GIFOS {
-    height: 640px;
+    height: 590px;
   }
   .footer {
     padding: 0 5% 0 5%;
@@ -705,7 +731,7 @@ body.dark .border {
 
 #wrapper {
   width: 100%;
-  max-width: 964px;
+  max-width: 600px;
   position: relative;
 }
 
@@ -719,23 +745,36 @@ body.dark .border {
   height: 0;
 }
 
-#prev,
-#next {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  background: white;
-  border: none;
-  padding: 8px;
-  border-radius: 50%;
-  outline: 0;
+#prev {
+  width: 30px;
+  height: 30px;
+  background-image: url("/imagenes/button-left.svg");
+  border: 1px solid #572ee5;
   cursor: pointer;
   position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#prev:hover {
+  background-image: url("/imagenes/button-left-white.svg");
+  background-color: #572ee5;
+}
+
+#next {
+  width: 30px;
+  height: 30px;
+  background-image: url("/imagenes/button-right.svg");
+  border: 1px solid #572ee5;
+  cursor: pointer;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#next:hover {
+  background-image: url("/imagenes/button-right-white.svg");
+  background-color: #572ee5;
 }
 
 #prev {
@@ -764,8 +803,25 @@ body.dark .border {
 }
 
 .item {
-  width: 180px;
-  height: 180px;
+  width: 247px;
+  height: 187px;
   background: green;
+}
+
+@media screen and (min-width: 600px) {
+  .item {
+    width: 357px;
+    height: 275px;
+    background: green;
+  }
+  #wrapper {
+    max-width: 1220px;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  #wrapper {
+    max-width: 1920px;
+  }
 }
 /*# sourceMappingURL=main.css.map */

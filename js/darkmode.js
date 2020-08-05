@@ -74,7 +74,7 @@ function searchBtnRequest() {
 
 //funcion que muestra automaticamente los trending gifs
 (function trendingGif() {
-    let trendingUrl = "https://api.giphy.com/v1/gifs/trending?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&limit=&rating=";
+    let trendingUrl = "https://api.giphy.com/v1/gifs/trending?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&limit=20&rating=";
     fetch(trendingUrl)
         .then(response => response.json())
         .then(data => createTrendingCard(data))
