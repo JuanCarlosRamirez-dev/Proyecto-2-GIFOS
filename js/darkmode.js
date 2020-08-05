@@ -43,7 +43,6 @@ darkMode.addEventListener('click', (event) => {
 });
 
 let searchGifContainer = document.querySelector('.gif-container');
-
 let searchBtn = document.getElementById('searchBtnId');
 let verMasBtn = document.getElementById('ver-mas-btn');
 
@@ -75,7 +74,7 @@ function searchBtnRequest() {
 
 //funcion que muestra automaticamente los trending gifs
 (function trendingGif() {
-    let trendingUrl = "https://api.giphy.com/v1/gifs/trending?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&limit=3&rating=";
+    let trendingUrl = "https://api.giphy.com/v1/gifs/trending?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&limit=&rating=";
     fetch(trendingUrl)
         .then(response => response.json())
         .then(data => createTrendingCard(data))
@@ -110,7 +109,6 @@ function createCard(value) {
     let imageURL = value.data;
     imageURL.forEach((image) => {
         let srcImage = image.images.downsized.url;
-        console.log(srcImage);
         searchGifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"gif-container-child\">";
     });
 };
@@ -119,12 +117,43 @@ function createCard(value) {
 function createTrendingCard(value) {
     let imageURL = value.data;
     imageURL.forEach((image) => {
-        let srcImage = image.images.downsized.url;
-        console.log(srcImage);
-        let trendingGifContainer = document.querySelector(".trending-GIFOS-container");
-        trendingGifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"trending-GIFOS-container-child\">";
+        let srcImage = image.images.downsized_medium.url;
+        let trendingGifContainer = document.getElementById("content");
+        trendingGifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"item\">";
     });
 }
+
+
+/*funcionalidad de scroll a la seccion de trending gifs*/
+const gap = 16;
+
+const carousel = document.getElementById("carousel"),
+    content = document.getElementById("content"),
+    next = document.getElementById("next"),
+    prev = document.getElementById("prev");
+
+next.addEventListener("click", e => {
+    carousel.scrollBy(width + gap, 0);
+    if (carousel.scrollWidth !== 0) {
+        prev.style.display = "flex";
+    }
+    if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+        next.style.display = "none";
+    }
+});
+prev.addEventListener("click", e => {
+    carousel.scrollBy(-(width + gap), 0);
+    if (carousel.scrollLeft - width - gap <= 0) {
+        prev.style.display = "none";
+    }
+    if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+        next.style.display = "flex";
+    }
+});
+
+let width = carousel.offsetWidth;
+window.addEventListener("resize", e => (width = carousel.offsetWidth));
+/*-------------------------------------------*/
 
 
 /* agregar clase en un if cuando no haya resultados

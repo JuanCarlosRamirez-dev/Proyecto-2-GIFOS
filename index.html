@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <script src="https://use.fontawesome.com/0da53e1883.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="sass/main.css" />
-    <title>GIFOS</title>
-  </head>
-  <body >
-    <section class="app-container">
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://use.fontawesome.com/0da53e1883.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="sass/main.css" />
+  <title>GIFOS</title>
+</head>
+
+<body>
+  <section class="app-container">
     <header class="header">
       <div class="border"></div>
-      <a class="logo-mobile "><img src="" alt="logo" id="logoMobileId"/></a>
-      <a class="logo-desktop"><img src="" alt="logo" id="logoDesktopId"/></a>
+      <a class="logo-mobile "><img src="" alt="logo" id="logoMobileId" /></a>
+      <a class="logo-desktop"><img src="" alt="logo" id="logoDesktopId" /></a>
       <nav>
         <input class="menu-btn" type="checkbox" id="menu-btn" />
-        <label class="menu-icon" for="menu-btn"
-          ><span class="nav-icon"></span
-        ></label>
+        <label class="menu-icon" for="menu-btn"><span class="nav-icon"></span></label>
         <ul class="menu">
           <li><a href="#" id="darkModeId">Modo Nocturno</a></li>
           <li><a href="#">Favoritos</a></li>
@@ -29,26 +29,26 @@
     <main>
       <section class="title-searchbar-trending">
         <div class="title-container">
-        <h1>Inspírate, busca, guarda, y crea los mejores <span class="GIFOS">GIFOS<span></h1>
+          <h1>Inspírate, busca, guarda, y crea los mejores <span class="GIFOS">GIFOS<span></h1>
         </div>
-            <nav class="searchbar-section">
-                <img src="/imagenes/ilustra_header.svg" alt="hello" class="hello-img">
-                <div class="searchbar">
-                  <div><img src="" alt="search" class="search-btn" id="searchBtnId"></div>
-                  <input type="text" name="search" placeholder="Busca GIFOS y más" class="searchbar-input"> 
-                </div>
-              </nav>
-            <nav class="trending-topics">
-              <h2>Trending:</h2>
-              <span class="trend"><a href="#" target="">Reactions,</a></span>
-              <span class="trend"><a href="#">Entertaiment,</a></span>
-              <span class="trend"><a href="#">Sports,</a></span>
-              <span class="trend"><a href="#">Stickers,</a></span>
-              <span class="trend"><a href="#">Artist</a></span>
-            </nav>
-            <div  id="search-title-container"></div>
-            <div class="gif-container"></div>
-            <div id="ver-mas-btn"></div>
+        <nav class="searchbar-section">
+          <img src="/imagenes/ilustra_header.svg" alt="hello" class="hello-img">
+          <div class="searchbar">
+            <div><img src="" alt="search" class="search-btn" id="searchBtnId"></div>
+            <input type="text" name="search" placeholder="Busca GIFOS y más" class="searchbar-input">
+          </div>
+        </nav>
+        <nav class="trending-topics">
+          <h2>Trending:</h2>
+          <span class="trend"><a href="#" target="">Reactions,</a></span>
+          <span class="trend"><a href="#">Entertaiment,</a></span>
+          <span class="trend"><a href="#">Sports,</a></span>
+          <span class="trend"><a href="#">Stickers,</a></span>
+          <span class="trend"><a href="#">Artist</a></span>
+        </nav>
+        <div id="search-title-container"></div>
+        <div class="gif-container"></div>
+        <div id="ver-mas-btn"></div>
       </section>
       <section class="trending-GIFOS">
         <div class="trending-title">
@@ -56,25 +56,44 @@
           <p>Mira los últimos</p>
           <p>GIFOS de nuestra comunidad.</p>
         </div>
-        <div class="trending-GIFOS-container"></div>
+        <div class="trending-GIFOS-container">
+          <div id="wrapper">
+            <div id="carousel">
+              <div id="content"></div>
+            </div>
+            <button id="prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z" />
+                <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+              </svg>
+            </button>
+            <button id="next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z" />
+                <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+              </svg>
+            </button>
+          </div>
+        </div>
       </section>
     </main>
     <footer>
       <section class="footer">
-      <h3>Compartir en:</h3>
-      <nav class="socials">
-        <span class="icono"><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><i
-          class="fa fa-facebook"></i></a></span>
-        <span class="icono"><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><i
-          class="fa fa-twitter"></i></a></span>
-        <span class="icono"><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i
-          class="fa fa-instagram"></i></a></span>
-      </nav>
-      <div class="copyright">© GIFOS 2020 All Rights Reserved.</div>
-    </section>
+        <h3>Compartir en:</h3>
+        <nav class="socials">
+          <span class="icono"><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-facebook"></i></a></span>
+          <span class="icono"><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-twitter"></i></a></span>
+          <span class="icono"><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-instagram"></i></a></span>
+        </nav>
+        <div class="copyright">© GIFOS 2020 All Rights Reserved.</div>
+      </section>
       <div class="border"></div>
     </footer>
   </section>
   <script src="/js/darkmode.js"></script>
-  </body>
+</body>
+
 </html>

@@ -38,10 +38,16 @@ body.dark {
       color: #fff;
     }
   }
+  .vermas-btn {
+    & h2 {
+      color: #ffffff;
+      border: 1px solid #fff;
+    }
+  }
   .trending-GIFOS {
     background: #222326;
   }
-  .title-and-text {
+  .trending-title {
     h2 {
       color: #ffffff;
     }
