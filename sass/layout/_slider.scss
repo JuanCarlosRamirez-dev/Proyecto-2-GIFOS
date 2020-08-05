@@ -92,14 +92,12 @@
 .item {
   width: 247px;
   height: 187px;
-  background: green;
 }
 
 @media screen and (min-width: 600px) {
   .item {
     width: 357px;
     height: 275px;
-    background: green;
   }
   #wrapper {
     max-width: 1220px;
