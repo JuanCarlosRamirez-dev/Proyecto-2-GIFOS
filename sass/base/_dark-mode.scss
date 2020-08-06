@@ -59,28 +59,6 @@ body.dark {
     }
   }
 
-  #prev {
-    background-image: url("/imagenes/button-left-white.svg");
-    background-color: #37383c;
-    border: 1px solid #fff;
-  }
-
-  #prev:hover {
-    background-image: url("/imagenes/button-left-black.svg");
-    background-color: #fff;
-  }
-
-  #next {
-    background-image: url("/imagenes/button-right-white.svg");
-    background-color: #37383c;
-    border: 1px solid #fff;
-  }
-
-  #next:hover {
-    background-image: url("/imagenes/button-right-black.svg");
-    background-color: #fff;
-  }
-
   .footer {
     h3 {
       color: #ffffff;
@@ -131,6 +109,27 @@ body.dark {
       background-color: #9cafc3;
       background-image: url("/imagenes/button-crear-gifo-white.svg");
       border: none;
+    }
+    #prev {
+      background-image: url("/imagenes/button-left-white.svg");
+      background-color: #37383c;
+      border: 1px solid #fff;
+    }
+
+    #prev:hover {
+      background-image: url("/imagenes/button-left-black.svg");
+      background-color: #fff;
+    }
+
+    #next {
+      background-image: url("/imagenes/button-right-white.svg");
+      background-color: #37383c;
+      border: 1px solid #fff;
+    }
+
+    #next:hover {
+      background-image: url("/imagenes/button-right-black.svg");
+      background-color: #fff;
     }
   }
 }
