@@ -50,7 +50,11 @@
                 name="search"
                 placeholder="Busca GIFOS y más"
                 class="searchbar-input"
+                list="autocomplete-datalist"
+                id="autocomplete-datalist-input"
+                onkeyup="autocompleteRequest(event)"
               />
+              <datalist id="autocomplete-datalist"> </datalist>
             </div>
           </nav>
           <nav class="trending-topics">
@@ -63,7 +67,7 @@
           </nav>
           <div id="search-title-container"></div>
           <div class="gif-container"></div>
-          <div id="ver-mas-btn"></div>
+          <div id="ver-mas-btn" onclick="newSearchBtnRequest()"></div>
         </section>
         <section class="trending-GIFOS">
           <div class="trending-title">
@@ -113,6 +117,7 @@
         <div class="border"></div>
       </footer>
     </section>
+    <div class="myModal display-none" id="loader"></div>
     <script src="/js/darkmode.js"></script>
   </body>
 </html>

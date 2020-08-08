@@ -609,6 +609,56 @@ body.dark .border {
   background-color: #572ee5;
 }
 
+.myModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.myModal::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(0);
+          transform: translate(-50%, -50%) rotate(0);
+  border-style: dashed dashed dotted solid;
+  border-radius: 50%;
+  border-width: 10px 5px 2.5px 0;
+  width: 200px;
+  height: 200px;
+  border-color: #572ee5;
+  -webkit-animation-name: rotate;
+          animation-name: rotate;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(360deg);
+            transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(360deg);
+            transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.display-none {
+  display: none;
+}
+
 /*tablet version*/
 @media screen and (min-width: 600px) {
   .title-searchbar-trending h1 {
@@ -771,8 +821,8 @@ body.dark .border {
     max-width: 1920px;
   }
   #prev {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-image: url("/imagenes/button-left.svg");
     border: 1px solid #572ee5;
     cursor: pointer;
@@ -785,8 +835,8 @@ body.dark .border {
     background-color: #572ee5;
   }
   #next {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-image: url("/imagenes/button-right.svg");
     border: 1px solid #572ee5;
     cursor: pointer;
