@@ -46,21 +46,21 @@ darkMode.addEventListener('click', (event) => {
 let searchBtn = document.getElementById('searchBtnId');
 searchBtn.addEventListener('click', (event) => {
     newSearchBtnRequest();
-    removeContainer();
+    removeContainer(searchGifContainer);
 })
 
 //evento en la tecla enter
 document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
     if (event.which === 13) {
         newSearchBtnRequest();
-        removeContainer();
+        removeContainer(searchGifContainer);
     }
 });
 
 //funcion para eliminar nodos hijos al realizar nueva busqueda
-function removeContainer() {
-    while (searchGifContainer.firstChild) {
-        searchGifContainer.removeChild(searchGifContainer.firstChild);
+function removeContainer(node) {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
     }
 }
 
