@@ -110,8 +110,13 @@
     font-weight: bold;
     font-size: 16px;
   }
-  & a {
-    text-decoration: none;
+  & ul {
+    display: inline-block;
+    list-style-type: none;
+  }
+  & li {
+    cursor: pointer;
+    float: left;
     color: #572ee5;
   }
 }
@@ -298,9 +303,19 @@
     grid-template-rows: 1fr 1fr 1fr;
     column-gap: 30px;
     row-gap: 30px;
-  }
-  .gif-container-child {
-    width: 260px;
-    height: 200px;
+
+    & .gif-container-child {
+      width: 260px;
+      height: 200px;
+    }
+
+    & a {
+      background: #572ee5;
+      height: 200px;
+    }
+
+    & a:hover .gif-container-child {
+      opacity: 0.6;
+    }
   }
 }

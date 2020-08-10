@@ -64,7 +64,6 @@ function removeContainer(node) {
     }
 }
 
-
 const loader = document.getElementById('loader'),
     loaderActions = {
         showloader: function () { loader.classList.remove("display-none") },
@@ -88,8 +87,8 @@ function newSearchBtnRequest() {
         })
     //funcion que crea un arreglo de objetos filtrado
     function loadingGifs(response) {
-        const wsData = response.data;
-        wsData.forEach((image) => {
+        const requestResponse = response.data;
+        requestResponse.forEach((image) => {
             let imageWorked = {
                 url: image.images.downsized_medium.url,
                 user: image.username,
@@ -98,21 +97,51 @@ function newSearchBtnRequest() {
             }
             imagesGotted.push(imageWorked);
         })
-        //funcion que crea las tarjetas
-        newCreateCard();
-        function newCreateCard() {
-            for (let i = offsetRequestIndex; i < imagesGotted.length; i++) {
-                let newGif = document.createElement("img")
-                newGif.setAttribute('class', 'gif-container-child')
-                newGif.setAttribute('src', imagesGotted[i].url)
-                searchGifContainer.appendChild(newGif)
-            }
-            offsetCounter += 1;
-            setTimeout(() => loaderActions.hideloader(), 2000)
-        }
+        createNewCard(imagesGotted, searchGifContainer, offsetRequestIndex, 'gif-container-child');
+        offsetCounter += 1;
+        setTimeout(() => loaderActions.hideloader(), 2000)
     }
     verMasGifs();
     showSearchTitle(searchInput)
+}
+
+//funcion que muestra automaticamente los trending gifs
+let trendingGifContainer = document.getElementById("content");
+let trendingGifsArray = [];
+(function trendingGif() {
+    let trendingUrl = "https://api.giphy.com/v1/gifs/trending?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&limit=25&rating=";
+    fetch(trendingUrl)
+        .then(response => response.json())
+        .then(data => loadTrendingCard(data))
+        .catch((error) => {
+            console.error("Ha habido un error", error);
+        })
+    //funcion que crea las tarjetas trending
+    function loadTrendingCard(value) {
+        let imageURL = value.data;
+        imageURL.forEach((image) => {
+            let gifWorked = {
+                url: image.images.downsized_medium.url,
+                user: image.user,
+                title: image.title,
+                fav: false
+            }
+            trendingGifsArray.push(gifWorked)
+        });
+        createNewCard(trendingGifsArray, trendingGifContainer, 0, 'item');
+    }
+})();
+
+//funcion que crea las tarjetas
+function createNewCard(arr, node, index, extraclass) {
+    for (let i = index; i < arr.length; i++) {
+        let anchorForNewCard = document.createElement('a'),
+            newGif = document.createElement('img');
+        newGif.setAttribute('class', extraclass);
+        newGif.setAttribute('src', arr[i].url);
+        node.appendChild(anchorForNewCard);
+        anchorForNewCard.appendChild(newGif);
+    }
 }
 
 //funcion que agrega botón "ver más"
@@ -160,27 +189,29 @@ function autocompleteRequest(event) {
     }
 }
 
-//funcion que muestra automaticamente los trending gifs
-(function trendingGif() {
-    let trendingUrl = "https://api.giphy.com/v1/gifs/trending?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&limit=25&rating=";
-    fetch(trendingUrl)
+//funcion que muestra los titulos trending
+let trendingTextList = document.getElementById('trending-list');
+(function trendingTextRequest() {
+    let trendingTextUrl = `https://api.giphy.com/v1/trending/searches?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf`;
+    fetch(trendingTextUrl)
         .then(response => response.json())
-        .then(data => createTrendingCard(data))
+        .then(data => trendingText(data))
         .catch((error) => {
             console.error("Ha habido un error", error);
         })
-    //funcion que crea las tarjetas trending
-    function createTrendingCard(value) {
-        let imageURL = value.data;
-        imageURL.forEach((image) => {
-            let srcImage = image.images.downsized_medium.url;
-            let trendingGifContainer = document.getElementById("content");
-            trendingGifContainer.innerHTML += "<img src=\"" + srcImage + "\" class=\"item\">";
-        });
+    function trendingText(response) {
+        const blancSpace = " ";
+        const requestResponse = response.data
+        let arrayForFiveElements = requestResponse.slice(0, 5);
+        for (let i = 0; i < arrayForFiveElements.length; i++) {
+            let listElement = document.createElement('li');
+            listElement.textContent = arrayForFiveElements[i] + ',';
+            trendingTextList.appendChild(listElement)
+        }
     }
 })();
 
-/*funcionalidad de scroll a la seccion de trending gifs*/
+//funcionalidad de scroll a la seccion de trending gifs
 const carousel = document.getElementById("carousel"),
     content = document.getElementById("content"),
     next = document.getElementById("next"),
@@ -208,4 +239,3 @@ prev.addEventListener("click", e => {
 
 let width = carousel.offsetWidth;
 window.addEventListener("resize", e => (width = carousel.offsetWidth));
-

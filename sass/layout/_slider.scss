@@ -1,17 +1,3 @@
-/* .trending-GIFOS-container {
-  max-width: 600px;
-  
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.trending-GIFOS-container-child {
-  display: inline-block;
-  width: 288px;
-  height: 187px;
-} */
-
 .trending-GIFOS-container {
   margin: 32px 0 82px 0;
   display: flex;
@@ -106,5 +92,15 @@
     top: 50%;
     right: 0;
     transform: translate(-50%, -50%);
+  }
+
+  #content {
+    & a {
+      background: #572ee5;
+      height: 275px;
+    }
+    & a:hover .item {
+      opacity: 0.6;
+    }
   }
 }
