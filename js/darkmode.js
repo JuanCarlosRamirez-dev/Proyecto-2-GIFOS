@@ -135,12 +135,31 @@ let trendingGifsArray = [];
 //funcion que crea las tarjetas
 function createNewCard(arr, node, index, extraclass) {
     for (let i = index; i < arr.length; i++) {
+
         let anchorForNewCard = document.createElement('a'),
+            favBtn = document.createElement('img'),
+            downloadBnt = document.createElement('img'),
+            fullscreenBtn = document.createElement('img'),
             newGif = document.createElement('img');
+
+        favBtn.setAttribute('src', 'imagenes/icon-fav-hover.svg');
+        favBtn.setAttribute('class', 'favButton cardBtn');
+
+        downloadBnt.setAttribute('src', 'imagenes/icon-download.svg');
+        downloadBnt.setAttribute('class', 'downloadBtn cardBtn');
+
+        fullscreenBtn.setAttribute('src', 'imagenes/icon-max.svg');
+        fullscreenBtn.setAttribute('class', 'fullsizeBtn cardBtn');
+
         newGif.setAttribute('class', extraclass);
         newGif.setAttribute('src', arr[i].url);
+
         node.appendChild(anchorForNewCard);
+
         anchorForNewCard.appendChild(newGif);
+        anchorForNewCard.appendChild(favBtn);
+        anchorForNewCard.appendChild(downloadBnt);
+        anchorForNewCard.appendChild(fullscreenBtn);
     }
 }
 
