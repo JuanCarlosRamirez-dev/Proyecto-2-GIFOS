@@ -298,20 +298,20 @@
     }
   }
   .gif-container {
-    margin: 0 11% 0 11%;
+    margin: 0 18% 0 18%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    column-gap: 30px;
-    row-gap: 30px;
+    column-gap: 0;
+    row-gap: 25px;
 
     & .gif-container-child {
-      width: 260px;
-      height: 200px;
+      width: 280px;
+      height: 240px;
     }
 
     & a {
       background: #572ee5;
-      height: 200px;
+      height: 240px;
     }
 
     & a:hover .gif-container-child {

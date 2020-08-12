@@ -109,7 +109,7 @@ function newSearchBtnRequest() {
 let trendingGifContainer = document.getElementById("content");
 let trendingGifsArray = [];
 (function trendingGif() {
-    let trendingUrl = "https://api.giphy.com/v1/gifs/trending?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&limit=25&rating=";
+    let trendingUrl = "https://api.giphy.com/v1/gifs/trending?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&limit=20&rating=";
     fetch(trendingUrl)
         .then(response => response.json())
         .then(data => loadTrendingCard(data))
@@ -181,11 +181,13 @@ function autocompleteRequest(event) {
         })
     function autoFill(response) {
         const requestResponse = response.data
-        requestResponse.forEach((label) => {
+        let ArrayForFourSuggestions = requestResponse.slice(0, 4);
+        console.log(ArrayForFourSuggestions)
+        for (let i = 0; i < ArrayForFourSuggestions.length; i++) {
             let optionElement = document.createElement('option')
-            optionElement.setAttribute("value", label.name)
+            optionElement.setAttribute("value", ArrayForFourSuggestions[i].name)
             dataList.appendChild(optionElement)
-        })
+        }
     }
 }
 
@@ -200,13 +202,12 @@ let trendingTextList = document.getElementById('trending-list');
             console.error("Ha habido un error", error);
         })
     function trendingText(response) {
-        const blancSpace = " ";
         const requestResponse = response.data
         let arrayForFiveElements = requestResponse.slice(0, 5);
         for (let i = 0; i < arrayForFiveElements.length; i++) {
             let listElement = document.createElement('li');
-            listElement.textContent = arrayForFiveElements[i] + ',';
-            trendingTextList.appendChild(listElement)
+            listElement.textContent = arrayForFiveElements[i] + ',' + '\u00A0';
+            trendingTextList.appendChild(listElement);
         }
     }
 })();

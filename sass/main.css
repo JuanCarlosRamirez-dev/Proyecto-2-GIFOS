@@ -59,7 +59,7 @@ body.dark .trending-topics {
   color: #ffffff;
 }
 
-body.dark .trending-topics a {
+body.dark .trending-topics li {
   color: #fff;
 }
 
@@ -736,22 +736,22 @@ body.dark .border {
     line-height: 50px;
   }
   .gif-container {
-    margin: 0 11% 0 11%;
+    margin: 0 18% 0 18%;
     -ms-grid-columns: 1fr 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     -ms-grid-rows: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
-    -webkit-column-gap: 30px;
-            column-gap: 30px;
-    row-gap: 30px;
+    -webkit-column-gap: 0;
+            column-gap: 0;
+    row-gap: 25px;
   }
   .gif-container .gif-container-child {
-    width: 260px;
-    height: 200px;
+    width: 280px;
+    height: 240px;
   }
   .gif-container a {
     background: #572ee5;
-    height: 200px;
+    height: 240px;
   }
   .gif-container a:hover .gif-container-child {
     opacity: 0.6;
