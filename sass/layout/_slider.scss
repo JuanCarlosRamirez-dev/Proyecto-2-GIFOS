@@ -102,13 +102,13 @@
       & .favButton {
         position: absolute;
         top: 10px;
-        left: 210px;
+        left: 220px;
         opacity: 0;
       }
       & .downloadBtn {
         position: absolute;
         top: 10px;
-        left: 260px;
+        left: 265px;
         opacity: 0;
       }
       & .fullsizeBtn {
@@ -117,6 +117,24 @@
         left: 310px;
         opacity: 0;
       }
+      & .gif-user {
+        position: absolute;
+        top: 210px;
+        left: 25px;
+        opacity: 0;
+      }
+      & .gif-title {
+        font-weight: bold;
+        position: absolute;
+        top: 230px;
+        left: 25px;
+        opacity: 0;
+      }
+    }
+
+    & a:hover .gif-text-element {
+      opacity: 1;
+      color: white;
     }
 
     & a:hover .item {
@@ -125,11 +143,8 @@
     & a:hover .cardBtn {
       opacity: 0.7;
       background: #ffffff;
-      padding: 10px;
+      padding: 8px;
       border-radius: 6px;
     }
-    /* & .favButton:hover .item {
-      opacity: 1;
-    } */
   }
 }

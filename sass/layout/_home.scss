@@ -316,21 +316,39 @@
       & .favButton {
         position: absolute;
         top: 10px;
-        left: 130px;
+        left: 145px;
         opacity: 0;
       }
       & .downloadBtn {
         position: absolute;
         top: 10px;
-        left: 180px;
+        left: 190px;
         opacity: 0;
       }
       & .fullsizeBtn {
         position: absolute;
         top: 10px;
-        left: 230px;
+        left: 235px;
         opacity: 0;
       }
+      & .gif-user {
+        position: absolute;
+        top: 165px;
+        left: 20px;
+        opacity: 0;
+      }
+      & .gif-title {
+        font-weight: bold;
+        position: absolute;
+        top: 185px;
+        left: 20px;
+        opacity: 0;
+      }
+    }
+
+    & a:hover .gif-text-element {
+      opacity: 1;
+      color: white;
     }
 
     & a:hover .gif-container-child {
@@ -339,7 +357,7 @@
     a:hover .cardBtn {
       opacity: 0.7;
       background: #ffffff;
-      padding: 10px;
+      padding: 7px;
       border-radius: 6px;
     }
   }

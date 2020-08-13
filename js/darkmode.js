@@ -122,10 +122,11 @@ let trendingGifsArray = [];
         imageURL.forEach((image) => {
             let gifWorked = {
                 url: image.images.downsized_medium.url,
-                user: image.user,
+                user: image.username,
                 title: image.title,
                 fav: false
             }
+
             trendingGifsArray.push(gifWorked)
         });
         createNewCard(trendingGifsArray, trendingGifContainer, 0, 'item');
@@ -134,12 +135,15 @@ let trendingGifsArray = [];
 
 //funcion que crea las tarjetas
 function createNewCard(arr, node, index, extraclass) {
+
     for (let i = index; i < arr.length; i++) {
 
         let anchorForNewCard = document.createElement('a'),
             favBtn = document.createElement('img'),
             downloadBnt = document.createElement('img'),
             fullscreenBtn = document.createElement('img'),
+            showGifUser = document.createElement('p'),
+            showGifTitle = document.createElement('p'),
             newGif = document.createElement('img');
 
         favBtn.setAttribute('src', 'imagenes/icon-fav-hover.svg');
@@ -151,6 +155,12 @@ function createNewCard(arr, node, index, extraclass) {
         fullscreenBtn.setAttribute('src', 'imagenes/icon-max.svg');
         fullscreenBtn.setAttribute('class', 'fullsizeBtn cardBtn');
 
+        showGifUser.textContent = arr[i].user;
+        showGifUser.setAttribute('class', 'gif-text-element gif-user');
+
+        showGifTitle.textContent = arr[i].title;
+        showGifTitle.setAttribute('class', 'gif-text-element gif-title')
+
         newGif.setAttribute('class', extraclass);
         newGif.setAttribute('src', arr[i].url);
 
@@ -160,6 +170,8 @@ function createNewCard(arr, node, index, extraclass) {
         anchorForNewCard.appendChild(favBtn);
         anchorForNewCard.appendChild(downloadBnt);
         anchorForNewCard.appendChild(fullscreenBtn);
+        anchorForNewCard.appendChild(showGifUser);
+        anchorForNewCard.appendChild(showGifTitle);
     }
 }
 
@@ -224,12 +236,19 @@ let trendingTextList = document.getElementById('trending-list');
         const requestResponse = response.data
         let arrayForFiveElements = requestResponse.slice(0, 5);
         for (let i = 0; i < arrayForFiveElements.length; i++) {
+
             let listElement = document.createElement('li');
+
             listElement.textContent = arrayForFiveElements[i] + ',' + '\u00A0';
             trendingTextList.appendChild(listElement);
         }
     }
 })();
+
+let sendToSearchbar = document.querySelectorAll('.trending-list li');
+sendToSearchbar.addEventListener('click', () => {
+    console.log(hola)
+});
 
 //funcionalidad de scroll a la seccion de trending gifs
 const carousel = document.getElementById("carousel"),

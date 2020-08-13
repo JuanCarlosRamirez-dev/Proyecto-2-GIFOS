@@ -757,20 +757,37 @@ body.dark .border {
   .gif-container a .favButton {
     position: absolute;
     top: 10px;
-    left: 130px;
+    left: 145px;
     opacity: 0;
   }
   .gif-container a .downloadBtn {
     position: absolute;
     top: 10px;
-    left: 180px;
+    left: 190px;
     opacity: 0;
   }
   .gif-container a .fullsizeBtn {
     position: absolute;
     top: 10px;
-    left: 230px;
+    left: 235px;
     opacity: 0;
+  }
+  .gif-container a .gif-user {
+    position: absolute;
+    top: 165px;
+    left: 20px;
+    opacity: 0;
+  }
+  .gif-container a .gif-title {
+    font-weight: bold;
+    position: absolute;
+    top: 185px;
+    left: 20px;
+    opacity: 0;
+  }
+  .gif-container a:hover .gif-text-element {
+    opacity: 1;
+    color: white;
   }
   .gif-container a:hover .gif-container-child {
     opacity: 0.6;
@@ -778,7 +795,7 @@ body.dark .border {
   .gif-container a:hover .cardBtn {
     opacity: 0.7;
     background: #ffffff;
-    padding: 10px;
+    padding: 7px;
     border-radius: 6px;
   }
 }
@@ -886,11 +903,6 @@ body.dark .border {
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
   }
-  #content {
-    /* & .favButton:hover .item {
-      opacity: 1;
-    } */
-  }
   #content a {
     position: relative;
     background: #572ee5;
@@ -899,13 +911,13 @@ body.dark .border {
   #content a .favButton {
     position: absolute;
     top: 10px;
-    left: 210px;
+    left: 220px;
     opacity: 0;
   }
   #content a .downloadBtn {
     position: absolute;
     top: 10px;
-    left: 260px;
+    left: 265px;
     opacity: 0;
   }
   #content a .fullsizeBtn {
@@ -914,13 +926,30 @@ body.dark .border {
     left: 310px;
     opacity: 0;
   }
+  #content a .gif-user {
+    position: absolute;
+    top: 210px;
+    left: 25px;
+    opacity: 0;
+  }
+  #content a .gif-title {
+    font-weight: bold;
+    position: absolute;
+    top: 230px;
+    left: 25px;
+    opacity: 0;
+  }
+  #content a:hover .gif-text-element {
+    opacity: 1;
+    color: white;
+  }
   #content a:hover .item {
     opacity: 0.6;
   }
   #content a:hover .cardBtn {
     opacity: 0.7;
     background: #ffffff;
-    padding: 10px;
+    padding: 8px;
     border-radius: 6px;
   }
 }
