@@ -735,6 +735,20 @@ body.dark .border {
     font-size: 40px;
     line-height: 50px;
   }
+  .border-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .border-container hr {
+    width: 300px;
+    border: 1px solid #cfd7e0;
+    margin: 35px 0;
+    display: none;
+  }
   .gif-container {
     margin: 0 18% 0 18%;
     -ms-grid-columns: 1fr 1fr 1fr 1fr;

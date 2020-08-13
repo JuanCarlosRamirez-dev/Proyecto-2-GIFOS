@@ -72,6 +72,7 @@ const loader = document.getElementById('loader'),
 
 //funcion que conecta con la API
 let searchGifContainer = document.querySelector('.gif-container'),
+    borderSearch = document.getElementById('search-border'),
     offsetCounter = 0,
     imagesGotted = [];
 function newSearchBtnRequest() {
@@ -101,6 +102,7 @@ function newSearchBtnRequest() {
         offsetCounter += 1;
         setTimeout(() => loaderActions.hideloader(), 2000)
     }
+    borderSearch.style.display = 'block';
     verMasGifs();
     showSearchTitle(searchInput)
 }

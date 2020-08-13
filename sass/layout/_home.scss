@@ -297,6 +297,16 @@
       line-height: 50px;
     }
   }
+  .border-container {
+    display: flex;
+    justify-content: center;
+    & hr {
+      width: 300px;
+      border: 1px solid #cfd7e0;
+      margin: 35px 0;
+      display: none;
+    }
+  }
   .gif-container {
     margin: 0 18% 0 18%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
