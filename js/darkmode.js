@@ -141,20 +141,20 @@ function createNewCard(arr, node, index, extraclass) {
     for (let i = index; i < arr.length; i++) {
 
         let anchorForNewCard = document.createElement('a'),
-            favBtn = document.createElement('img'),
-            downloadBnt = document.createElement('img'),
-            fullscreenBtn = document.createElement('img'),
+            favBtn = document.createElement('button'),
+            downloadBnt = document.createElement('button'),
+            fullscreenBtn = document.createElement('button'),
             showGifUser = document.createElement('p'),
             showGifTitle = document.createElement('p'),
             newGif = document.createElement('img');
 
-        favBtn.setAttribute('src', 'imagenes/icon-fav-hover.svg');
+        favBtn.innerHTML = '<img src="imagenes/icon-fav-hover.svg"/>';
         favBtn.setAttribute('class', 'favButton cardBtn');
 
-        downloadBnt.setAttribute('src', 'imagenes/icon-download.svg');
+        downloadBnt.innerHTML = '<img src="imagenes/icon-download.svg"/>';
         downloadBnt.setAttribute('class', 'downloadBtn cardBtn');
 
-        fullscreenBtn.setAttribute('src', 'imagenes/icon-max.svg');
+        fullscreenBtn.innerHTML = '<img src="imagenes/icon-max.svg"/>';
         fullscreenBtn.setAttribute('class', 'fullsizeBtn cardBtn');
 
         showGifUser.textContent = arr[i].user;
@@ -213,9 +213,8 @@ function autocompleteRequest(event) {
             console.error("Ha habido un error", error);
         })
     function autoFill(response) {
-        const requestResponse = response.data
+        const requestResponse = response.data;
         let ArrayForFourSuggestions = requestResponse.slice(0, 4);
-        console.log(ArrayForFourSuggestions)
         for (let i = 0; i < ArrayForFourSuggestions.length; i++) {
             let optionElement = document.createElement('option')
             optionElement.setAttribute("value", ArrayForFourSuggestions[i].name)
@@ -247,10 +246,10 @@ let trendingTextList = document.getElementById('trending-list');
     }
 })();
 
-let sendToSearchbar = document.querySelectorAll('.trending-list li');
+/* let sendToSearchbar = document.querySelectorAll('.trending-list li');
 sendToSearchbar.addEventListener('click', () => {
     console.log(hola)
-});
+}); */
 
 //funcionalidad de scroll a la seccion de trending gifs
 const carousel = document.getElementById("carousel"),

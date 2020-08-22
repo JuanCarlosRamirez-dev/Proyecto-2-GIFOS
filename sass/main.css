@@ -449,6 +449,22 @@ body.dark .border {
   transition: 0.3s ease all;
 }
 
+.border-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.border-container hr {
+  width: 157px;
+  border: 1px solid #cfd7e0;
+  margin: 35px 0;
+  display: none;
+}
+
 .search-title-container {
   font-size: 25px;
   color: #572ee5;
@@ -470,6 +486,50 @@ body.dark .border {
   -webkit-column-gap: 10px;
           column-gap: 10px;
   row-gap: 15px;
+}
+
+.gif-container a .favButton {
+  position: absolute;
+  top: 10px;
+  left: 145px;
+  display: none;
+}
+
+.gif-container a .downloadBtn {
+  position: absolute;
+  top: 10px;
+  left: 190px;
+  display: none;
+}
+
+.gif-container a .fullsizeBtn {
+  position: absolute;
+  top: 10px;
+  left: 235px;
+  display: none;
+}
+
+.gif-container a .gif-user {
+  position: absolute;
+  top: 165px;
+  left: 20px;
+  display: none;
+}
+
+.gif-container a .gif-title {
+  font-weight: bold;
+  position: absolute;
+  top: 185px;
+  left: 20px;
+  display: none;
+}
+
+.gif-container a .cardBtn {
+  opacity: 0.7;
+  background: #ffffff;
+  padding: 7px;
+  border-radius: 6px;
+  display: none;
 }
 
 .gif-container-margin {
@@ -683,6 +743,12 @@ body.dark .border {
     width: 86%;
     margin-left: 4%;
   }
+  .border-container hr {
+    width: 250px;
+    border: 1px solid #cfd7e0;
+    margin: 35px 0;
+    display: none;
+  }
   .search-title-container {
     font-size: 35px;
     line-height: 30px;
@@ -735,14 +801,6 @@ body.dark .border {
     font-size: 40px;
     line-height: 50px;
   }
-  .border-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
   .border-container hr {
     width: 300px;
     border: 1px solid #cfd7e0;
@@ -768,49 +826,22 @@ body.dark .border {
     background: #572ee5;
     height: 240px;
   }
-  .gif-container a .favButton {
-    position: absolute;
-    top: 10px;
-    left: 145px;
-    opacity: 0;
-  }
-  .gif-container a .downloadBtn {
-    position: absolute;
-    top: 10px;
-    left: 190px;
-    opacity: 0;
-  }
-  .gif-container a .fullsizeBtn {
-    position: absolute;
-    top: 10px;
-    left: 235px;
-    opacity: 0;
-  }
-  .gif-container a .gif-user {
-    position: absolute;
-    top: 165px;
-    left: 20px;
-    opacity: 0;
-  }
-  .gif-container a .gif-title {
-    font-weight: bold;
-    position: absolute;
-    top: 185px;
-    left: 20px;
-    opacity: 0;
-  }
   .gif-container a:hover .gif-text-element {
     opacity: 1;
     color: white;
+    display: block;
+  }
+  .gif-container a:hover .cardBtn {
+    display: block;
   }
   .gif-container a:hover .gif-container-child {
     opacity: 0.6;
   }
-  .gif-container a:hover .cardBtn {
-    opacity: 0.7;
-    background: #ffffff;
-    padding: 7px;
-    border-radius: 6px;
+  .gif-container button:hover {
+    opacity: 1;
+  }
+  .gif-container button:active {
+    opacity: 1;
   }
 }
 
@@ -855,6 +886,50 @@ body.dark .border {
   margin: auto;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+#content a .favButton {
+  position: absolute;
+  top: 10px;
+  left: 220px;
+  display: none;
+}
+
+#content a .downloadBtn {
+  position: absolute;
+  top: 10px;
+  left: 265px;
+  display: none;
+}
+
+#content a .fullsizeBtn {
+  position: absolute;
+  top: 10px;
+  left: 310px;
+  display: none;
+}
+
+#content a .gif-user {
+  position: absolute;
+  top: 210px;
+  left: 25px;
+  display: none;
+}
+
+#content a .gif-title {
+  font-weight: bold;
+  position: absolute;
+  top: 230px;
+  left: 25px;
+  display: none;
+}
+
+#content a .cardBtn {
+  opacity: 0.7;
+  background: #ffffff;
+  padding: 7px;
+  border-radius: 6px;
+  display: none;
 }
 
 .item {
@@ -922,49 +997,22 @@ body.dark .border {
     background: #572ee5;
     height: 275px;
   }
-  #content a .favButton {
-    position: absolute;
-    top: 10px;
-    left: 220px;
-    opacity: 0;
-  }
-  #content a .downloadBtn {
-    position: absolute;
-    top: 10px;
-    left: 265px;
-    opacity: 0;
-  }
-  #content a .fullsizeBtn {
-    position: absolute;
-    top: 10px;
-    left: 310px;
-    opacity: 0;
-  }
-  #content a .gif-user {
-    position: absolute;
-    top: 210px;
-    left: 25px;
-    opacity: 0;
-  }
-  #content a .gif-title {
-    font-weight: bold;
-    position: absolute;
-    top: 230px;
-    left: 25px;
-    opacity: 0;
-  }
   #content a:hover .gif-text-element {
     opacity: 1;
     color: white;
+    display: block;
+  }
+  #content a:hover .cardBtn {
+    display: block;
   }
   #content a:hover .item {
     opacity: 0.6;
   }
-  #content a:hover .cardBtn {
-    opacity: 0.7;
-    background: #ffffff;
-    padding: 8px;
-    border-radius: 6px;
+  #content button:hover {
+    opacity: 1;
+  }
+  #content button:active {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=main.css.map */

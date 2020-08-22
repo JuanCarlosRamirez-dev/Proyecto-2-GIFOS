@@ -54,6 +54,17 @@
   }
 }
 
+.border-container {
+  display: flex;
+  justify-content: center;
+  & hr {
+    width: 157px;
+    border: 1px solid #cfd7e0;
+    margin: 35px 0;
+    display: none;
+  }
+}
+
 .search-title-container {
   font-size: 25px;
   color: #572ee5;
@@ -71,6 +82,47 @@
   justify-items: center;
   column-gap: 10px;
   row-gap: 15px;
+
+  & a {
+    & .favButton {
+      position: absolute;
+      top: 10px;
+      left: 145px;
+      display: none;
+    }
+    & .downloadBtn {
+      position: absolute;
+      top: 10px;
+      left: 190px;
+      display: none;
+    }
+    & .fullsizeBtn {
+      position: absolute;
+      top: 10px;
+      left: 235px;
+      display: none;
+    }
+    & .gif-user {
+      position: absolute;
+      top: 165px;
+      left: 20px;
+      display: none;
+    }
+    & .gif-title {
+      font-weight: bold;
+      position: absolute;
+      top: 185px;
+      left: 20px;
+      display: none;
+    }
+    & .cardBtn {
+      opacity: 0.7;
+      background: #ffffff;
+      padding: 7px;
+      border-radius: 6px;
+      display: none;
+    }
+  }
 }
 
 .gif-container-margin {
@@ -247,6 +299,15 @@
     }
   }
 
+  .border-container {
+    & hr {
+      width: 250px;
+      border: 1px solid #cfd7e0;
+      margin: 35px 0;
+      display: none;
+    }
+  }
+
   .search-title-container {
     font-size: 35px;
     line-height: 30px;
@@ -298,8 +359,6 @@
     }
   }
   .border-container {
-    display: flex;
-    justify-content: center;
     & hr {
       width: 300px;
       border: 1px solid #cfd7e0;
@@ -323,52 +382,28 @@
       position: relative;
       background: #572ee5;
       height: 240px;
-      & .favButton {
-        position: absolute;
-        top: 10px;
-        left: 145px;
-        opacity: 0;
-      }
-      & .downloadBtn {
-        position: absolute;
-        top: 10px;
-        left: 190px;
-        opacity: 0;
-      }
-      & .fullsizeBtn {
-        position: absolute;
-        top: 10px;
-        left: 235px;
-        opacity: 0;
-      }
-      & .gif-user {
-        position: absolute;
-        top: 165px;
-        left: 20px;
-        opacity: 0;
-      }
-      & .gif-title {
-        font-weight: bold;
-        position: absolute;
-        top: 185px;
-        left: 20px;
-        opacity: 0;
-      }
     }
 
     & a:hover .gif-text-element {
       opacity: 1;
       color: white;
+      display: block;
+    }
+
+    & a:hover .cardBtn {
+      display: block;
     }
 
     & a:hover .gif-container-child {
       opacity: 0.6;
     }
-    a:hover .cardBtn {
-      opacity: 0.7;
-      background: #ffffff;
-      padding: 7px;
-      border-radius: 6px;
+
+    & button:hover {
+      opacity: 1;
+    }
+
+    & button:active {
+      opacity: 1;
     }
   }
 }
