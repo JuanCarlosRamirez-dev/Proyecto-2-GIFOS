@@ -42,19 +42,18 @@
               class="hello-img"
             />
             <div class="searchbar">
-              <div>
+              <div id="search-images">
                 <img alt="search" class="search-btn" id="searchBtnId" />
+                <img alt="close" class="close-search" id="closeBtnId" />
               </div>
               <input
                 type="text"
                 name="search"
                 placeholder="Busca GIFOS y más"
                 class="searchbar-input"
-                list="autocomplete-datalist"
-                id="autocomplete-datalist-input"
                 onkeyup="autocompleteRequest(event)"
               />
-              <datalist id="autocomplete-datalist"> </datalist>
+              <ul id="autocomplete-datalist"></ul>
             </div>
           </nav>
           <nav class="trending-topics">

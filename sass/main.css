@@ -439,14 +439,46 @@ body.dark .border {
 }
 
 .title-searchbar-trending .searchbar .searchbar-input {
-  width: 76%;
-  height: 100%;
+  width: 67%;
+  height: 48px;
   border: none;
   margin-left: 7%;
   font-size: 16px;
   color: #000;
   -webkit-transition: 0.3s ease all;
   transition: 0.3s ease all;
+}
+
+.title-searchbar-trending .searchbar .close-search {
+  margin: 20px 24px 15px 2px;
+  float: right;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  display: none;
+}
+
+.title-searchbar-trending .searchbar-filled {
+  height: 185px;
+}
+
+.title-searchbar-trending .searchbar-filled .searchbar-input {
+  border-bottom: solid 1px #9cafc3;
+}
+
+.title-searchbar-trending #autocomplete-datalist {
+  list-style: none;
+  color: #9cafc3;
+  margin-bottom: 50px;
+}
+
+.title-searchbar-trending #autocomplete-datalist .autocomplete-elements {
+  margin: 7px 0 0 21px;
+  cursor: pointer;
+}
+
+.title-searchbar-trending #autocomplete-datalist .autocomplete-elements img {
+  margin-right: 7px;
 }
 
 .border-container {

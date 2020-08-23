@@ -4,12 +4,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.querySelector('body').classList.add('dark'),
         document.getElementById('logoMobileId').src = "imagenes/logo-mobile-modo-noc.svg",
         document.getElementById('logoDesktopId').src = "imagenes/logo-desktop-modo-noc.svg",
-        document.getElementById('searchBtnId').src = "imagenes/icon-search-mod-noc.svg"
+        document.getElementById('searchBtnId').src = "imagenes/icon-search-mod-noc.svg",
+        document.getElementById('closeBtnId').src = "imagenes/button-close-white.svg"
     ) : (
             document.querySelector('body').classList.remove('dark'),
             document.getElementById('logoMobileId').src = "imagenes/logo-mobile.svg",
             document.getElementById('logoDesktopId').src = "imagenes/logo-desktop.svg",
-            document.getElementById('searchBtnId').src = "imagenes/icon-search.svg"
+            document.getElementById('searchBtnId').src = "imagenes/icon-search.svg",
+            document.getElementById('closeBtnId').src = "imagenes/button-close.svg"
         );
 });
 
@@ -42,12 +44,20 @@ darkMode.addEventListener('click', (event) => {
         : document.getElementById('searchBtnId').src = "imagenes/icon-search.svg";
 });
 
+darkMode.addEventListener('click', (event) => {
+    ((localStorage.getItem('mode') || 'dark') === 'dark') ?
+        document.getElementById('closeBtnId').src = "imagenes/button-close-white.svg"
+        : document.getElementById('closeBtnId').src = "imagenes/button-close.svg";
+});
+
+
+
 //captura de evento en la lupa
 let searchBtn = document.getElementById('searchBtnId');
 searchBtn.addEventListener('click', (event) => {
     newSearchBtnRequest();
     removeContainer(searchGifContainer);
-})
+});
 
 //evento en la tecla enter
 document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
@@ -200,11 +210,14 @@ function showSearchTitle(input) {
     return searchTitleContainer.innerHTML = "<h2 class=search-title-container>" + searchStringCapitalized + "</h2>";
 };
 
-//funcion que conecta con la API para las search suggestions
-let dataList = document.getElementById('autocomplete-datalist')
+//funcionalidad y animacion para barra buscadora y sugerencias de busqueda 
+let dataList = document.getElementById('autocomplete-datalist'),
+    searchbar = document.querySelector('.searchbar'),
+    searchBarImages = document.getElementById('search-images'),
+    closeSearch = document.getElementById('closeBtnId');
 function autocompleteRequest(event) {
     const rootEvent = event.target,
-        searchInputValue = rootEvent.value
+        searchInputValue = rootEvent.value;
     let autoCompleteUrl = `https://api.giphy.com/v1/tags/related/${searchInputValue}?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf`;
     fetch(autoCompleteUrl)
         .then(response => response.json())
@@ -213,12 +226,34 @@ function autocompleteRequest(event) {
             console.error("Ha habido un error", error);
         })
     function autoFill(response) {
-        const requestResponse = response.data;
-        let ArrayForFourSuggestions = requestResponse.slice(0, 4);
-        for (let i = 0; i < ArrayForFourSuggestions.length; i++) {
-            let optionElement = document.createElement('option')
-            optionElement.setAttribute("value", ArrayForFourSuggestions[i].name)
-            dataList.appendChild(optionElement)
+        if (response.meta.status == 200) {
+            const requestResponse = response.data,
+                ArrayForFourSuggestions = requestResponse.slice(0, 4);
+
+            dataList.innerHTML = "";
+            document.querySelector('.searchbar-input').style.marginLeft = "0";
+            document.getElementById('searchBtnId').style.float = "left";
+            searchbar.classList.add('searchbar-filled');
+            closeSearch.style.display = "block";
+            closeSearch.addEventListener('click', (e) => { removeSearchContent() })
+
+            for (let i = 0; i < ArrayForFourSuggestions.length; i++) {
+                var optionElement = document.createElement('li');
+                optionElement.setAttribute('class', 'autocomplete-elements');
+                dataList.appendChild(optionElement);
+                optionElement.innerHTML = "<img src='imagenes/icon-search-suggestion.svg'> " + ArrayForFourSuggestions[i].name;
+            }
+        }
+        else if (response.meta.status == 404) {
+            removeSearchContent();
+        }
+        function removeSearchContent() {
+            searchbar.classList.remove('searchbar-filled');
+            removeContainer(dataList);
+            document.querySelector('.searchbar-input').style.marginLeft = "7%";
+            document.getElementById('searchBtnId').style.float = "right";
+            closeSearch.style.display = "none";
+            document.querySelector('.searchbar-input').value = "";
         }
     }
 }
