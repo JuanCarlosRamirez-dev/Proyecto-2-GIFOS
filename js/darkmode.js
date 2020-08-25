@@ -53,16 +53,20 @@ darkMode.addEventListener('click', (event) => {
 
 
 //captura de evento en la lupa
-let searchBtn = document.getElementById('searchBtnId');
+let searchBtn = document.getElementById('searchBtnId'),
+    searchInput;
+
 searchBtn.addEventListener('click', (event) => {
-    newSearchBtnRequest();
+    searchInput = document.querySelector('.searchbar-input').value
+    newSearchBtnRequest(searchInput);
     removeContainer(searchGifContainer);
 });
 
 //evento en la tecla enter
 document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
     if (event.which === 13) {
-        newSearchBtnRequest();
+        searchInput = document.querySelector('.searchbar-input').value
+        newSearchBtnRequest(searchInput);
         removeContainer(searchGifContainer);
     }
 });
@@ -85,10 +89,12 @@ let searchGifContainer = document.querySelector('.gif-container'),
     borderSearch = document.getElementById('search-border'),
     offsetCounter = 0,
     imagesGotted = [];
-function newSearchBtnRequest() {
+
+function newSearchBtnRequest(value) {
     const offsetRequestIndex = offsetCounter * 12;
-    let searchInput = document.querySelector('.searchbar-input').value,
-        searchUrl = `https://api.giphy.com/v1/gifs/search?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&q=${searchInput}&limit=12&offset=${offsetRequestIndex}&rating=&lang=en`;
+    if (!value) { value = searchInput; }
+    console.log(value);
+    let searchUrl = `https://api.giphy.com/v1/gifs/search?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&q=${value}&limit=12&offset=${offsetRequestIndex}&rating=&lang=en`;
     loaderActions.showloader();
     fetch(searchUrl)
         .then(response => response.json())
@@ -114,7 +120,7 @@ function newSearchBtnRequest() {
     }
     borderSearch.style.display = 'block';
     verMasGifs();
-    showSearchTitle(searchInput)
+    showSearchTitle(value)
 }
 
 //funcion que muestra automaticamente los trending gifs
@@ -210,11 +216,13 @@ function showSearchTitle(input) {
     return searchTitleContainer.innerHTML = "<h2 class=search-title-container>" + searchStringCapitalized + "</h2>";
 };
 
+
 //funcionalidad y animacion para barra buscadora y sugerencias de busqueda 
 let dataList = document.getElementById('autocomplete-datalist'),
     searchbar = document.querySelector('.searchbar'),
     searchBarImages = document.getElementById('search-images'),
     closeSearch = document.getElementById('closeBtnId');
+
 function autocompleteRequest(event) {
     const rootEvent = event.target,
         searchInputValue = rootEvent.value;
@@ -225,12 +233,15 @@ function autocompleteRequest(event) {
         .catch((error) => {
             console.error("Ha habido un error", error);
         })
+
     function autoFill(response) {
         if (response.meta.status == 200) {
             const requestResponse = response.data,
                 ArrayForFourSuggestions = requestResponse.slice(0, 4);
 
             dataList.innerHTML = "";
+            /* document.querySelector('.title-container').style.display = "none";
+            document.querySelector('.hello-img').style.display = "none" */
             document.querySelector('.searchbar-input').style.marginLeft = "0";
             document.getElementById('searchBtnId').style.float = "left";
             searchbar.classList.add('searchbar-filled');
@@ -238,16 +249,25 @@ function autocompleteRequest(event) {
             closeSearch.addEventListener('click', (e) => { removeSearchContent() })
 
             for (let i = 0; i < ArrayForFourSuggestions.length; i++) {
-                var optionElement = document.createElement('li');
+                let optionElement = document.createElement('li');
                 optionElement.setAttribute('class', 'autocomplete-elements');
+                optionElement.addEventListener('click', (e) => {
+                    newSearchBtnRequest(ArrayForFourSuggestions[i].name);
+                    removeSearchContent();
+                    removeContainer(searchGifContainer);
+                    searchInput = ArrayForFourSuggestions[i].name;
+                })
                 dataList.appendChild(optionElement);
                 optionElement.innerHTML = "<img src='imagenes/icon-search-suggestion.svg'> " + ArrayForFourSuggestions[i].name;
             }
+
         }
         else if (response.meta.status == 404) {
             removeSearchContent();
         }
         function removeSearchContent() {
+            /* document.querySelector('.title-container').style.display = "block";
+            document.querySelector('.hello-img').style.display = "block" */
             searchbar.classList.remove('searchbar-filled');
             removeContainer(dataList);
             document.querySelector('.searchbar-input').style.marginLeft = "7%";
@@ -255,10 +275,11 @@ function autocompleteRequest(event) {
             closeSearch.style.display = "none";
             document.querySelector('.searchbar-input').value = "";
         }
+
     }
 }
 
-//funcion que muestra los titulos trending
+//funcion que muestra los titulos trending 
 let trendingTextList = document.getElementById('trending-list');
 (function trendingTextRequest() {
     let trendingTextUrl = `https://api.giphy.com/v1/trending/searches?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf`;
@@ -274,7 +295,12 @@ let trendingTextList = document.getElementById('trending-list');
         for (let i = 0; i < arrayForFiveElements.length; i++) {
 
             let listElement = document.createElement('li');
-
+            listElement.addEventListener('click', (e) => {
+                newSearchBtnRequest(arrayForFiveElements[i]);
+                removeContainer(searchGifContainer);
+                searchInput = arrayForFiveElements[i];
+                console.log(searchInput);
+            })
             listElement.textContent = arrayForFiveElements[i] + ',' + '\u00A0';
             trendingTextList.appendChild(listElement);
         }

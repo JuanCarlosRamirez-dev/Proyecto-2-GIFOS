@@ -34,7 +34,7 @@
     background: #fff;
     border: 1px solid #572ee5;
     border-radius: 27px;
-    transition: 0.3s ease all;
+    transition: 0.5s ease all;
 
     & .search-btn {
       margin: 15px 15px;
@@ -51,7 +51,6 @@
       margin-left: 7%;
       font-size: 16px;
       color: #000;
-      transition: 0.3s ease all;
     }
 
     & .close-search {
@@ -66,6 +65,7 @@
 
   & .searchbar-filled {
     height: 185px;
+    /* margin-top: 25px; */
     & .searchbar-input {
       border-bottom: solid 1px #9cafc3;
     }

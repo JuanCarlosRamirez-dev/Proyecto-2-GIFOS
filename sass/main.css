@@ -426,8 +426,8 @@ body.dark .border {
   background: #fff;
   border: 1px solid #572ee5;
   border-radius: 27px;
-  -webkit-transition: 0.3s ease all;
-  transition: 0.3s ease all;
+  -webkit-transition: 0.5s ease all;
+  transition: 0.5s ease all;
 }
 
 .title-searchbar-trending .searchbar .search-btn {
@@ -445,8 +445,6 @@ body.dark .border {
   margin-left: 7%;
   font-size: 16px;
   color: #000;
-  -webkit-transition: 0.3s ease all;
-  transition: 0.3s ease all;
 }
 
 .title-searchbar-trending .searchbar .close-search {
@@ -460,6 +458,7 @@ body.dark .border {
 
 .title-searchbar-trending .searchbar-filled {
   height: 185px;
+  /* margin-top: 25px; */
 }
 
 .title-searchbar-trending .searchbar-filled .searchbar-input {
