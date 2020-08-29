@@ -426,8 +426,8 @@ body.dark .border {
   background: #fff;
   border: 1px solid #572ee5;
   border-radius: 27px;
-  -webkit-transition: 0.5s ease all;
-  transition: 0.5s ease all;
+  -webkit-transition: 0.4s ease all;
+  transition: 0.4s ease all;
 }
 
 .title-searchbar-trending .searchbar .search-btn {
@@ -445,6 +445,8 @@ body.dark .border {
   margin-left: 7%;
   font-size: 16px;
   color: #000;
+  -webkit-transition: 0.4s ease all;
+  transition: 0.4s ease all;
 }
 
 .title-searchbar-trending .searchbar .close-search {
@@ -593,6 +595,14 @@ body.dark .border {
   text-align: center;
   padding-top: 16px;
   cursor: pointer;
+}
+
+.sin-resultados-text {
+  margin-top: 15px;
+  font-size: 22px;
+  color: #50e3c2;
+  text-align: center;
+  line-height: 25px;
 }
 
 .trending-topics {
@@ -771,8 +781,15 @@ body.dark .border {
     height: 50px;
   }
   .title-searchbar-trending .searchbar .searchbar-input {
-    width: 86%;
+    width: 82%;
     margin-left: 4%;
+  }
+  .title-searchbar-trending .searchbar-filled {
+    height: 185px;
+    /* margin-top: 25px; */
+  }
+  .title-searchbar-trending .searchbar-filled .searchbar-input {
+    border-bottom: solid 1px #9cafc3;
   }
   .border-container hr {
     width: 250px;
@@ -799,8 +816,8 @@ body.dark .border {
     row-gap: 25px;
   }
   .gif-container-child {
-    width: 173px;
-    height: 143px;
+    width: 175px;
+    height: 150px;
   }
   .trending-GIFOS {
     height: 590px;
@@ -839,7 +856,7 @@ body.dark .border {
     display: none;
   }
   .gif-container {
-    margin: 0 18% 0 18%;
+    padding: 0 16% 0;
     -ms-grid-columns: 1fr 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     -ms-grid-rows: 1fr 1fr 1fr;
@@ -872,6 +889,77 @@ body.dark .border {
     opacity: 1;
   }
   .gif-container button:active {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1220px) and (max-width: 1750px) {
+  .gif-container {
+    padding: 0 13% 0;
+    margin: 0;
+  }
+  .gif-container .gif-container-child {
+    width: 235px;
+    height: 100%;
+  }
+  .gif-container a {
+    position: relative;
+    background: #572ee5;
+    height: 200px;
+  }
+  .gif-container a .favButton {
+    position: absolute;
+    top: 10px;
+    left: 106px;
+    display: none;
+  }
+  .gif-container a .downloadBtn {
+    position: absolute;
+    top: 10px;
+    left: 148px;
+    display: none;
+  }
+  .gif-container a .fullsizeBtn {
+    position: absolute;
+    top: 10px;
+    left: 190px;
+    display: none;
+  }
+  .gif-container a .gif-user {
+    position: absolute;
+    top: 134px;
+    left: 20px;
+    display: none;
+  }
+  .gif-container a .gif-title {
+    font-weight: bold;
+    position: absolute;
+    top: 155px;
+    left: 20px;
+    display: none;
+  }
+  .gif-container a .cardBtn {
+    opacity: 0.7;
+    background: #ffffff;
+    padding: 7px;
+    border-radius: 6px;
+    display: none;
+  }
+  .gif-container a a:hover .gif-text-element {
+    opacity: 1;
+    color: white;
+    display: block;
+  }
+  .gif-container a a:hover .cardBtn {
+    display: block;
+  }
+  .gif-container a a:hover .gif-container-child {
+    opacity: 0.6;
+  }
+  .gif-container a button:hover {
+    opacity: 1;
+  }
+  .gif-container a button:active {
     opacity: 1;
   }
 }

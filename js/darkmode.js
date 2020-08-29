@@ -59,14 +59,17 @@ let searchBtn = document.getElementById('searchBtnId'),
 searchBtn.addEventListener('click', (event) => {
     searchInput = document.querySelector('.searchbar-input').value
     newSearchBtnRequest(searchInput);
+    removeSearchContent(searchbar, "searchbar-filled");
     removeContainer(searchGifContainer);
+
 });
 
 //evento en la tecla enter
 document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
     if (event.which === 13) {
+        console.log("tecla enter")
         searchInput = document.querySelector('.searchbar-input').value
-        newSearchBtnRequest(searchInput);
+        newSearchBtnRequest(searchInput, "searchbar-filled");
         removeContainer(searchGifContainer);
     }
 });
@@ -91,6 +94,7 @@ let searchGifContainer = document.querySelector('.gif-container'),
     imagesGotted = [];
 
 function newSearchBtnRequest(value) {
+
     const offsetRequestIndex = offsetCounter * 12;
     if (!value) { value = searchInput; }
     console.log(value);
@@ -104,23 +108,38 @@ function newSearchBtnRequest(value) {
         })
     //funcion que crea un arreglo de objetos filtrado
     function loadingGifs(response) {
-        const requestResponse = response.data;
-        requestResponse.forEach((image) => {
-            let imageWorked = {
-                url: image.images.downsized_medium.url,
-                user: image.username,
-                title: image.title,
-                fav: false
-            }
-            imagesGotted.push(imageWorked);
-        })
-        createNewCard(imagesGotted, searchGifContainer, offsetRequestIndex, 'gif-container-child');
-        offsetCounter += 1;
+        borderSearch.style.display = 'block';
+        showSearchTitle(value)
+        if (response.data.length) {
+            const requestResponse = response.data;
+            requestResponse.forEach((image) => {
+                let imageWorked = {
+                    url: image.images.downsized_medium.url,
+                    user: image.username,
+                    title: image.title,
+                    fav: false
+                }
+                imagesGotted.push(imageWorked);
+            })
+            createNewCard(imagesGotted, searchGifContainer, offsetRequestIndex, 'gif-container-child');
+            offsetCounter += 1;
+            verMasGifs();
+        }
+        else if (!response.data.length) {
+            let noSearchImg = document.createElement('div'),
+                noSearchText = document.createElement('p');
+
+            noSearchImg.innerHTML = '<img src="imagenes/icon-busqueda-sin-resultado.svg"/>';
+            noSearchImg.style.textAlign = 'center';
+            noSearchText.innerHTML = 'Intenta con otra búsqueda.';
+            noSearchText.setAttribute('class', 'sin-resultados-text');
+
+            document.getElementById('search-title-container').appendChild(noSearchImg);
+            document.getElementById('search-title-container').appendChild(noSearchText);
+
+        }
         setTimeout(() => loaderActions.hideloader(), 2000)
     }
-    borderSearch.style.display = 'block';
-    verMasGifs();
-    showSearchTitle(value)
 }
 
 //funcion que muestra automaticamente los trending gifs
@@ -221,7 +240,7 @@ function showSearchTitle(input) {
 let dataList = document.getElementById('autocomplete-datalist'),
     searchbar = document.querySelector('.searchbar'),
     searchBarImages = document.getElementById('search-images'),
-    closeSearch = document.getElementById('closeBtnId');
+    closeSearchBtn = document.getElementById('closeBtnId');
 
 function autocompleteRequest(event) {
     const rootEvent = event.target,
@@ -245,15 +264,15 @@ function autocompleteRequest(event) {
             document.querySelector('.searchbar-input').style.marginLeft = "0";
             document.getElementById('searchBtnId').style.float = "left";
             searchbar.classList.add('searchbar-filled');
-            closeSearch.style.display = "block";
-            closeSearch.addEventListener('click', (e) => { removeSearchContent() })
+            closeSearchBtn.style.display = "block";
+            closeSearchBtn.addEventListener('click', (e) => { removeSearchContent(searchbar, "searchbar-filled") })
 
             for (let i = 0; i < ArrayForFourSuggestions.length; i++) {
                 let optionElement = document.createElement('li');
                 optionElement.setAttribute('class', 'autocomplete-elements');
                 optionElement.addEventListener('click', (e) => {
                     newSearchBtnRequest(ArrayForFourSuggestions[i].name);
-                    removeSearchContent();
+                    removeSearchContent(searchbar, "searchbar-filled");
                     removeContainer(searchGifContainer);
                     searchInput = ArrayForFourSuggestions[i].name;
                 })
@@ -263,21 +282,24 @@ function autocompleteRequest(event) {
 
         }
         else if (response.meta.status == 404) {
-            removeSearchContent();
+            removeSearchContent(searchbar, "searchbar-filled");
         }
-        function removeSearchContent() {
-            /* document.querySelector('.title-container').style.display = "block";
-            document.querySelector('.hello-img').style.display = "block" */
-            searchbar.classList.remove('searchbar-filled');
-            removeContainer(dataList);
-            document.querySelector('.searchbar-input').style.marginLeft = "7%";
-            document.getElementById('searchBtnId').style.float = "right";
-            closeSearch.style.display = "none";
-            document.querySelector('.searchbar-input').value = "";
-        }
-
     }
 }
+
+//funcion que restablece los estilos de la barra buscadora
+function removeSearchContent(node, removedClass) {
+    console.log("entro a removesearch")
+    /* document.querySelector('.title-container').style.display = "block";
+    document.querySelector('.hello-img').style.display = "block" */
+    node.classList.remove(removedClass);
+    removeContainer(dataList);
+    document.querySelector('.searchbar-input').style.marginLeft = "7%";
+    document.getElementById('searchBtnId').style.float = "right";
+    closeSearchBtn.style.display = "none";
+    document.querySelector('.searchbar-input').value = "";
+}
+
 
 //funcion que muestra los titulos trending 
 let trendingTextList = document.getElementById('trending-list');

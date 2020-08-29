@@ -34,7 +34,7 @@
     background: #fff;
     border: 1px solid #572ee5;
     border-radius: 27px;
-    transition: 0.5s ease all;
+    transition: 0.4s ease all;
 
     & .search-btn {
       margin: 15px 15px;
@@ -51,6 +51,7 @@
       margin-left: 7%;
       font-size: 16px;
       color: #000;
+      transition: 0.4s ease all;
     }
 
     & .close-search {
@@ -182,6 +183,14 @@
     padding-top: 16px;
     cursor: pointer;
   }
+}
+
+.sin-resultados-text {
+  margin-top: 15px;
+  font-size: 22px;
+  color: #50e3c2;
+  text-align: center;
+  line-height: 25px;
 }
 
 .trending-topics {
@@ -325,8 +334,15 @@
       width: 550px;
       height: 50px;
       & .searchbar-input {
-        width: 86%;
+        width: 82%;
         margin-left: 4%;
+      }
+    }
+    & .searchbar-filled {
+      height: 185px;
+      /* margin-top: 25px; */
+      & .searchbar-input {
+        border-bottom: solid 1px #9cafc3;
       }
     }
   }
@@ -357,8 +373,8 @@
   }
 
   .gif-container-child {
-    width: 173px;
-    height: 143px;
+    width: 175px;
+    height: 150px;
   }
 
   .trending-GIFOS {
@@ -399,7 +415,7 @@
     }
   }
   .gif-container {
-    margin: 0 18% 0 18%;
+    padding: 0 16% 0;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     column-gap: 0;
@@ -436,6 +452,86 @@
 
     & button:active {
       opacity: 1;
+    }
+  }
+}
+
+@media screen and (min-width: 1220px) and (max-width: 1750px) {
+  .gif-container {
+    padding: 0 13% 0;
+    margin: 0;
+
+    & .gif-container-child {
+      width: 235px;
+      height: 100%;
+    }
+
+    & a {
+      position: relative;
+      background: #572ee5;
+      height: 200px;
+    }
+
+    & a {
+      & .favButton {
+        position: absolute;
+        top: 10px;
+        left: 106px;
+        display: none;
+      }
+      & .downloadBtn {
+        position: absolute;
+        top: 10px;
+        left: 148px;
+        display: none;
+      }
+      & .fullsizeBtn {
+        position: absolute;
+        top: 10px;
+        left: 190px;
+        display: none;
+      }
+      & .gif-user {
+        position: absolute;
+        top: 134px;
+        left: 20px;
+        display: none;
+      }
+      & .gif-title {
+        font-weight: bold;
+        position: absolute;
+        top: 155px;
+        left: 20px;
+        display: none;
+      }
+      & .cardBtn {
+        opacity: 0.7;
+        background: #ffffff;
+        padding: 7px;
+        border-radius: 6px;
+        display: none;
+      }
+      & a:hover .gif-text-element {
+        opacity: 1;
+        color: white;
+        display: block;
+      }
+
+      & a:hover .cardBtn {
+        display: block;
+      }
+
+      & a:hover .gif-container-child {
+        opacity: 0.6;
+      }
+
+      & button:hover {
+        opacity: 1;
+      }
+
+      & button:active {
+        opacity: 1;
+      }
     }
   }
 }
