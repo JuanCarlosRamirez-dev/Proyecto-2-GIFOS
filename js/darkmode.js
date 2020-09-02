@@ -127,6 +127,7 @@ function newSearchBtnRequest(value) {
         }
         else if (!response.data.length) {
             let noSearchImg = document.createElement('div'),
+                verMasBtnId = document.getElementById('verMasBtnId')
                 noSearchText = document.createElement('p');
 
             noSearchImg.innerHTML = '<img src="imagenes/icon-busqueda-sin-resultado.svg"/>';
@@ -135,10 +136,32 @@ function newSearchBtnRequest(value) {
             noSearchText.setAttribute('class', 'sin-resultados-text');
 
             document.getElementById('search-title-container').appendChild(noSearchImg);
-            document.getElementById('search-title-container').appendChild(noSearchText);
-
+            document.getElementById('search-title-container').appendChild(noSearchText);   
+              
+            if (verMasBtn.firstChild) {
+                verMasBtnId.remove();
+                verMasBtn.classList.remove('vermas-btn');
+            }            
+            
         }
-        setTimeout(() => loaderActions.hideloader(), 2000)
+        setTimeout(() => loaderActions.hideloader(), 2000);
+        
+    }
+}
+
+//funcion que agrega botón "ver más"
+let verMasBtn = document.getElementById('ver-mas-btn');
+function verMasGifs() {
+    if (verMasBtn.firstChild) {
+        verMasBtn.removeChild;
+    }
+    else {
+        //crea el boton y le agrega el formato 
+        verMasBtn.classList.add('vermas-btn')
+        let verMastxt = document.createElement('h2');
+        verMastxt.setAttribute('id','verMasBtnId')
+        verMastxt.textContent = "VER MÁS";
+        verMasBtn.appendChild(verMastxt);
     }
 }
 
@@ -212,20 +235,6 @@ function createNewCard(arr, node, index, extraclass) {
     }
 }
 
-//funcion que agrega botón "ver más"
-let verMasBtn = document.getElementById('ver-mas-btn');
-function verMasGifs() {
-    if (verMasBtn.firstChild) {
-        verMasBtn.removeChild;
-    }
-    else {
-        //crea el boton y le agrega el formato 
-        verMasBtn.classList.add('vermas-btn')
-        let verMastxt = document.createElement('h2');
-        verMastxt.textContent = "VER MÁS";
-        verMasBtn.appendChild(verMastxt);
-    }
-}
 
 //funcion que muestra el texto ingresado
 function showSearchTitle(input) {
