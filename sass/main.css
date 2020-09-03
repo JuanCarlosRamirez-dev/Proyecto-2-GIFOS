@@ -927,14 +927,14 @@ body.dark .border {
   }
   .gif-container a .gif-user {
     position: absolute;
-    top: 134px;
+    top: 125px;
     left: 20px;
     display: none;
   }
   .gif-container a .gif-title {
     font-weight: bold;
     position: absolute;
-    top: 155px;
+    top: 145px;
     left: 20px;
     display: none;
   }

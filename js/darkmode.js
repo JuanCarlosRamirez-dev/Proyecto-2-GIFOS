@@ -223,6 +223,7 @@ function createNewCard(arr, node, index, extraclass) {
 
         newGif.setAttribute('class', extraclass);
         newGif.setAttribute('src', arr[i].url);
+        newGif.addEventListener('click', ()=>{fullSizeImg(arr[i].url)})
 
         node.appendChild(anchorForNewCard);
 
@@ -235,6 +236,9 @@ function createNewCard(arr, node, index, extraclass) {
     }
 }
 
+function fullSizeImg(arr){
+    arr.forEach(()=>{ console.log(arr)})
+}
 
 //funcion que muestra el texto ingresado
 function showSearchTitle(input) {
