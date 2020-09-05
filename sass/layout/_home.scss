@@ -118,18 +118,21 @@
 
   & a {
     & .favButton {
+      border: none;
       position: absolute;
       top: 10px;
       left: 145px;
       display: none;
     }
     & .downloadBtn {
+      border: none;
       position: absolute;
       top: 10px;
       left: 190px;
       display: none;
     }
     & .fullsizeBtn {
+      border: none;
       position: absolute;
       top: 10px;
       left: 235px;
@@ -426,7 +429,7 @@
       height: 100%;
     }
 
-    & a {
+    & .anchor-card {
       position: relative;
       background: #572ee5;
       height: 240px;

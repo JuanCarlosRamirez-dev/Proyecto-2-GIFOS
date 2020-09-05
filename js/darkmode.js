@@ -128,7 +128,7 @@ function newSearchBtnRequest(value) {
         else if (!response.data.length) {
             let noSearchImg = document.createElement('div'),
                 verMasBtnId = document.getElementById('verMasBtnId')
-                noSearchText = document.createElement('p');
+            noSearchText = document.createElement('p');
 
             noSearchImg.innerHTML = '<img src="imagenes/icon-busqueda-sin-resultado.svg"/>';
             noSearchImg.style.textAlign = 'center';
@@ -136,16 +136,16 @@ function newSearchBtnRequest(value) {
             noSearchText.setAttribute('class', 'sin-resultados-text');
 
             document.getElementById('search-title-container').appendChild(noSearchImg);
-            document.getElementById('search-title-container').appendChild(noSearchText);   
-              
+            document.getElementById('search-title-container').appendChild(noSearchText);
+
             if (verMasBtn.firstChild) {
                 verMasBtnId.remove();
                 verMasBtn.classList.remove('vermas-btn');
-            }            
-            
+            }
+
         }
         setTimeout(() => loaderActions.hideloader(), 2000);
-        
+
     }
 }
 
@@ -159,7 +159,7 @@ function verMasGifs() {
         //crea el boton y le agrega el formato 
         verMasBtn.classList.add('vermas-btn')
         let verMastxt = document.createElement('h2');
-        verMastxt.setAttribute('id','verMasBtnId')
+        verMastxt.setAttribute('id', 'verMasBtnId')
         verMastxt.textContent = "VER MÁS";
         verMasBtn.appendChild(verMastxt);
     }
@@ -186,12 +186,12 @@ let trendingGifsArray = [];
                 title: image.title,
                 fav: false
             }
-
             trendingGifsArray.push(gifWorked)
         });
         createNewCard(trendingGifsArray, trendingGifContainer, 0, 'item');
     }
 })();
+
 
 //funcion que crea las tarjetas
 function createNewCard(arr, node, index, extraclass) {
@@ -200,11 +200,14 @@ function createNewCard(arr, node, index, extraclass) {
 
         let anchorForNewCard = document.createElement('a'),
             favBtn = document.createElement('button'),
-            downloadBnt = document.createElement('button'),
+            downloadBnt = document.createElement('a'),
             fullscreenBtn = document.createElement('button'),
             showGifUser = document.createElement('p'),
             showGifTitle = document.createElement('p'),
+            urlImage = arr[i].url,
+            closeWndowBtn = document.createElement('img'),
             newGif = document.createElement('img');
+
 
         favBtn.innerHTML = '<img src="imagenes/icon-fav-hover.svg"/>';
         favBtn.setAttribute('class', 'favButton cardBtn');
@@ -219,26 +222,86 @@ function createNewCard(arr, node, index, extraclass) {
         showGifUser.setAttribute('class', 'gif-text-element gif-user');
 
         showGifTitle.textContent = arr[i].title;
-        showGifTitle.setAttribute('class', 'gif-text-element gif-title')
+        showGifTitle.setAttribute('class', 'gif-text-element gif-title');
 
         newGif.setAttribute('class', extraclass);
         newGif.setAttribute('src', arr[i].url);
-        newGif.addEventListener('click', ()=>{fullSizeImg(arr[i].url)})
+
+        anchorForNewCard.setAttribute('class', 'anchor-card')
 
         node.appendChild(anchorForNewCard);
 
+        anchorForNewCard.appendChild(closeWndowBtn);
         anchorForNewCard.appendChild(newGif);
+        anchorForNewCard.appendChild(showGifUser);
+        anchorForNewCard.appendChild(showGifTitle);
         anchorForNewCard.appendChild(favBtn);
         anchorForNewCard.appendChild(downloadBnt);
         anchorForNewCard.appendChild(fullscreenBtn);
-        anchorForNewCard.appendChild(showGifUser);
-        anchorForNewCard.appendChild(showGifTitle);
+
+
+        /*función para el botón de pantalla completa*/
+        /*------------------------------------------*/
+        fullscreenBtn.addEventListener('click', () => { InOutFullSize(); })
+        function InOutFullSize() {
+
+            closeWndowBtn.setAttribute('src', "imagenes/button-close.svg")
+            closeWndowBtn.setAttribute('class', 'close-search-full');
+            closeWndowBtn.setAttribute('id', 'closeBtnId');
+            closeWndowBtn.classList.add('close-search-full');
+            closeWndowBtn.style.display = "block";
+
+            anchorForNewCard.classList.remove('anchor-card');
+            newGif.classList.remove(extraclass);
+            anchorForNewCard.classList.add('full-size-modal');
+            newGif.classList.add('full-size-modal-content');
+
+            fullscreenBtn.style.display = 'none';
+
+            favBtn.classList.add('card-btn-full');
+            favBtn.classList.remove('favButton');
+            favBtn.classList.remove('cardBtn');
+
+            downloadBnt.classList.add('download-btn-full');
+            downloadBnt.classList.add('card-btn-full');
+            downloadBnt.classList.remove('downloadBtn');
+            downloadBnt.classList.remove('cardBtn');
+
+            showGifUser.classList.add('gif-user-full');
+            showGifUser.classList.remove('gif-user');
+            showGifUser.classList.remove('gif-text-element');
+
+            showGifTitle.classList.add('gif-title-full');
+            showGifTitle.classList.remove('gif-title');
+            showGifTitle.classList.remove('gif-text-element');
+
+
+
+            /* let fullSizeToggle = document.querySelector('.full-size-modal');
+            fullSizeToggle.addEventListener('click', () => {
+                anchorForNewCard.classList.remove('full-size-modal')
+            }) */
+        }
+        /*----------------------------------------*/
+
+
+        /*funcion para el boton de descargar gif*/
+        /*----------------------------------------*/
+        async function getImage(urlImage) {
+            let response = await fetch(urlImage),
+                gifBlob = await response.blob();
+            return gifBlob;
+        }
+        getImage(urlImage).then(blob => {
+            const url = URL.createObjectURL(blob);
+            downloadBnt.href = url;
+            downloadBnt.download = 'MyGif.gif';
+        }).catch(console.error);
+        /*----------------------------------------*/
     }
 }
 
-function fullSizeImg(arr){
-    arr.forEach(()=>{ console.log(arr)})
-}
+
 
 //funcion que muestra el texto ingresado
 function showSearchTitle(input) {
