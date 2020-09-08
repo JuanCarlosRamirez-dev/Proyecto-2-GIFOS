@@ -1,5 +1,9 @@
 /* mobile version*/
 
+#topLogoId {
+  cursor: pointer;
+}
+
 .title-searchbar-trending {
   & .title-container {
     display: flex;
@@ -46,7 +50,7 @@
 
     & .searchbar-input {
       width: 67%;
-      height: 48px;
+      height: 47px;
       border: none;
       margin-left: 7%;
       font-size: 16px;

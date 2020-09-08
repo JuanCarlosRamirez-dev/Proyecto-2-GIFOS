@@ -1,0 +1,19 @@
+#favoritosContainerId {
+  display: none;
+  text-align: center;
+  font-weight: bolder;
+  & p {
+    font-size: 25px;
+    color: #572ee5;
+    line-height: 30px;
+    margin-bottom: 80px;
+    margin-top: 15px;
+  }
+  #favSinContenidoId {
+    & p {
+      font-size: 22px;
+      color: #50e3c2;
+      line-height: 33px;
+    }
+  }
+}

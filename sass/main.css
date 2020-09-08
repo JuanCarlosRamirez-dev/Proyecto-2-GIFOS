@@ -388,7 +388,31 @@ body.dark .border {
   }
 }
 
+#favoritosContainerId {
+  display: none;
+  text-align: center;
+  font-weight: bolder;
+}
+
+#favoritosContainerId p {
+  font-size: 25px;
+  color: #572ee5;
+  line-height: 30px;
+  margin-bottom: 80px;
+  margin-top: 15px;
+}
+
+#favoritosContainerId #favSinContenidoId p {
+  font-size: 22px;
+  color: #50e3c2;
+  line-height: 33px;
+}
+
 /* mobile version*/
+#topLogoId {
+  cursor: pointer;
+}
+
 .title-searchbar-trending .title-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -452,7 +476,7 @@ body.dark .border {
 
 .title-searchbar-trending .searchbar .searchbar-input {
   width: 67%;
-  height: 48px;
+  height: 47px;
   border: none;
   margin-left: 7%;
   font-size: 16px;
@@ -1079,44 +1103,50 @@ body.dark .border {
   text-align: center;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
+  padding-top: 50px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background-color: #fff;
+  display: none;
+  overflow: hidden;
 }
 
-.full-size-modal-content {
+.full-size-modal .full-size-modal-content {
   width: 80%;
   max-width: 600px;
 }
 
-.full-size-modal-content {
+.full-size-modal .full-size-modal-content {
   -webkit-animation-name: zoom;
   -webkit-animation-duration: 0.6s;
   animation-name: zoom;
   animation-duration: 0.6s;
 }
 
-a .download-btn-full {
+.full-size-modal .fav-btn-full:hover {
+  opacity: 1;
+}
+
+.full-size-modal .download-btn-full {
   margin-left: 10px;
 }
 
-a .gif-user-full {
+.full-size-modal .gif-user-full {
   color: #000;
   margin-top: 10px;
   display: block;
 }
 
-a .gif-title-full {
+.full-size-modal .gif-title-full {
   color: #000;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   display: block;
 }
 
-a .card-btn-full {
+.full-size-modal .card-btn-full {
   opacity: 0.7;
   background: #ffffff;
   padding: 7px;
@@ -1125,12 +1155,11 @@ a .card-btn-full {
   display: inline-block;
 }
 
-a .close-search-full {
-  margin: 0 0 20px 50%;
-  width: 14px;
-  height: 14px;
+.full-size-modal .close-search-full {
+  margin-bottom: 15px;
+  width: 17px;
+  height: 17px;
   cursor: pointer;
-  display: none;
 }
 
 @-webkit-keyframes zoom {

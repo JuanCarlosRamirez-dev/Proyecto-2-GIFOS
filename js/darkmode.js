@@ -53,6 +53,7 @@ darkMode.addEventListener('click', (event) => {
 
 
 //captura de evento en la lupa
+/*------------------------------------------*/
 let searchBtn = document.getElementById('searchBtnId'),
     searchInput;
 
@@ -63,33 +64,43 @@ searchBtn.addEventListener('click', (event) => {
     removeContainer(searchGifContainer);
 
 });
+/*------------------------------------------*/
 
 //evento en la tecla enter
+/*------------------------------------------*/
 document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
     if (event.which === 13) {
         console.log("tecla enter")
         searchInput = document.querySelector('.searchbar-input').value
         newSearchBtnRequest(searchInput, "searchbar-filled");
         removeContainer(searchGifContainer);
+        searchInput = '';
     }
 });
+/*------------------------------------------*/
 
-//funcion para eliminar nodos hijos al realizar nueva busqueda
+//funcion para eliminar nodos hijos para cualquier contenedor
+/*------------------------------------------*/
 function removeContainer(node) {
     while (node.firstChild) {
         node.removeChild(node.firstChild);
     }
 }
+/*------------------------------------------*/
 
+//elemento loader cuando cargan los gifs
+/*------------------------------------------*/
 const loader = document.getElementById('loader'),
     loaderActions = {
         showloader: function () { loader.classList.remove("display-none") },
         hideloader: function () { loader.classList.add("display-none") }
     }
+/*------------------------------------------*/
 
 //funcion que conecta con la API
+/*------------------------------------------*/
 let searchGifContainer = document.querySelector('.gif-container'),
-    borderSearch = document.getElementById('search-border'),
+
     offsetCounter = 0,
     imagesGotted = [];
 
@@ -108,12 +119,13 @@ function newSearchBtnRequest(value) {
         })
     //funcion que crea un arreglo de objetos filtrado
     function loadingGifs(response) {
-        borderSearch.style.display = 'block';
+
         showSearchTitle(value)
         if (response.data.length) {
             const requestResponse = response.data;
-            requestResponse.forEach((image) => {
+            requestResponse.forEach((image, index) => {
                 let imageWorked = {
+                    id: index,
                     url: image.images.downsized_medium.url,
                     user: image.username,
                     title: image.title,
@@ -122,13 +134,14 @@ function newSearchBtnRequest(value) {
                 imagesGotted.push(imageWorked);
             })
             createNewCard(imagesGotted, searchGifContainer, offsetRequestIndex, 'gif-container-child');
+            // sendToFavs(imagesGotted);
             offsetCounter += 1;
             verMasGifs();
         }
         else if (!response.data.length) {
             let noSearchImg = document.createElement('div'),
-                verMasBtnId = document.getElementById('verMasBtnId')
-            noSearchText = document.createElement('p');
+                verMasBtnId = document.getElementById('verMasBtnId'),
+                noSearchText = document.createElement('p');
 
             noSearchImg.innerHTML = '<img src="imagenes/icon-busqueda-sin-resultado.svg"/>';
             noSearchImg.style.textAlign = 'center';
@@ -144,12 +157,13 @@ function newSearchBtnRequest(value) {
             }
 
         }
-        setTimeout(() => loaderActions.hideloader(), 2000);
-
+        setTimeout(() => loaderActions.hideloader(), 1000);
     }
 }
+/*------------------------------------------*/
 
 //funcion que agrega botón "ver más"
+/*------------------------------------------*/
 let verMasBtn = document.getElementById('ver-mas-btn');
 function verMasGifs() {
     if (verMasBtn.firstChild) {
@@ -164,8 +178,10 @@ function verMasGifs() {
         verMasBtn.appendChild(verMastxt);
     }
 }
+/*------------------------------------------*/
 
 //funcion que muestra automaticamente los trending gifs
+/*------------------------------------------*/
 let trendingGifContainer = document.getElementById("content");
 let trendingGifsArray = [];
 (function trendingGif() {
@@ -179,8 +195,9 @@ let trendingGifsArray = [];
     //funcion que crea las tarjetas trending
     function loadTrendingCard(value) {
         let imageURL = value.data;
-        imageURL.forEach((image) => {
+        imageURL.forEach((image, index) => {
             let gifWorked = {
+                id: index,
                 url: image.images.downsized_medium.url,
                 user: image.username,
                 title: image.title,
@@ -191,13 +208,16 @@ let trendingGifsArray = [];
         createNewCard(trendingGifsArray, trendingGifContainer, 0, 'item');
     }
 })();
-
+/*------------------------------------------*/
 
 //funcion que crea las tarjetas
+/*------------------------------------------*/
 function createNewCard(arr, node, index, extraclass) {
 
     for (let i = index; i < arr.length; i++) {
 
+        /*creacion de las tarjetas Gif con sus respectivos atributos*/
+        /*------------------------------------------*/
         let anchorForNewCard = document.createElement('a'),
             favBtn = document.createElement('button'),
             downloadBnt = document.createElement('a'),
@@ -205,12 +225,13 @@ function createNewCard(arr, node, index, extraclass) {
             showGifUser = document.createElement('p'),
             showGifTitle = document.createElement('p'),
             urlImage = arr[i].url,
-            closeWndowBtn = document.createElement('img'),
             newGif = document.createElement('img');
-
 
         favBtn.innerHTML = '<img src="imagenes/icon-fav-hover.svg"/>';
         favBtn.setAttribute('class', 'favButton cardBtn');
+
+        let arregloApasarI = JSON.stringify(arr[i]);
+        favBtn.setAttribute('onclick', `agregarFavoritos(${arregloApasarI})`);
 
         downloadBnt.innerHTML = '<img src="imagenes/icon-download.svg"/>';
         downloadBnt.setAttribute('class', 'downloadBtn cardBtn');
@@ -227,63 +248,72 @@ function createNewCard(arr, node, index, extraclass) {
         newGif.setAttribute('class', extraclass);
         newGif.setAttribute('src', arr[i].url);
 
-        anchorForNewCard.setAttribute('class', 'anchor-card')
+        anchorForNewCard.setAttribute('class', 'anchor-card');
 
         node.appendChild(anchorForNewCard);
 
-        anchorForNewCard.appendChild(closeWndowBtn);
         anchorForNewCard.appendChild(newGif);
         anchorForNewCard.appendChild(showGifUser);
         anchorForNewCard.appendChild(showGifTitle);
         anchorForNewCard.appendChild(favBtn);
         anchorForNewCard.appendChild(downloadBnt);
         anchorForNewCard.appendChild(fullscreenBtn);
-
-
-        /*función para el botón de pantalla completa*/
         /*------------------------------------------*/
-        fullscreenBtn.addEventListener('click', () => { InOutFullSize(); })
-        function InOutFullSize() {
 
-            closeWndowBtn.setAttribute('src', "imagenes/button-close.svg")
-            closeWndowBtn.setAttribute('class', 'close-search-full');
-            closeWndowBtn.setAttribute('id', 'closeBtnId');
-            closeWndowBtn.classList.add('close-search-full');
-            closeWndowBtn.style.display = "block";
+        /*Diseño responsivo de pantalla completa en version movil*/
+        /*------------------------------------------*/
+        let intViewportWidth = window.matchMedia('(max-width: 1220px)');
+        if (intViewportWidth.matches) {
+            anchorForNewCard.addEventListener('click', () => { fullSizeInOut() })
+        }
+        /*------------------------------------------*/
 
-            anchorForNewCard.classList.remove('anchor-card');
-            newGif.classList.remove(extraclass);
-            anchorForNewCard.classList.add('full-size-modal');
-            newGif.classList.add('full-size-modal-content');
+        /*función para botones de pantalla completa*/
+        /*------------------------------------------*/
+        fullscreenBtn.addEventListener('click', () => { fullSizeInOut() });
 
-            fullscreenBtn.style.display = 'none';
+        function fullSizeInOut() {
+
+            let fullSizeModalId = document.getElementById('FullSizeModal'),
+                captionsContainer = document.getElementById('captionsId'),
+                gifContainerForModalId = document.getElementById('gifContainerForModalId'),
+                gifUserForModalId = document.getElementById('gifUserForModalId'),
+                gifTitleForModalId = document.getElementById('gifTitleForModalId'),
+                fullSizeImage = document.createElement('img');
+
+            fullSizeImage.setAttribute('class', 'full-size-modal-content');
+            fullSizeImage.setAttribute('src', arr[i].url);
 
             favBtn.classList.add('card-btn-full');
-            favBtn.classList.remove('favButton');
-            favBtn.classList.remove('cardBtn');
 
+            /*Remuevo las clases heredadas del boton de descargar para mantener
+            funcionalidad y usar el mismo botón*/
             downloadBnt.classList.add('download-btn-full');
             downloadBnt.classList.add('card-btn-full');
             downloadBnt.classList.remove('downloadBtn');
             downloadBnt.classList.remove('cardBtn');
 
-            showGifUser.classList.add('gif-user-full');
-            showGifUser.classList.remove('gif-user');
-            showGifUser.classList.remove('gif-text-element');
+            gifUserForModalId.textContent = arr[i].user;
 
-            showGifTitle.classList.add('gif-title-full');
-            showGifTitle.classList.remove('gif-title');
-            showGifTitle.classList.remove('gif-text-element');
+            gifTitleForModalId.textContent = arr[i].title;
 
+            fullSizeModalId.style.display = 'block';
 
+            removeContainer(gifContainerForModalId);
+            gifContainerForModalId.appendChild(fullSizeImage);
+            captionsContainer.appendChild(downloadBnt);
 
-            /* let fullSizeToggle = document.querySelector('.full-size-modal');
-            fullSizeToggle.addEventListener('click', () => {
-                anchorForNewCard.classList.remove('full-size-modal')
-            }) */
+            document.getElementById('closeBtnForModalId').addEventListener('click', () => {
+                fullSizeModalId.style.display = 'none';
+                //regreso las clases removidas para mantener funcionalidad
+                downloadBnt.classList.remove('download-btn-full');
+                downloadBnt.classList.remove('card-btn-full');
+                downloadBnt.classList.add('downloadBtn');
+                downloadBnt.classList.add('cardBtn');
+                anchorForNewCard.appendChild(downloadBnt);
+            })
         }
         /*----------------------------------------*/
-
 
         /*funcion para el boton de descargar gif*/
         /*----------------------------------------*/
@@ -300,19 +330,94 @@ function createNewCard(arr, node, index, extraclass) {
         /*----------------------------------------*/
     }
 }
+/*------------------------------------------*/
 
+//funcionalidad para la seccion Favoritos
+/*------------------------------------------*/
+let gifsFavoritos = [],
+    misFavoritosContainerId = document.getElementById('favoritosContainerId'),
+    containerSustituido = document.getElementById('hiddeWhenFavsContainerId'),
+    favSinContenidoId = document.getElementById('favSinContenidoId'),
+    misFavoritosBtnId = document.getElementById('misFavoritosBtnId');
+function agregarFavoritos(arr) {
 
+    gifsFavoritos.push(arr)
+
+    gifsFavoritos = eliminarGifsDuplicados(gifsFavoritos, 'url')
+
+    function eliminarGifsDuplicados(arr, prop) {
+        let sinDuplicados = [],
+            lookup = {};
+
+        for (let i in arr) {
+            lookup[arr[i][prop]] = arr[i];
+        }
+
+        for (i in lookup) {
+            sinDuplicados.push(lookup[i]);
+        }
+        return sinDuplicados
+    }
+
+    let mandarGifsALocal = JSON.stringify(gifsFavoritos)
+
+    localStorage.setItem('favoritosSeleccionados', mandarGifsALocal)
+}
+
+misFavoritosBtnId.addEventListener('click', () => {
+
+    esconderContainerSuperior();
+    let recuperarGifsDeLocal = localStorage.getItem('favoritosSeleccionados')
+    let gifsRecuperados = JSON.parse(recuperarGifsDeLocal)
+    gifsRecuperados ? favSinContenidoId.style.display = 'none' : misFavoritosContainerId.style.display = 'block';
+    esconderContainerSuperior();
+    createNewCard(gifsRecuperados, searchGifContainer, 0, 'gif-container-child')
+
+})
+
+function esconderContainerSuperior() {
+
+    containerSustituido.style.display = 'none';
+    removeContainer(searchGifContainer);
+    removeContainer(verMasBtn);
+
+}
+
+/*------------------------------------------*/
+
+//funcionalidad al logotipo para reiniciar estilos
+/*------------------------------------------*/
+let topLogoId = document.getElementById('topLogoId'),
+    borderSearch = document.getElementById('search-border'),
+    searchTitleContainer = document.getElementById('search-title-container');
+topLogoId.addEventListener('click', () => {
+
+    removeSearchContent(searchbar, "searchbar-filled");
+    removeContainer(searchGifContainer);
+    removeContainer(verMasBtn);
+    verMasBtn.classList.remove('vermas-btn');
+    searchTitleContainer.style.display = 'none';
+    borderSearch.style.display = 'none';
+    misFavoritosContainerId.style.display = 'none';
+    containerSustituido.style.display = 'block';
+
+})
+/*------------------------------------------*/
 
 //funcion que muestra el texto ingresado
+/*------------------------------------------*/
+
 function showSearchTitle(input) {
-    let searchTitleContainer = document.getElementById('search-title-container');
+    borderSearch.style.display = 'block';
+    searchTitleContainer.style.display = 'block';
     let searchString = input;
     let searchStringCapitalized = searchString.charAt(0).toUpperCase() + searchString.slice(1);
     return searchTitleContainer.innerHTML = "<h2 class=search-title-container>" + searchStringCapitalized + "</h2>";
 };
-
+/*------------------------------------------*/
 
 //funcionalidad y animacion para barra buscadora y sugerencias de busqueda 
+/*------------------------------------------*/
 let dataList = document.getElementById('autocomplete-datalist'),
     searchbar = document.querySelector('.searchbar'),
     searchBarImages = document.getElementById('search-images'),
@@ -362,8 +467,10 @@ function autocompleteRequest(event) {
         }
     }
 }
+/*------------------------------------------*/
 
 //funcion que restablece los estilos de la barra buscadora
+/*------------------------------------------*/
 function removeSearchContent(node, removedClass) {
     console.log("entro a removesearch")
     /* document.querySelector('.title-container').style.display = "block";
@@ -375,9 +482,10 @@ function removeSearchContent(node, removedClass) {
     closeSearchBtn.style.display = "none";
     document.querySelector('.searchbar-input').value = "";
 }
-
+/*------------------------------------------*/
 
 //funcion que muestra los titulos trending 
+/*------------------------------------------*/
 let trendingTextList = document.getElementById('trending-list');
 (function trendingTextRequest() {
     let trendingTextUrl = `https://api.giphy.com/v1/trending/searches?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf`;
@@ -404,13 +512,10 @@ let trendingTextList = document.getElementById('trending-list');
         }
     }
 })();
-
-/* let sendToSearchbar = document.querySelectorAll('.trending-list li');
-sendToSearchbar.addEventListener('click', () => {
-    console.log(hola)
-}); */
+/*------------------------------------------*/
 
 //funcionalidad de scroll a la seccion de trending gifs
+/*------------------------------------------*/
 const carousel = document.getElementById("carousel"),
     content = document.getElementById("content"),
     next = document.getElementById("next"),
@@ -438,3 +543,4 @@ prev.addEventListener("click", e => {
 
 let width = carousel.offsetWidth;
 window.addEventListener("resize", e => (width = carousel.offsetWidth));
+/*------------------------------------------*/
