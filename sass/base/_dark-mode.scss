@@ -34,7 +34,7 @@ body.dark {
   }
   .trending-topics {
     color: #ffffff;
-    a {
+    li {
       color: #fff;
     }
   }
@@ -57,6 +57,16 @@ body.dark {
     p {
       color: #ffffff;
     }
+  }
+
+  .full-size-modal {
+    background-color: #000;
+  }
+  .gif-userFull {
+    color: #fff;
+  }
+  .gif-titleFull {
+    color: #fff;
   }
 
   .footer {

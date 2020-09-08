@@ -12,8 +12,20 @@
     <section class="app-container">
       <header class="header">
         <div class="border"></div>
-        <a class="logo-mobile"><img alt="logo" id="logoMobileId" /></a>
-        <a class="logo-desktop"><img alt="logo" id="logoDesktopId" /></a>
+        <div id="topLogoId">
+          <a class="logo-mobile"
+            ><img
+              src="https://via.placeholder.com/300"
+              alt="logo"
+              id="logoMobileId"
+          /></a>
+          <a class="logo-desktop"
+            ><img
+              src="https://via.placeholder.com/300"
+              alt="logo"
+              id="logoDesktopId"
+          /></a>
+        </div>
         <nav>
           <input class="menu-btn" type="checkbox" id="menu-btn" />
           <label class="menu-icon" for="menu-btn"
@@ -21,51 +33,74 @@
           ></label>
           <ul class="menu">
             <li><a href="#" id="darkModeId">Modo Nocturno</a></li>
-            <li><a href="#">Favoritos</a></li>
+            <li><a href="#" id="misFavoritosBtnId">Favoritos</a></li>
             <li><a href="#">Mis GIFOS</a></li>
             <li><a href="#" class="createGIF"></a></li>
           </ul>
         </nav>
       </header>
       <main>
-        <section class="title-searchbar-trending">
-          <div class="title-container">
-            <h1>
-              Inspírate, busca, guarda, y crea los mejores
-              <span class="GIFOS">GIFOS</span>
-            </h1>
-          </div>
-          <nav class="searchbar-section">
-            <img
-              src="/imagenes/ilustra_header.svg"
-              alt="hello"
-              class="hello-img"
-            />
-            <div class="searchbar">
-              <div>
-                <img alt="search" class="search-btn" id="searchBtnId" />
-              </div>
-              <input
-                type="text"
-                name="search"
-                placeholder="Busca GIFOS y más"
-                class="searchbar-input"
-                list="autocomplete-datalist"
-                id="autocomplete-datalist-input"
-                onkeyup="autocompleteRequest(event)"
+        <section id="favoritosContainerId">
+          <div class="seccion-favoritos">
+            <img src="/imagenes/icon-favoritos.svg" alt="corazon" />
+            <p>Favoritos</p>
+            <div id="favSinContenidoId">
+              <img
+                src="imagenes/icon-mis-gifos-sin-contenido.svg"
+                alt="caratriste"
               />
-              <datalist id="autocomplete-datalist"> </datalist>
+              <p>
+                "¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"
+              </p>
             </div>
-          </nav>
-          <nav class="trending-topics">
-            <h2>Trending:</h2>
-            <span class="trend"><a href="#">Reactions,</a></span>
-            <span class="trend"><a href="#">Entertaiment,</a></span>
-            <span class="trend"><a href="#">Sports,</a></span>
-            <span class="trend"><a href="#">Stickers,</a></span>
-            <span class="trend"><a href="#">Artist</a></span>
-          </nav>
-          <div id="search-title-container"></div>
+          </div>
+        </section>
+        <section class="title-searchbar-trending">
+          <section id="hiddeWhenFavsContainerId">
+            <div class="title-container">
+              <h1>
+                Inspírate, busca, guarda, y crea los mejores
+                <span class="GIFOS">GIFOS</span>
+              </h1>
+            </div>
+            <nav class="searchbar-section">
+              <img
+                src="/imagenes/ilustra_header.svg"
+                alt="hello"
+                class="hello-img"
+              />
+              <div class="searchbar">
+                <div id="search-images">
+                  <img
+                    src="https://via.placeholder.com/300"
+                    alt="search"
+                    class="search-btn"
+                    id="searchBtnId"
+                  />
+                  <img
+                    src="https://via.placeholder.com/300"
+                    alt="close"
+                    class="close-search"
+                    id="closeBtnId"
+                  />
+                </div>
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="Busca GIFOS y más"
+                  class="searchbar-input"
+                  onkeyup="autocompleteRequest(event)"
+                />
+                <ul id="autocomplete-datalist"></ul>
+              </div>
+            </nav>
+            <nav class="trending-topics">
+              <h2>Trending:</h2>
+              <ul id="trending-list" class="trending-list"></ul>
+            </nav>
+            <div class="border-container"><hr id="search-border" /></div>
+            <div id="search-title-container"></div>
+          </section>
           <div class="gif-container"></div>
           <div id="ver-mas-btn" onclick="newSearchBtnRequest()"></div>
         </section>
@@ -117,6 +152,28 @@
         <div class="border"></div>
       </footer>
     </section>
+    <div id="FullSizeModal" class="full-size-modal">
+      <img
+        src="imagenes/button-close.svg"
+        alt="image"
+        class="close-search-full"
+        id="closeBtnForModalId"
+      />
+      <div id="gifContainerForModalId"></div>
+      <div id="captionsId">
+        <div
+          class="gif-text-element gif-user-full"
+          id="gifUserForModalId"
+        ></div>
+        <div
+          class="gif-text-element gif-title-full"
+          id="gifTitleForModalId"
+        ></div>
+        <button class="card-btn-full fav-btn-full">
+          <img src="imagenes/icon-fav-hover.svg" alt="image" />
+        </button>
+      </div>
+    </div>
     <div class="myModal display-none" id="loader"></div>
     <script src="/js/darkmode.js"></script>
   </body>

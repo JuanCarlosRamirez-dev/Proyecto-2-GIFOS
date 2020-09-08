@@ -1,17 +1,3 @@
-/* .trending-GIFOS-container {
-  max-width: 600px;
-  
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.trending-GIFOS-container-child {
-  display: inline-block;
-  width: 288px;
-  height: 187px;
-} */
-
 .trending-GIFOS-container {
   margin: 32px 0 82px 0;
   display: flex;
@@ -42,12 +28,134 @@
   grid-auto-flow: column;
   margin: auto;
   box-sizing: border-box;
+  & a {
+    & .favButton {
+      border: none;
+      position: absolute;
+      top: 10px;
+      left: 220px;
+      display: none;
+    }
+    & .downloadBtn {
+      border: none;
+      position: absolute;
+      top: 10px;
+      left: 265px;
+      display: none;
+    }
+    & .fullsizeBtn {
+      border: none;
+      position: absolute;
+      top: 10px;
+      left: 310px;
+      display: none;
+    }
+    & .gif-user {
+      position: absolute;
+      top: 210px;
+      left: 25px;
+      display: none;
+    }
+    & .gif-title {
+      font-weight: bold;
+      position: absolute;
+      top: 230px;
+      left: 25px;
+      display: none;
+    }
+    & .cardBtn {
+      opacity: 0.7;
+      background: #ffffff;
+      padding: 7px;
+      border-radius: 6px;
+      display: none;
+    }
+  }
 }
 
 .item {
   width: 247px;
   height: 187px;
 }
+
+//estilo para botones en completa
+/*--------------------------------------------*/
+.full-size-modal {
+  text-align: center;
+  position: fixed;
+  z-index: 1;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: none;
+  overflow: hidden;
+  .full-size-modal-content {
+    width: 80%;
+    max-width: 600px;
+  }
+
+  .full-size-modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+
+  & .fav-btn-full:hover {
+    opacity: 1;
+  }
+
+  & .download-btn-full {
+    margin-left: 10px;
+  }
+  & .gif-user-full {
+    color: #000;
+    margin-top: 10px;
+    display: block;
+  }
+  & .gif-title-full {
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: block;
+  }
+  & .card-btn-full {
+    opacity: 0.7;
+    background: #ffffff;
+    padding: 7px;
+    border: 1px solid #9cafc3;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  & .close-search-full {
+    margin-bottom: 15px;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+  }
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/*--------------------------------------------*/
 
 @media screen and (min-width: 600px) {
   .item {
@@ -106,5 +214,34 @@
     top: 50%;
     right: 0;
     transform: translate(-50%, -50%);
+  }
+
+  #content {
+    & .anchor-card {
+      position: relative;
+      background: #572ee5;
+      height: 275px;
+    }
+
+    & a:hover .gif-text-element {
+      opacity: 1;
+      color: white;
+      display: block;
+    }
+
+    & a:hover .cardBtn {
+      display: block;
+    }
+
+    & a:hover .item {
+      opacity: 0.6;
+    }
+
+    & button:hover {
+      opacity: 1;
+    }
+    & button:active {
+      opacity: 1;
+    }
   }
 }
