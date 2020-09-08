@@ -40,85 +40,143 @@
         </nav>
       </header>
       <main>
-        <section id="favoritosContainerId">
-          <div class="seccion-favoritos">
-            <img src="/imagenes/icon-favoritos.svg" alt="corazon" />
-            <p>Favoritos</p>
-            <div id="favSinContenidoId">
-              <img
-                src="imagenes/icon-mis-gifos-sin-contenido.svg"
-                alt="caratriste"
-              />
+        <section id="createGifContainderId">
+          <img id="cameraimg" src="imagenes/camara.svg" alt="camara" />
+          <img
+            id="cameraimgdark"
+            src="imagenes/camara-modo-noc.svg"
+            alt="camera"
+          />
+          <img id="luzimg" src="imagenes/element-luz-camara.svg" alt="luz" />
+          <div id="screen-container">
+            <div class="frame" id="frame1"></div>
+            <div class="frame" id="frame2"></div>
+            <div id="videoCover">
+              <h2>Aquí podrás <br />crear tus propios<span> GIFOS</span></h2>
               <p>
-                "¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!"
+                ¡Crea tu GIFO en sólo 3 pasos!<br />
+                (sólo necesitas una cámara para grabar un video)
               </p>
             </div>
-          </div>
-        </section>
-        <section class="title-searchbar-trending">
-          <section id="hiddeWhenFavsContainerId">
-            <div class="title-container">
-              <h1>
-                Inspírate, busca, guarda, y crea los mejores
-                <span class="GIFOS">GIFOS</span>
-              </h1>
+            <div id="videoStep1" style="display: none">
+              <h2>
+                ¿Nos das acceso<br />
+                a tu cámara?
+              </h2>
+              <p>
+                El acceso a tu cámara será válido sólo<br />
+                por el tiempo en el que estés creando el GIFO.
+              </p>
             </div>
-            <nav class="searchbar-section">
-              <img
-                src="/imagenes/ilustra_header.svg"
-                alt="hello"
-                class="hello-img"
-              />
-              <div class="searchbar">
-                <div id="search-images">
-                  <img
-                    src="https://via.placeholder.com/300"
-                    alt="search"
-                    class="search-btn"
-                    id="searchBtnId"
-                  />
-                  <img
-                    src="https://via.placeholder.com/300"
-                    alt="close"
-                    class="close-search"
-                    id="closeBtnId"
-                  />
-                </div>
-                <input
-                  type="text"
-                  name="search"
-                  placeholder="Busca GIFOS y más"
-                  class="searchbar-input"
-                  onkeyup="autocompleteRequest(event)"
+            <video id="video"></video>
+            <div class="frame" id="frame3"></div>
+            <div class="frame" id="frame4"></div>
+          </div>
+          <div id="number-counting">
+            <button class="btn-counting" id="btn1">1</button>
+            <button class="btn-counting" id="btn2">2</button>
+            <button class="btn-counting" id="btn3">3</button>
+          </div>
+          <div id="timeStamp">00:00:00</div>
+          <hr />
+          <img id="tapeimg" src="imagenes/pelicula.svg" alt="pelicula" />
+          <img
+            id="tapeimgdark"
+            src="imagenes/pelicula-modo-noc.svg"
+            alt="tape"
+          />
+          <div class="line"></div>
+          <button class="btnCreate" id="btn-start">COMENZAR</button>
+
+          <button class="btnCreate" id="btn-record" style="display: none">
+            GRABAR
+          </button>
+          <button class="btnCreate" id="btn-finish" style="display: none">
+            FINALIZAR
+          </button>
+        </section>
+        <section id="hideWhenCreateGif">
+          <section id="favoritosContainerId">
+            <div class="seccion-favoritos">
+              <img src="/imagenes/icon-favoritos.svg" alt="corazon" />
+              <p>Favoritos</p>
+              <div id="favSinContenidoId">
+                <img
+                  src="imagenes/icon-mis-gifos-sin-contenido.svg"
+                  alt="caratriste"
                 />
-                <ul id="autocomplete-datalist"></ul>
+                <p>
+                  "¡Guarda tu primer GIFO en Favoritos para que se muestre
+                  aquí!"
+                </p>
               </div>
-            </nav>
-            <nav class="trending-topics">
-              <h2>Trending:</h2>
-              <ul id="trending-list" class="trending-list"></ul>
-            </nav>
-            <div class="border-container"><hr id="search-border" /></div>
-            <div id="search-title-container"></div>
-          </section>
-          <div class="gif-container"></div>
-          <div id="ver-mas-btn" onclick="newSearchBtnRequest()"></div>
-        </section>
-        <section class="trending-GIFOS">
-          <div class="trending-title">
-            <h2>Trending GIFOS</h2>
-            <p>Mira los últimos</p>
-            <p>GIFOS de nuestra comunidad.</p>
-          </div>
-          <div class="trending-GIFOS-container">
-            <div id="wrapper">
-              <div id="carousel">
-                <div id="content"></div>
-              </div>
-              <button id="prev"></button>
-              <button id="next"></button>
             </div>
-          </div>
+          </section>
+          <section class="title-searchbar-trending">
+            <section id="hiddeWhenFavsContainerId">
+              <div class="title-container">
+                <h1>
+                  Inspírate, busca, guarda, y crea los mejores
+                  <span class="GIFOS">GIFOS</span>
+                </h1>
+              </div>
+              <nav class="searchbar-section">
+                <img
+                  src="/imagenes/ilustra_header.svg"
+                  alt="hello"
+                  class="hello-img"
+                />
+                <div class="searchbar">
+                  <div id="search-images">
+                    <img
+                      src="https://via.placeholder.com/300"
+                      alt="search"
+                      class="search-btn"
+                      id="searchBtnId"
+                    />
+                    <img
+                      src="https://via.placeholder.com/300"
+                      alt="close"
+                      class="close-search"
+                      id="closeBtnId"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    name="search"
+                    placeholder="Busca GIFOS y más"
+                    class="searchbar-input"
+                    onkeyup="autocompleteRequest(event)"
+                  />
+                  <ul id="autocomplete-datalist"></ul>
+                </div>
+              </nav>
+              <nav class="trending-topics">
+                <h2>Trending:</h2>
+                <ul id="trending-list" class="trending-list"></ul>
+              </nav>
+              <div class="border-container"><hr id="search-border" /></div>
+              <div id="search-title-container"></div>
+            </section>
+            <div class="gif-container"></div>
+            <div id="ver-mas-btn" onclick="newSearchBtnRequest()"></div>
+          </section>
+          <section class="trending-GIFOS">
+            <div class="trending-title">
+              <h2>Trending GIFOS</h2>
+              <p>Mira los últimos</p>
+              <p>GIFOS de nuestra comunidad.</p>
+            </div>
+            <div class="trending-GIFOS-container">
+              <div id="wrapper">
+                <div id="carousel">
+                  <div id="content"></div>
+                </div>
+                <button id="prev"></button>
+                <button id="next"></button>
+              </div>
+            </div>
+          </section>
         </section>
       </main>
       <footer>
@@ -160,21 +218,20 @@
         id="closeBtnForModalId"
       />
       <div id="gifContainerForModalId"></div>
-      <div id="captionsId">
-        <div
-          class="gif-text-element gif-user-full"
-          id="gifUserForModalId"
-        ></div>
-        <div
-          class="gif-text-element gif-title-full"
-          id="gifTitleForModalId"
-        ></div>
-        <button class="card-btn-full fav-btn-full">
-          <img src="imagenes/icon-fav-hover.svg" alt="image" />
-        </button>
+
+      <div class="gif-text-element gif-user-full" id="gifUserForModalId"></div>
+      <div
+        class="gif-text-element gif-title-full"
+        id="gifTitleForModalId"
+      ></div>
+      <div class="captions-for-modal">
+        <div id="favoritosModalId"></div>
+        <div id="downloadModalId"></div>
       </div>
     </div>
     <div class="myModal display-none" id="loader"></div>
     <script src="/js/darkmode.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/crearGif.js"></script>
   </body>
 </html>
