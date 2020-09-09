@@ -24,6 +24,7 @@ let btn1 = document.getElementById('btn1'),
     btnRecordId = document.getElementById('btnRecordId'),
     btnFinishId = document.getElementById('btnFinishId'),
     btnUploadId = document.getElementById('btnUploadId'),
+    repetirCapturaId = document.getElementById('repetirCapturaId'),
     videoCoverId = document.getElementById('videoCoverId');
 
 comenzarBtn.setAttribute('onclick', 'stepOne()');
@@ -32,10 +33,10 @@ function stepOne() {
     getAccess();
     comenzarBtn.style.display = 'none';
     videoCoverId.style.display = 'none';
-    btn1.style.backgroundColor = '#572EE5';
-    btn1.style.color = '#FFF';
+    btn2.style.backgroundColor = '#FFFFFF';
+    btn2.style.color = '#572EE5';
     pasoUnoId.style.display = 'block';
-}
+  }
 /*----------------------------------------*/
 
 //solicitar acceso a la camara del usuario
@@ -77,16 +78,17 @@ btnRecordId.setAttribute('onclick', 'stepTwo()');
 
 function stepTwo() {
 
+    timer.style.display ='inline';
     btnRecordId.style.display = 'none';
     btnFinishId.style.display = 'inline';
-
+    setUpTimer();
     recordingGif();
 
 }
 
 let recorder;
 function recordingGif() {
-
+   
     navigator.mediaDevices.getUserMedia(constraints)
         .then(async function (stream) {
             recorder = new RecordRTC(stream, {
@@ -96,8 +98,9 @@ function recordingGif() {
                 disableLogs: true,
                 quality: 6,
                 width: 640,
-                height: 360
+                height: 360,            
             });
+            
             recorder.startRecording();
             recorder.stream = stream;
         });
@@ -111,10 +114,24 @@ btnFinishId.setAttribute('onclick', 'stopMakingGif()');
 function stopMakingGif() {
 
     btnFinishId.style.display = 'none';
+
     btnUploadId.style.display = 'inline';
-
+    stopTimer();
+    timer.style.display ='none';
+    repetirCapturaId.style.display ='inline';
+    
     recorder.stopRecording(stopRecordingCallBack);
+    
+}
 
+repetirCapturaId.setAttribute('onclick','repeatGif()');
+
+function repeatGif(){
+
+    repetirCapturaId.style.display = 'none';
+    btnUploadId.style.display = 'none';
+
+    stepOne();
 }
 
 function stopRecordingCallBack() {
@@ -132,3 +149,34 @@ function stopRecordingCallBack() {
 }
 /*----------------------------------------*/
 
+//funcionalidad al temporizador
+/*----------------------------------------*/
+let timer =document.getElementById('cronometroId'),
+    counter =0,
+    interval;
+
+const counterFormat = (num)=> (num <10?"0"+num:num);
+
+function convertSeconds (seconds){
+    console.log('convertidor')
+    let hours = Math.floor(seconds / 3600);
+    let min = Math.floor((seconds % 3600) / 60);
+    let sec = seconds % 60;
+    return `${counterFormat(hours)}:${counterFormat(min)}:${counterFormat(sec)}`;
+}
+
+function timeIt(){
+    console.log('temporizador')
+    counter++;
+    timer.innerText = convertSeconds(counter);
+}
+
+function setUpTimer(){
+    counter = 0;
+    timer.innerText = "00:00:00";
+    interval = setInterval(timeIt,1000);
+}
+
+function stopTimer(){
+    clearInterval(interval);
+}

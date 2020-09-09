@@ -1461,13 +1461,18 @@ body.dark .border {
   color: #fff;
 }
 
-.create-gif-container #cronometroId {
+.create-gif-container .cronometro {
   bottom: 166px;
   color: #572ee5;
   font-size: 15px;
   font-weight: bold;
   position: relative;
   left: 310px;
+}
+
+.create-gif-container .cronometro:hover {
+  -webkit-text-decoration: 1.5px underline #5ed7c6;
+          text-decoration: 1.5px underline #5ed7c6;
 }
 
 .create-gif-container hr {

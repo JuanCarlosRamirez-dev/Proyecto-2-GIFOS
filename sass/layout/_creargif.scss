@@ -109,15 +109,19 @@
         background-color: #572ee5;
         color: #fff;
       }
+     
     }
   }
-  #cronometroId {
+  .cronometro {
     bottom: 166px;
     color: #572ee5;
     font-size: 15px;
     font-weight: bold;
     position: relative;
     left: 310px;
+  }
+  .cronometro:hover{
+    text-decoration: 1.5px underline #5ed7c6;
   }
   hr {
     border: 4px solid #572ee5;
