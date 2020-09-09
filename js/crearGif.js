@@ -3,7 +3,7 @@
 /*----------------------------------------*/
 let createGifContainderId = document.getElementById('createGifContainderId'),
     hideWhenCreateGif = document.getElementById('hideWhenCreateGif'),
-    video = document.getElementById('videoCoverId'),
+    video = document.getElementById('screenRecordId'),
     createGIF = document.querySelector('.createGIF');
 
 createGIF.setAttribute('onclick', 'hideBodyContent()');
@@ -24,17 +24,7 @@ let comenzarBtn = document.getElementById('btnStartId'),
     btnRecordId = document.getElementById('btnRecordId'),
     videoCoverId = document.getElementById('videoCoverId');
 
-comenzarBtn.setAttribute('onclick', 'getAccess()');
-
-function getAccess() {
-    initWebcam()
-    comenzarBtn.style.display = 'none';
-    videoCoverId.style.display = 'none';
-    btn1.style.backgroundColor = '#572EE5';
-    btn1.style.color = '#FFF';
-    pasoUnoId.style.display = 'block';
-}
-/*----------------------------------------*/
+comenzarBtn.setAttribute('onclick', 'stepOne()');
 
 let stream = null;
 const constraints = {
@@ -45,6 +35,36 @@ const constraints = {
     },
 };
 
+function stepOne() {
+    getAccess();
+    comenzarBtn.style.display = 'none';
+    videoCoverId.style.display = 'none';
+    btn1.style.backgroundColor = '#572EE5';
+    btn1.style.color = '#FFF';
+    pasoUnoId.style.display = 'block';
+}
+/*----------------------------------------*/
+
+function getAccess() {
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then(function (mediaStream) {
+
+            video.srcObject = mediaStream;
+            video.onloadedmetadata = function (e) {
+                video.play();
+            };
+
+            //Visualización de botones
+            btnRecordId.style.display = 'inline';
+            btn1.style.backgroundColor = '#FFFFFF';
+            btn1.style.color = '#572EE5';
+            btn2.style.backgroundColor = '#572EE5';
+            btn2.style.color = '#FFFFFF';
+
+        })
+        .catch(function (err) { console.log(err.name + ": " + err.message); });
+}
+/*
 async function initWebcam() {
     try {
         stream = await navigator.mediaDevices.getUserMedia(constraints);
@@ -70,15 +90,16 @@ const initRecorder = () =>
                 height: 360,
                 onGifRecordingStarted: function () {
 
-                    /* estilos 
+                     estilos
                      recordBtn.innerText = 'FINALIZAR';
                       stepOne.classList.remove('active');
                       stepTwo.classList.add('active');
-            
+
                       hideComponents(rerecord, recordedContainer, uploadBtn);
                       displayComponents(video, recordBtn);
-            
-                      setupTimer(); */
+
+                      setupTimer();
+
                     video.play();
                 },
             });
@@ -97,18 +118,11 @@ function handleSuccess(stream) {
     video.onloadedmetadata = () => {
         video.play();
     };
-    btnRecordId.style.display = 'inline';
-    btn1.style.backgroundColor = '#FFFFFF';
-    btn1.style.color = '#572EE5';
-    btn2.style.backgroundColor = '#572EE5';
-    btn2.style.color = '#FFFFFF';
+
+
 }
-
-btn2.addEventListener('click', () => {
-
-    //Visualización de botones
+*/
 
 
-})
 
 
