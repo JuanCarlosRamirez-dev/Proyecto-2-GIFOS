@@ -19,6 +19,51 @@ body.dark {
   .header .menu-icon .nav-icon:after {
     background: #ffffff;
   }
+  .create-gif-container {
+    .camara-img {
+      display: none;
+    }
+    .camara-img-noc {
+      left: -452px;
+      position: relative;
+      top: 140px;
+      display: inline;
+    }
+    .tape-img {
+      display: none;
+    }
+    .tape-img-noc {
+      position: relative;
+      left: 480px;
+      bottom: 255px;
+      display: inline;
+    }
+    .screen-container {
+      h2 {
+        color: #fff;
+      }
+      p {
+        color: #fff;
+      }
+    }
+    .start-btn {
+      background-color: #37383c;
+      border: 1px solid #fff;
+      color: #fff;
+    }
+    .start-btn:hover {
+      background-color: #fff;
+      border: 1px solid #37383c;
+      color: #000;
+    }
+    #CreateGifButtonsContainerId {
+      .btn-counting {
+        background-color: #37383c;
+        border: 1px solid #fff;
+        color: #fff;
+      }
+    }
+  }
   .title-searchbar-trending {
     h1 {
       color: #ffffff;
