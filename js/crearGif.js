@@ -22,6 +22,7 @@ let comenzarBtn = document.getElementById('btnStartId'),
     btn3 = document.getElementById('btn3'),
     pasoUnoId = document.getElementById('pasoUnoId'),
     btnRecordId = document.getElementById('btnRecordId'),
+    btnFinishId =document.getElementById('btnFinishId'),
     videoCoverId = document.getElementById('videoCoverId');
 
 comenzarBtn.setAttribute('onclick', 'stepOne()');
@@ -64,6 +65,63 @@ function getAccess() {
         })
         .catch(function (err) { console.log(err.name + ": " + err.message); });
 }
+
+let blob=null;
+btnRecordId.setAttribute('onclick','stepTwo()');
+
+function stepTwo(){
+
+    btnRecordId.style.display ='none';
+    btnFinishId.style.display='inline';
+
+    recordingGif();  
+
+}
+
+let recorder;
+function recordingGif(){
+
+    navigator.mediaDevices.getUserMedia(constraints)
+    .then(async function(stream){
+         recorder =new RecordRTC(stream,{
+        type:'gif',
+        mimeType:'video/webm',
+        recorderType: GifRecorder,
+        disableLogs:true,
+        quality:6,
+        width:640,
+        height:360
+    });
+    recorder.startRecording();
+    recorder.stream=stream;
+});
+}
+
+btnFinishId.setAttribute('onclick','stopMakingGif()');
+
+function stopMakingGif(){
+
+recorder.stopRecording(stopRecordingCallBack);
+   
+}
+
+function stopRecordingCallBack(){
+
+   
+        blob = recorder.getBlob();
+        
+
+        video.src = video.srcObject=null;
+        video.src =URL.createObjectURL(blob)
+
+        recorder.stream.stop();
+        recorder.destroy();
+        recorder=null
+        
+        invokeSaveAsDialog(blob);
+   
+}
+
 /*
 async function initWebcam() {
     try {

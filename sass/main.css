@@ -1379,7 +1379,7 @@ body.dark .border {
 
 .create-gif-container .screen-container p {
   color: #000;
-  font-family: Roboto;
+  font-family: Roboto,sans-serif;
   font-size: 16px;
   line-height: 30px;
   position: relative;
@@ -1391,7 +1391,7 @@ body.dark .border {
   bottom: 310px;
   height: 290px;
   position: relative;
-  width: 540px;
+  width: 640px;
 }
 
 .create-gif-container #CreateGifButtonsContainerId .btn-counting {
@@ -1399,7 +1399,7 @@ body.dark .border {
   border: 1px solid #572ee5;
   border-radius: 100%;
   color: #572ee5;
-  font-family: Roboto;
+  font-family: Roboto,sans-serif;
   font-size: 18px;
   height: 32px;
   margin-right: 25px;
