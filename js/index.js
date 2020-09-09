@@ -240,8 +240,11 @@ function createNewCard(arr, node, index, extraclass) {
             favoritosModalId.appendChild(favBtn);
             downloadModalId.appendChild(downloadBnt);
 
+            //evento al hacer click en el botón cerrar
             document.getElementById('closeBtnForModalId').addEventListener('click', () => {
+
                 fullSizeModalId.style.display = 'none';
+
                 //regreso las clases removidas para mantener funcionalidad
                 downloadBnt.classList.remove('download-btn-full');
                 downloadBnt.classList.remove('card-btn-full');
@@ -327,21 +330,24 @@ function agregarFavoritos(arr) {
 
 misFavoritosBtnId.addEventListener('click', () => {
 
-    esconderContainerSuperior();
+    misFavoritosContainerId.style.display = 'block';
+    containerSustituido.style.display = 'none';
+
     let recuperarGifsDeLocal = localStorage.getItem('favoritosSeleccionados')
     let gifsRecuperados = JSON.parse(recuperarGifsDeLocal)
     gifsRecuperados ? favSinContenidoId.style.display = 'none' : misFavoritosContainerId.style.display = 'block';
-    esconderContainerSuperior();
+    returToHome();
     createNewCard(gifsRecuperados, searchGifContainer, 0, 'gif-container-child')
     searchGifContainer.style.marginBottom = '20px';
 
 })
 
-function esconderContainerSuperior() {
+function returToHome() {
 
-    containerSustituido.style.display = 'none';
     removeContainer(searchGifContainer);
     removeContainer(verMasBtn);
+    createGifContainderId.style.display = 'none';
+    hideWhenCreateGif.style.display = 'block';
 
 }
 
@@ -355,16 +361,17 @@ let topLogoId = document.getElementById('topLogoId'),
 topLogoId.addEventListener('click', () => {
 
     removeSearchContent(searchbar, "searchbar-filled");
-    removeContainer(searchGifContainer);
-    removeContainer(verMasBtn);
+    returToHome();
+
     verMasBtn.classList.remove('vermas-btn');
-    searchTitleContainer.style.display = 'none';
+
     borderSearch.style.display = 'none';
     misFavoritosContainerId.style.display = 'none';
+    searchTitleContainer.style.display = 'none';
     containerSustituido.style.display = 'block';
-    hideWhenCreateGif.style.display = 'block';
-    createGifContainderId.style.display = 'none';
+
 })
+
 /*------------------------------------------*/
 
 //funcion que muestra el texto ingresado

@@ -1,36 +1,37 @@
-#createGifContainderId {
+.create-gif-container {
   text-align: center;
   display: none;
-  #cameraimg {
+  .camara-img {
     left: -452px;
     position: relative;
     top: 140px;
   }
-  #cameraimgdark {
+  .camara-img-noc {
     display: none;
   }
-  #luzimg {
+  .luz-camara {
     left: -455px;
     position: relative;
     top: 137px;
     height: 151px;
     width: 91px;
   }
-  #screen-container {
+  .screen-container {
     border: 1px solid #572ee5;
     height: 390px;
     margin: 4px auto 29px auto;
     position: relative;
     top: -140px;
     width: 688px;
-    #frame1 {
+
+    #marginOneId {
       border-left: 1px solid #50e3c2;
       border-top: 1px solid #50e3c2;
       height: 25px;
       margin: 20px;
       width: 27px;
     }
-    #frame2 {
+    #marginTwoId {
       border-right: 1px solid #50e3c2;
       border-top: 1px solid #50e3c2;
       height: 27px;
@@ -40,7 +41,7 @@
       top: -45px;
       width: 25px;
     }
-    #frame3 {
+    #marginThreeId {
       border-bottom: 1px solid #50e3c2;
       border-left: 1px solid #50e3c2;
       height: 27px;
@@ -50,7 +51,7 @@
       width: 25px;
       z-index: 3;
     }
-    #frame4 {
+    #marginFourId {
       border-bottom: 1px solid #50e3c2;
       border-right: 1px solid #50e3c2;
       height: 25px;
@@ -83,14 +84,14 @@
       top: -85px;
       text-align: center;
     }
-    #video {
+    .screen-record {
       bottom: 310px;
       height: 290px;
       position: relative;
       width: 540px;
     }
   }
-  #number-counting {
+  #CreateGifButtonsContainerId {
     .btn-counting {
       background-color: #fff;
       border: 1px solid #572ee5;
@@ -109,7 +110,7 @@
       }
     }
   }
-  #timeStamp {
+  #cronometroId {
     bottom: 166px;
     color: #572ee5;
 
@@ -125,15 +126,15 @@
     top: -140px;
     width: 790px;
   }
-  #tapeimg {
+  .tape-img {
     position: relative;
     left: 480px;
     bottom: 255px;
   }
-  #tapeimgdark {
+  .tape-img-noc {
     display: none;
   }
-  .btnCreate {
+  .start-btn {
     background-color: #fff;
     border: 1px solid #572ee5;
     border-radius: 25px;

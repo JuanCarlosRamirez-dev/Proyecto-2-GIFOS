@@ -61,12 +61,9 @@ body.dark {
 
   .full-size-modal {
     background-color: #000;
-  }
-  .gif-userFull {
-    color: #fff;
-  }
-  .gif-titleFull {
-    color: #fff;
+    & .gif-title-full {
+      color: #fff;
+    }
   }
 
   .footer {

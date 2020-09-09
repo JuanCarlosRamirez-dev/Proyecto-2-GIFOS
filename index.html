@@ -40,25 +40,36 @@
         </nav>
       </header>
       <main>
-        <section id="createGifContainderId">
-          <img id="cameraimg" src="imagenes/camara.svg" alt="camara" />
+        <section id="createGifContainderId" class="create-gif-container">
           <img
-            id="cameraimgdark"
+            id="camaraId"
+            src="imagenes/camara.svg"
+            alt="camara"
+            class="camara-img"
+          />
+          <img
+            id="camaraModoNoc"
             src="imagenes/camara-modo-noc.svg"
             alt="camera"
+            class="camara-img-noc"
           />
-          <img id="luzimg" src="imagenes/element-luz-camara.svg" alt="luz" />
-          <div id="screen-container">
-            <div class="frame" id="frame1"></div>
-            <div class="frame" id="frame2"></div>
-            <div id="videoCover">
+          <img
+            id="luzCamara"
+            src="imagenes/element-luz-camara.svg"
+            alt="luz"
+            class="luz-camara"
+          />
+          <div id="screenContainerId" class="screen-container">
+            <div id="marginOneId" class="margin-corner"></div>
+            <div id="marginTwoId" class="margin-corner"></div>
+            <div id="videoCoverId">
               <h2>Aquí podrás <br />crear tus propios<span> GIFOS</span></h2>
               <p>
                 ¡Crea tu GIFO en sólo 3 pasos!<br />
                 (sólo necesitas una cámara para grabar un video)
               </p>
             </div>
-            <div id="videoStep1" style="display: none">
+            <div id="pasoUnoId" style="display: none">
               <h2>
                 ¿Nos das acceso<br />
                 a tu cámara?
@@ -68,30 +79,30 @@
                 por el tiempo en el que estés creando el GIFO.
               </p>
             </div>
-            <video id="video"></video>
-            <div class="frame" id="frame3"></div>
-            <div class="frame" id="frame4"></div>
+            <video id="screenRecordId" class="screen-record"></video>
+            <div id="marginThreeId" class="margin-corner"></div>
+            <div id="marginFourId" class="margin-corner"></div>
           </div>
-          <div id="number-counting">
-            <button class="btn-counting" id="btn1">1</button>
-            <button class="btn-counting" id="btn2">2</button>
-            <button class="btn-counting" id="btn3">3</button>
+          <div id="CreateGifButtonsContainerId">
+            <button id="btn1" class="btn-counting">1</button>
+            <button id="btn2" class="btn-counting">2</button>
+            <button id="btn3" class="btn-counting">3</button>
           </div>
-          <div id="timeStamp">00:00:00</div>
+          <div id="cronometroId">00:00:00</div>
           <hr />
-          <img id="tapeimg" src="imagenes/pelicula.svg" alt="pelicula" />
+          <img class="tape-img" src="imagenes/pelicula.svg" alt="pelicula" />
           <img
-            id="tapeimgdark"
+            class="tape-img-noc"
             src="imagenes/pelicula-modo-noc.svg"
             alt="tape"
           />
           <div class="line"></div>
-          <button class="btnCreate" id="btn-start">COMENZAR</button>
+          <button id="btnStartId" class="start-btn">COMENZAR</button>
 
-          <button class="btnCreate" id="btn-record" style="display: none">
+          <button id="btnRecordId" class="start-btn" style="display: none">
             GRABAR
           </button>
-          <button class="btnCreate" id="btn-finish" style="display: none">
+          <button id="btnFinishId" class="start-btn" style="display: none">
             FINALIZAR
           </button>
         </section>
@@ -230,6 +241,7 @@
       </div>
     </div>
     <div class="myModal display-none" id="loader"></div>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <script src="/js/darkmode.js"></script>
     <script src="/js/index.js"></script>
     <script src="/js/crearGif.js"></script>

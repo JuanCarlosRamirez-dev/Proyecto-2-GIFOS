@@ -88,11 +88,7 @@ body.dark .full-size-modal {
   background-color: #000;
 }
 
-body.dark .gif-userFull {
-  color: #fff;
-}
-
-body.dark .gif-titleFull {
+body.dark .full-size-modal .gif-title-full {
   color: #fff;
 }
 
@@ -1293,22 +1289,22 @@ body.dark .border {
   }
 }
 
-#createGifContainderId {
+.create-gif-container {
   text-align: center;
   display: none;
 }
 
-#createGifContainderId #cameraimg {
+.create-gif-container .camara-img {
   left: -452px;
   position: relative;
   top: 140px;
 }
 
-#createGifContainderId #cameraimgdark {
+.create-gif-container .camara-img-noc {
   display: none;
 }
 
-#createGifContainderId #luzimg {
+.create-gif-container .luz-camara {
   left: -455px;
   position: relative;
   top: 137px;
@@ -1316,7 +1312,7 @@ body.dark .border {
   width: 91px;
 }
 
-#createGifContainderId #screen-container {
+.create-gif-container .screen-container {
   border: 1px solid #572ee5;
   height: 390px;
   margin: 4px auto 29px auto;
@@ -1325,7 +1321,7 @@ body.dark .border {
   width: 688px;
 }
 
-#createGifContainderId #screen-container #frame1 {
+.create-gif-container .screen-container #marginOneId {
   border-left: 1px solid #50e3c2;
   border-top: 1px solid #50e3c2;
   height: 25px;
@@ -1333,7 +1329,7 @@ body.dark .border {
   width: 27px;
 }
 
-#createGifContainderId #screen-container #frame2 {
+.create-gif-container .screen-container #marginTwoId {
   border-right: 1px solid #50e3c2;
   border-top: 1px solid #50e3c2;
   height: 27px;
@@ -1344,7 +1340,7 @@ body.dark .border {
   width: 25px;
 }
 
-#createGifContainderId #screen-container #frame3 {
+.create-gif-container .screen-container #marginThreeId {
   border-bottom: 1px solid #50e3c2;
   border-left: 1px solid #50e3c2;
   height: 27px;
@@ -1355,7 +1351,7 @@ body.dark .border {
   z-index: 3;
 }
 
-#createGifContainderId #screen-container #frame4 {
+.create-gif-container .screen-container #marginFourId {
   border-bottom: 1px solid #50e3c2;
   border-right: 1px solid #50e3c2;
   height: 25px;
@@ -1367,7 +1363,7 @@ body.dark .border {
   z-index: 3;
 }
 
-#createGifContainderId #screen-container h2 {
+.create-gif-container .screen-container h2 {
   color: #572ee5;
   font-size: 25px;
   line-height: 35px;
@@ -1377,11 +1373,11 @@ body.dark .border {
   top: -90px;
 }
 
-#createGifContainderId #screen-container h2 span {
+.create-gif-container .screen-container h2 span {
   color: #50e3c2;
 }
 
-#createGifContainderId #screen-container p {
+.create-gif-container .screen-container p {
   color: #000;
   font-family: Roboto;
   font-size: 16px;
@@ -1391,14 +1387,14 @@ body.dark .border {
   text-align: center;
 }
 
-#createGifContainderId #screen-container #video {
+.create-gif-container .screen-container .screen-record {
   bottom: 310px;
   height: 290px;
   position: relative;
   width: 540px;
 }
 
-#createGifContainderId #number-counting .btn-counting {
+.create-gif-container #CreateGifButtonsContainerId .btn-counting {
   background-color: #fff;
   border: 1px solid #572ee5;
   border-radius: 100%;
@@ -1412,12 +1408,12 @@ body.dark .border {
   width: 32px;
 }
 
-#createGifContainderId #number-counting .btn-counting:hover {
+.create-gif-container #CreateGifButtonsContainerId .btn-counting:hover {
   background-color: #572ee5;
   color: #fff;
 }
 
-#createGifContainderId #timeStamp {
+.create-gif-container #cronometroId {
   bottom: 166px;
   color: #572ee5;
   font-size: 15px;
@@ -1426,7 +1422,7 @@ body.dark .border {
   left: 310px;
 }
 
-#createGifContainderId hr {
+.create-gif-container hr {
   border: 4px solid #572ee5;
   margin: 19px auto 20px auto;
   position: relative;
@@ -1434,17 +1430,17 @@ body.dark .border {
   width: 790px;
 }
 
-#createGifContainderId #tapeimg {
+.create-gif-container .tape-img {
   position: relative;
   left: 480px;
   bottom: 255px;
 }
 
-#createGifContainderId #tapeimgdark {
+.create-gif-container .tape-img-noc {
   display: none;
 }
 
-#createGifContainderId .btnCreate {
+.create-gif-container .start-btn {
   background-color: #fff;
   border: 1px solid #572ee5;
   border-radius: 25px;
@@ -1457,7 +1453,7 @@ body.dark .border {
   width: 127px;
 }
 
-#createGifContainderId .btnCreate:hover {
+.create-gif-container .start-btn:hover {
   color: #fff;
   background-color: #572ee5;
 }
