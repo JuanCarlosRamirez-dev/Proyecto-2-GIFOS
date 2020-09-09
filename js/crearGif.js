@@ -14,13 +14,14 @@ function hideBodyContent() {
 }
 /*----------------------------------------*/
 
-//accion del primer paso
+//accion del primer paso 'COMENZAR'
 /*----------------------------------------*/
 let comenzarBtn = document.getElementById('btnStartId'),
     btn1 = document.getElementById('btn1'),
     btn2 = document.getElementById('btn2'),
     btn3 = document.getElementById('btn3'),
     pasoUnoId = document.getElementById('pasoUnoId'),
+    btnRecordId = document.getElementById('btnRecordId'),
     videoCoverId = document.getElementById('videoCoverId');
 
 comenzarBtn.setAttribute('onclick', 'getAccess()');
@@ -96,16 +97,17 @@ function handleSuccess(stream) {
     video.onloadedmetadata = () => {
         video.play();
     };
+    btnRecordId.style.display = 'inline';
+    btn1.style.backgroundColor = '#FFFFFF';
+    btn1.style.color = '#572EE5';
+    btn2.style.backgroundColor = '#572EE5';
+    btn2.style.color = '#FFFFFF';
 }
 
 btn2.addEventListener('click', () => {
 
     //Visualización de botones
-    btnRecord.style.display = 'inline';
-    btn1.style.backgroundColor = '#FFFFFF';
-    btn1.style.color = '#572EE5';
-    btn2.style.backgroundColor = '#572EE5';
-    btn2.style.color = '#FFFFFF';
+
 
 })
 
