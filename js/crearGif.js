@@ -16,25 +16,17 @@ function hideBodyContent() {
 
 //accion del primer paso 'COMENZAR'
 /*----------------------------------------*/
-let comenzarBtn = document.getElementById('btnStartId'),
-    btn1 = document.getElementById('btn1'),
+let btn1 = document.getElementById('btn1'),
     btn2 = document.getElementById('btn2'),
     btn3 = document.getElementById('btn3'),
     pasoUnoId = document.getElementById('pasoUnoId'),
+    comenzarBtn = document.getElementById('btnStartId'),
     btnRecordId = document.getElementById('btnRecordId'),
-    btnFinishId =document.getElementById('btnFinishId'),
+    btnFinishId = document.getElementById('btnFinishId'),
+    btnUploadId = document.getElementById('btnUploadId'),
     videoCoverId = document.getElementById('videoCoverId');
 
 comenzarBtn.setAttribute('onclick', 'stepOne()');
-
-let stream = null;
-const constraints = {
-    audio: false,
-    video: {
-        width: 640,
-        height: 360,
-    },
-};
 
 function stepOne() {
     getAccess();
@@ -45,6 +37,17 @@ function stepOne() {
     pasoUnoId.style.display = 'block';
 }
 /*----------------------------------------*/
+
+//solicitar acceso a la camara del usuario
+/*----------------------------------------*/
+let stream = null;
+const constraints = {
+    audio: false,
+    video: {
+        width: 640,
+        height: 360,
+    },
+};
 
 function getAccess() {
     navigator.mediaDevices.getUserMedia(constraints)
@@ -65,122 +68,67 @@ function getAccess() {
         })
         .catch(function (err) { console.log(err.name + ": " + err.message); });
 }
+/*----------------------------------------*/
 
-let blob=null;
-btnRecordId.setAttribute('onclick','stepTwo()');
+//accion de comenzar a grabar
+/*----------------------------------------*/
+let blob = null;
+btnRecordId.setAttribute('onclick', 'stepTwo()');
 
-function stepTwo(){
+function stepTwo() {
 
-    btnRecordId.style.display ='none';
-    btnFinishId.style.display='inline';
+    btnRecordId.style.display = 'none';
+    btnFinishId.style.display = 'inline';
 
-    recordingGif();  
+    recordingGif();
 
 }
 
 let recorder;
-function recordingGif(){
+function recordingGif() {
 
     navigator.mediaDevices.getUserMedia(constraints)
-    .then(async function(stream){
-         recorder =new RecordRTC(stream,{
-        type:'gif',
-        mimeType:'video/webm',
-        recorderType: GifRecorder,
-        disableLogs:true,
-        quality:6,
-        width:640,
-        height:360
-    });
-    recorder.startRecording();
-    recorder.stream=stream;
-});
-}
-
-btnFinishId.setAttribute('onclick','stopMakingGif()');
-
-function stopMakingGif(){
-
-recorder.stopRecording(stopRecordingCallBack);
-   
-}
-
-function stopRecordingCallBack(){
-
-   
-        blob = recorder.getBlob();
-        
-
-        video.src = video.srcObject=null;
-        video.src =URL.createObjectURL(blob)
-
-        recorder.stream.stop();
-        recorder.destroy();
-        recorder=null
-        
-        invokeSaveAsDialog(blob);
-   
-}
-
-/*
-async function initWebcam() {
-    try {
-        stream = await navigator.mediaDevices.getUserMedia(constraints);
-
-        handleSuccess(stream);
-
-        return Promise.resolve(stream);
-    } catch (err) {
-        throw new Error('Algo salió mal');
-    }
-}
-
-const initRecorder = () =>
-    new Promise((resolve, reject) => {
-        initWebcam().then((stream) => {
-            const recorder = RecordRTC(stream, {
+        .then(async function (stream) {
+            recorder = new RecordRTC(stream, {
                 type: 'gif',
                 mimeType: 'video/webm',
                 recorderType: GifRecorder,
                 disableLogs: true,
                 quality: 6,
                 width: 640,
-                height: 360,
-                onGifRecordingStarted: function () {
-
-                     estilos
-                     recordBtn.innerText = 'FINALIZAR';
-                      stepOne.classList.remove('active');
-                      stepTwo.classList.add('active');
-
-                      hideComponents(rerecord, recordedContainer, uploadBtn);
-                      displayComponents(video, recordBtn);
-
-                      setupTimer();
-
-                    video.play();
-                },
+                height: 360
             });
-
-            if (recorder) {
-                resolve(recorder);
-            } else {
-                reject('Cannot create recorder object.');
-            }
+            recorder.startRecording();
+            recorder.stream = stream;
         });
-    });
+}
+/*----------------------------------------*/
 
-function handleSuccess(stream) {
-    video.srcObject = stream;
+//accion detener grabacion
+/*----------------------------------------*/
+btnFinishId.setAttribute('onclick', 'stopMakingGif()');
 
-    video.onloadedmetadata = () => {
-        video.play();
-    };
+function stopMakingGif() {
 
+    btnFinishId.style.display = 'none';
+    btnUploadId.style.display = 'inline';
+
+    recorder.stopRecording(stopRecordingCallBack);
 
 }
-*/
 
+function stopRecordingCallBack() {
 
+    blob = recorder.getBlob();
 
+    video.src = video.srcObject = null;
+    video.src = URL.createObjectURL(blob)
+
+    recorder.stream.stop();
+    recorder.destroy();
+    recorder = null
+
+    invokeSaveAsDialog(blob);
+}
+/*----------------------------------------*/
 
