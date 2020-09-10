@@ -252,7 +252,7 @@ body.dark .border {
   padding: 0;
   list-style: none;
   overflow: hidden;
-  background-color: rgba(87, 46, 229, 0.9);
+  background-color: #572ee5;
 }
 
 .header li a:hover,

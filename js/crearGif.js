@@ -269,17 +269,19 @@ let myGifsGotted = [],
     misGifosId = document.getElementById('misGifosId'),
     misGifosContainer = document.getElementById('misGifosContainer');
 
-misGifosId.addEventListener('click', () => {
+misGifosId.setAttribute('onclick', 'mostrarSeccion()')
 
+function mostrarSeccion() {
     containerSustituido.style.display = 'none';
     misGifosContainer.style.display = 'block';
     misFavoritosContainerId.style.display = 'none';
-    
-
     returToHome();
-    let recuperarIds = localStorage.getItem('misGifos'),
-        idsRecuperados = JSON.parse(recuperarIds),
-        idsConFormatoStrng = idsRecuperados.toString();
+}
+
+(function callMyGifs() {
+    let recuperarIds = localStorage.getItem('misGifos');
+    let idsRecuperados = JSON.parse(recuperarIds);
+    let idsConFormatoStrng = idsRecuperados.toString();
 
     recuperarIds ? misGifsSinContenido.style.display = 'none' : misGifosId.style.display = 'block';
 
@@ -309,5 +311,5 @@ misGifosId.addEventListener('click', () => {
             createNewCard(myGifsGotted, searchGifContainer, 0, 'gif-container-child');
         }
     }
-})
+})();
 /*----------------------------------------*/
