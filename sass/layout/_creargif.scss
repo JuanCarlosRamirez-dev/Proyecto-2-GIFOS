@@ -61,7 +61,7 @@
       position: relative;
       top: -373px;
       width: 27px;
-      z-index: 3;
+      z-index: 3;      
     }
 
     h2 {
@@ -90,6 +90,32 @@
       height: 290px;
       position: relative;
       width: 640px;
+    }
+    .gif-recorded{
+      bottom: 310px;
+      height: 290px;
+      position: relative;
+      width: 460px;
+     
+    }
+    .uploading{
+      opacity: 0.6;
+    }
+    #pasoTresId{
+      position: relative;
+      z-index: 100;      
+      font-size: 15px;
+      & h2{
+        color: #fff;
+      }
+    }
+    #pasoCuatroId{
+      position: relative;
+      z-index: 100;      
+      font-size: 15px;
+      & h2{
+        color: #fff;
+      }
     }
   }
   #CreateGifButtonsContainerId {

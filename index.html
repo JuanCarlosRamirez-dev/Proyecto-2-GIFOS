@@ -34,7 +34,7 @@
           <ul class="menu">
             <li><a href="#" id="darkModeId">Modo Nocturno</a></li>
             <li><a href="#" id="misFavoritosBtnId">Favoritos</a></li>
-            <li><a href="#">Mis GIFOS</a></li>
+            <li><a href="#" id="misGifosId">Mis GIFOS</a></li>
             <li><a href="#" class="createGIF"></a></li>
           </ul>
         </nav>
@@ -79,7 +79,17 @@
                 por el tiempo en el que estés creando el GIFO.
               </p>
             </div>
+            <div id="pasoTresId" style="display: none">
+              <img src="imagenes/loader.svg" alt="cargando">
+              <h2>Estamos subiendo tu GIFO</h2>
+            </div>
+            <div id="pasoCuatroId" style="display: none"> 
+              <img src="/imagenes/check.svg" alt="check">
+              <h2>GIFO subido con éxito</h2>
+            </div>
             <video id="screenRecordId" class="screen-record"></video>
+            <img id="gifRecorded" class="gif-recorded" src="https://via.placeholder.com/300" alt="gif recorded" style="display: none">
+            
             <div id="marginThreeId" class="margin-corner"></div>
             <div id="marginFourId" class="margin-corner"></div>
           </div>

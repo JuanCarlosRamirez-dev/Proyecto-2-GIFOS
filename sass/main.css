@@ -1442,6 +1442,37 @@ body.dark .border {
   width: 640px;
 }
 
+.create-gif-container .screen-container .gif-recorded {
+  bottom: 310px;
+  height: 290px;
+  position: relative;
+  width: 460px;
+}
+
+.create-gif-container .screen-container .uploading {
+  opacity: 0.6;
+}
+
+.create-gif-container .screen-container #pasoTresId {
+  position: relative;
+  z-index: 100;
+  font-size: 15px;
+}
+
+.create-gif-container .screen-container #pasoTresId h2 {
+  color: #fff;
+}
+
+.create-gif-container .screen-container #pasoCuatroId {
+  position: relative;
+  z-index: 100;
+  font-size: 15px;
+}
+
+.create-gif-container .screen-container #pasoCuatroId h2 {
+  color: #fff;
+}
+
 .create-gif-container #CreateGifButtonsContainerId .btn-counting {
   background-color: #fff;
   border: 1px solid #572ee5;
