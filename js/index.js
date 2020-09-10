@@ -312,22 +312,22 @@ function agregarFavoritos(arr) {
 
     gifsFavoritos = eliminarGifsDuplicados(gifsFavoritos, 'url')
 
-    function eliminarGifsDuplicados(arr, prop) {
-        let sinDuplicados = [],
-            lookup = {};
-
-        for (let i in arr) {
-            lookup[arr[i][prop]] = arr[i];
-        }
-        for (i in lookup) {
-            sinDuplicados.push(lookup[i]);
-        }
-        return sinDuplicados
-    }
-
     let mandarGifsALocal = JSON.stringify(gifsFavoritos)
 
     localStorage.setItem('favoritosSeleccionados', mandarGifsALocal)
+}
+
+function eliminarGifsDuplicados(arr, prop) {
+    let sinDuplicados = [],
+        lookup = {};
+
+    for (let i in arr) {
+        lookup[arr[i][prop]] = arr[i];
+    }
+    for (i in lookup) {
+        sinDuplicados.push(lookup[i]);
+    }
+    return sinDuplicados
 }
 
 misFavoritosBtnId.addEventListener('click', () => {
