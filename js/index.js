@@ -350,7 +350,6 @@ function returToHome() {
     createGifContainderId.style.display = 'none';
     hideWhenCreateGif.style.display = 'block';
 
-
 }
 
 /*------------------------------------------*/
@@ -445,9 +444,7 @@ function autocompleteRequest(event) {
 //funcion que restablece los estilos de la barra buscadora
 /*------------------------------------------*/
 function removeSearchContent(node, removedClass) {
-    console.log("entro a removesearch")
-    /* document.querySelector('.title-container').style.display = "block";
-    document.querySelector('.hello-img').style.display = "block" */
+
     node.classList.remove(removedClass);
     removeContainer(dataList);
     document.querySelector('.searchbar-input').style.marginLeft = "7%";
@@ -478,7 +475,7 @@ let trendingTextList = document.getElementById('trending-list');
                 newSearchBtnRequest(arrayForFiveElements[i]);
                 removeContainer(searchGifContainer);
                 searchInput = arrayForFiveElements[i];
-                console.log(searchInput);
+
             })
             listElement.textContent = arrayForFiveElements[i] + ',' + '\u00A0';
             trendingTextList.appendChild(listElement);

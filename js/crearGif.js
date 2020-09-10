@@ -136,7 +136,6 @@ function stopRecordingCallBack() {
 
     blob = recorder.getBlob();
 
-    console.log(blob)
     video.src = video.srcObject = null;
     gifRecorded.src = URL.createObjectURL(blob)
     video.style.display = 'none'
@@ -177,7 +176,7 @@ btnUploadId.addEventListener('click', () => {
 
         let form = new FormData();
         form.append('file', blob, 'MyGif.gif');
-        console.log(form.get('file'))
+
 
         repetirCapturaId.style.display = 'none';
         btnUploadId.style.display = 'none';
@@ -193,7 +192,7 @@ btnUploadId.addEventListener('click', () => {
 
         gifRecorded.classList.add('uploading');
         uploadGif(form)
-            .then((id) => {
+            .then(() => {
                 pasoTresId.style.display = 'none';
                 pasoCuatroId.style.display = 'inline';
                 alert("Felicidades! Creaste un gif. Presiona F5 si quieres crear otro gif.");
@@ -220,7 +219,8 @@ async function uploadGif(gif) {
 let misGifos = [];
 function sendToLocalStorage(gifId) {
     misGifos.push(gifId);
-    localStorage.setItem('misGifos', JSON.stringify(misGifos));
+    let mandarMisGifsALocal = JSON.stringify(misGifos)
+    localStorage.setItem('misGifos', mandarMisGifsALocal);
 }
 
 const verificarUpload = (res) => {
@@ -260,7 +260,10 @@ function setUpTimer() {
 function stopTimer() {
     clearInterval(interval);
 }
+/*----------------------------------------*/
 
+//funcionalidad para mostrar mis gifos
+/*----------------------------------------*/
 let myGifsGotted = [],
     misGifsSinContenido = document.getElementById('misGifsSinContenido'),
     misGifosId = document.getElementById('misGifosId'),
@@ -271,16 +274,15 @@ misGifosId.addEventListener('click', () => {
     containerSustituido.style.display = 'none';
     misGifosContainer.style.display = 'block';
     misFavoritosContainerId.style.display = 'none';
+    recuperarIds ? misGifsSinContenido.style.display = 'none' : misGifosId.style.display = 'block';
 
     returToHome();
     let recuperarIds = localStorage.getItem('misGifos'),
-    idsRecuperados = JSON.parse(recuperarIds),
-     idsConFormatoStrng = idsRecuperados.toString();
-
-    recuperarIds ? misGifsSinContenido.style.display = 'none' : misGifosId.style.display = 'block';
+        idsRecuperados = JSON.parse(recuperarIds),
+        idsConFormatoStrng = idsRecuperados.toString();
 
     console.log(idsConFormatoStrng)
-    
+
     let urlForIds = `https://api.giphy.com/v1/gifs?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&ids=${idsConFormatoStrng}`;
     fetch(urlForIds)
         .then(response => response.json())
@@ -306,3 +308,4 @@ misGifosId.addEventListener('click', () => {
         }
     }
 })
+/*----------------------------------------*/
