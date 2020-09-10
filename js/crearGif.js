@@ -274,12 +274,14 @@ misGifosId.addEventListener('click', () => {
     containerSustituido.style.display = 'none';
     misGifosContainer.style.display = 'block';
     misFavoritosContainerId.style.display = 'none';
-    recuperarIds ? misGifsSinContenido.style.display = 'none' : misGifosId.style.display = 'block';
+    
 
     returToHome();
     let recuperarIds = localStorage.getItem('misGifos'),
         idsRecuperados = JSON.parse(recuperarIds),
         idsConFormatoStrng = idsRecuperados.toString();
+
+    recuperarIds ? misGifsSinContenido.style.display = 'none' : misGifosId.style.display = 'block';
 
     console.log(idsConFormatoStrng)
 
