@@ -15,16 +15,17 @@ searchBtn.addEventListener('click', (event) => {
 
 //evento en la tecla enter
 /*------------------------------------------*/
+
 document.querySelector('.searchbar-input').addEventListener('keyup', (event) => {
     if (event.which === 13) {
-        console.log("tecla enter")
         searchInput = document.querySelector('.searchbar-input').value
         newSearchBtnRequest(searchInput, "searchbar-filled");
-        removeContainer(searchGifContainer);
         searchInput = '';
     }
 });
+
 /*------------------------------------------*/
+
 
 //funcion para eliminar nodos hijos para cualquier contenedor
 /*------------------------------------------*/
@@ -80,6 +81,8 @@ function newSearchBtnRequest(value) {
                 }
                 imagesGotted.push(imageWorked);
             })
+            removeSearchContent(searchbar, "searchbar-filled");
+            removeContainer(searchGifContainer);
             createNewCard(imagesGotted, searchGifContainer, offsetRequestIndex, 'gif-container-child');
             // sendToFavs(imagesGotted);
             offsetCounter += 1;
@@ -396,6 +399,7 @@ let dataList = document.getElementById('autocomplete-datalist'),
     closeSearchBtn = document.getElementById('closeBtnId');
 
 function autocompleteRequest(event) {
+
     const rootEvent = event.target,
         searchInputValue = rootEvent.value;
     let autoCompleteUrl = `https://api.giphy.com/v1/tags/related/${searchInputValue}?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf`;
@@ -438,6 +442,7 @@ function autocompleteRequest(event) {
             removeSearchContent(searchbar, "searchbar-filled");
         }
     }
+
 }
 /*------------------------------------------*/
 
