@@ -135,6 +135,9 @@
       left: 190px;
       display: none;
     }
+    & .downloadBtn:hover {
+      opacity: 1;
+    }
     & .fullsizeBtn {
       border: none;
       position: absolute;
@@ -476,7 +479,6 @@
     & a {
       position: relative;
       background: #572ee5;
-      height: 200px;
     }
 
     & a {
@@ -491,6 +493,7 @@
         top: 10px;
         left: 148px;
         display: none;
+        cursor: pointer;
       }
       & .fullsizeBtn {
         position: absolute;

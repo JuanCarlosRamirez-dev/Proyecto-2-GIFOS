@@ -12,6 +12,13 @@
   position: relative;
 }
 
+#prev {
+  display: none;
+}
+#next {
+  display: none;
+}
+
 #carousel {
   overflow: auto;
   scroll-behavior: smooth;
@@ -42,6 +49,9 @@
       top: 10px;
       left: 265px;
       display: none;
+    }
+    & .downloadBtn:hover {
+      opacity: 1;
     }
     & .fullsizeBtn {
       border: none;
@@ -111,6 +121,9 @@
   & .download-btn-full {
     margin-left: 10px;
   }
+  & .download-btn-full:hover {
+    opacity: 1;
+  }
   & .gif-user-full {
     color: #000;
     margin-top: 10px;
@@ -138,6 +151,11 @@
   }
 }
 
+.captions-for-modal {
+  display: flex;
+  justify-content: center;
+}
+
 @-webkit-keyframes zoom {
   from {
     -webkit-transform: scale(0);
@@ -155,6 +173,7 @@
     transform: scale(1);
   }
 }
+
 /*--------------------------------------------*/
 
 @media screen and (min-width: 600px) {
@@ -168,10 +187,11 @@
 }
 @media screen and (min-width: 1220px) {
   #wrapper {
-    max-width: 1920px;
+    max-width: 100vw;
   }
 
   #prev {
+    display: block;
     width: 40px;
     height: 40px;
     background-image: url("/imagenes/button-left.svg");
@@ -188,6 +208,7 @@
   }
 
   #next {
+    display: block;
     width: 40px;
     height: 40px;
     background-image: url("/imagenes/button-right.svg");
