@@ -196,6 +196,7 @@ btnUploadId.addEventListener('click', () => {
             .then((id) => {
                 pasoTresId.style.display = 'none';
                 pasoCuatroId.style.display = 'inline';
+                alert("Felicidades! Creaste un gif. Presiona F5 si quieres crear otro gif.");
             })
 
     } else { alert('No se grabó nada. Reinicia la página') }
@@ -272,13 +273,15 @@ misGifosId.addEventListener('click', () => {
     misFavoritosContainerId.style.display = 'none';
 
     returToHome();
-    let recuperarIds = localStorage.getItem('misGifos');
+    let recuperarIds = localStorage.getItem('misGifos'),
+    idsRecuperados = JSON.parse(recuperarIds),
+     idsConFormatoStrng = idsRecuperados.toString();
 
     recuperarIds ? misGifsSinContenido.style.display = 'none' : misGifosId.style.display = 'block';
 
-
-    console.log(recuperarIds)
-    let urlForIds = `https://api.giphy.com/v1/gifs?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&ids=${recuperarIds}`;
+    console.log(idsConFormatoStrng)
+    
+    let urlForIds = `https://api.giphy.com/v1/gifs?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&ids=${idsConFormatoStrng}`;
     fetch(urlForIds)
         .then(response => response.json())
         .then(data => loadingMyGifs(data))
