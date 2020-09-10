@@ -7,7 +7,6 @@ let searchBtn = document.getElementById('searchBtnId'),
 searchBtn.addEventListener('click', (event) => {
     searchInput = document.querySelector('.searchbar-input').value
     newSearchBtnRequest(searchInput);
-    removeSearchContent(searchbar, "searchbar-filled");
     removeContainer(searchGifContainer);
 
 });
@@ -23,7 +22,6 @@ document.querySelector('.searchbar-input').addEventListener('keyup', (event) => 
         searchInput = '';
     }
 });
-
 /*------------------------------------------*/
 
 
@@ -68,6 +66,8 @@ function newSearchBtnRequest(value) {
     //funcion que crea un arreglo de objetos filtrado
     function loadingGifs(response) {
 
+        removeSearchContent(searchbar, "searchbar-filled");
+
         showSearchTitle(value)
         if (response.data.length) {
             const requestResponse = response.data;
@@ -81,8 +81,7 @@ function newSearchBtnRequest(value) {
                 }
                 imagesGotted.push(imageWorked);
             })
-            removeSearchContent(searchbar, "searchbar-filled");
-            removeContainer(searchGifContainer);
+            
             createNewCard(imagesGotted, searchGifContainer, offsetRequestIndex, 'gif-container-child');
             // sendToFavs(imagesGotted);
             offsetCounter += 1;
