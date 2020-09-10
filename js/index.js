@@ -322,6 +322,7 @@ let gifsFavoritos = [],
     containerSustituido = document.getElementById('hiddeWhenNavigatingContainerId'),
     favSinContenidoId = document.getElementById('favSinContenidoId'),
     misFavoritosBtnId = document.getElementById('misFavoritosBtnId');
+
 function agregarFavoritos(arr) {
 
     gifsFavoritos.push(arr)
@@ -339,8 +340,8 @@ misFavoritosBtnId.addEventListener('click', () => {
     containerSustituido.style.display = 'none';
     misGifosContainer.style.display = 'none';
 
-    let recuperarGifsDeLocal = localStorage.getItem('favoritosSeleccionados'),
-        gifsRecuperados = JSON.parse(recuperarGifsDeLocal);
+    let recuperarGifsDeLocal = localStorage.getItem('favoritosSeleccionados');
+    gifsRecuperados = JSON.parse(recuperarGifsDeLocal);
 
     gifsRecuperados ? favSinContenidoId.style.display = 'none' : misFavoritosContainerId.style.display = 'block';
     returToHome();
