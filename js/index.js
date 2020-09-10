@@ -55,7 +55,7 @@ function newSearchBtnRequest(value) {
 
     const offsetRequestIndex = offsetCounter * 12;
     if (!value) { value = searchInput; }
-    console.log(value);
+
     let searchUrl = `https://api.giphy.com/v1/gifs/search?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&q=${value}&limit=12&offset=${offsetRequestIndex}&rating=&lang=en`;
     loaderActions.showloader();
     fetch(searchUrl)
@@ -301,7 +301,7 @@ function verMasGifs() {
 /*------------------------------------------*/
 let gifsFavoritos = [],
     misFavoritosContainerId = document.getElementById('favoritosContainerId'),
-    containerSustituido = document.getElementById('hiddeWhenFavsContainerId'),
+    containerSustituido = document.getElementById('hiddeWhenNavigatingContainerId'),
     favSinContenidoId = document.getElementById('favSinContenidoId'),
     misFavoritosBtnId = document.getElementById('misFavoritosBtnId');
 function agregarFavoritos(arr) {
@@ -332,6 +332,7 @@ misFavoritosBtnId.addEventListener('click', () => {
 
     misFavoritosContainerId.style.display = 'block';
     containerSustituido.style.display = 'none';
+    misGifosContainer.style.display = 'none';
 
     let recuperarGifsDeLocal = localStorage.getItem('favoritosSeleccionados')
     let gifsRecuperados = JSON.parse(recuperarGifsDeLocal)
@@ -348,6 +349,7 @@ function returToHome() {
     removeContainer(verMasBtn);
     createGifContainderId.style.display = 'none';
     hideWhenCreateGif.style.display = 'block';
+
 
 }
 
@@ -369,6 +371,7 @@ topLogoId.addEventListener('click', () => {
     misFavoritosContainerId.style.display = 'none';
     searchTitleContainer.style.display = 'none';
     containerSustituido.style.display = 'block';
+    misGifosContainer.style.display = 'none';
 
 })
 

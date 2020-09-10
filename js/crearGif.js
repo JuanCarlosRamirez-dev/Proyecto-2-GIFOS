@@ -31,7 +31,7 @@ let btn1 = document.getElementById('btn1'),
 comenzarBtn.setAttribute('onclick', 'stepOne()');
 
 function stepOne() {
-    
+
     comenzarBtn.style.display = 'none';
     videoCoverId.style.display = 'none';
     btn2.style.backgroundColor = '#fff';
@@ -41,7 +41,7 @@ function stepOne() {
     pasoUnoId.style.display = 'block';
     getAccess();
 
-  }
+}
 /*----------------------------------------*/
 
 //solicitar acceso a la camara del usuario
@@ -84,8 +84,8 @@ btnRecordId.setAttribute('onclick', 'stepTwo()');
 
 function stepTwo() {
 
-    
-    timer.style.display ='inline';
+
+    timer.style.display = 'inline';
     btnRecordId.style.display = 'none';
     btnFinishId.style.display = 'inline';
     setUpTimer();
@@ -95,19 +95,19 @@ function stepTwo() {
 
 let recorder;
 function recordingGif() {
-   
+
     navigator.mediaDevices.getUserMedia(constraints)
         .then(async function (stream) {
             recorder = new RecordRTC(stream, {
                 type: 'gif',
                 mimeType: 'video/webm',
                 recorderType: GifRecorder,
-                disableLogs: true,                
+                disableLogs: true,
                 quality: 10,
                 width: 640,
-                height: 360,            
+                height: 360,
             });
-            
+
             recorder.startRecording();
             recorder.stream = stream;
         });
@@ -122,13 +122,13 @@ function stopMakingGif() {
 
     btnFinishId.style.display = 'none';
     btnUploadId.style.display = 'inline';
-    timer.style.display ='none';
-    repetirCapturaId.style.display ='inline';
+    timer.style.display = 'none';
+    repetirCapturaId.style.display = 'inline';
 
-    stopTimer();    
-    
+    stopTimer();
+
     recorder.stopRecording(stopRecordingCallBack);
-    
+
 }
 
 gifRecorded = document.getElementById('gifRecorded');
@@ -139,25 +139,25 @@ function stopRecordingCallBack() {
     console.log(blob)
     video.src = video.srcObject = null;
     gifRecorded.src = URL.createObjectURL(blob)
-    video.style.display ='none'
-    gifRecorded.style.display='inline';
+    video.style.display = 'none'
+    gifRecorded.style.display = 'inline';
 
     recorder.stream.stop();
     recorder.destroy();
     recorder = null
 
-   //invokeSaveAsDialog(blob);
+    //invokeSaveAsDialog(blob);
 }
 /*----------------------------------------*/
 
 //funcionalidad al boton repetir captura
 /*----------------------------------------*/
-repetirCapturaId.setAttribute('onclick','repeatGif()');
+repetirCapturaId.setAttribute('onclick', 'repeatGif()');
 
-function repeatGif(){
+function repeatGif() {
 
-    video.style.display ='inline'
-    gifRecorded.style.display='none';
+    video.style.display = 'inline'
+    gifRecorded.style.display = 'none';
     repetirCapturaId.style.display = 'none';
     btnUploadId.style.display = 'none';
 
@@ -169,62 +169,62 @@ function repeatGif(){
 //funcionalidad para el boton subir gif
 /*----------------------------------------*/
 let margen3 = document.getElementById('marginThreeId'),
-    pasoCuatroId = document.getElementById('pasoCuatroId'),     
+    pasoCuatroId = document.getElementById('pasoCuatroId'),
     margen4 = document.getElementById('marginFourId');
-btnUploadId.addEventListener('click',()=>{
+btnUploadId.addEventListener('click', () => {
 
-    if(blob.type === 'image/gif'&&blob.size !== 0){
+    if (blob.type === 'image/gif' && blob.size !== 0) {
 
         let form = new FormData();
-        form.append('file',blob,'MyGif.gif');
+        form.append('file', blob, 'MyGif.gif');
         console.log(form.get('file'))
 
-            repetirCapturaId.style.display ='none';
-            btnUploadId.style.display = 'none';
-            btn2.style.backgroundColor = '#FFFFFF';
-            btn2.style.color = '#572EE5';
-            btn3.style.backgroundColor = '#572EE5';
-            btn3.style.color = '#FFFFFF';
-            pasoUnoId.style.display = 'none';
-            pasoTresId.style.display = 'inline';
-            gifRecorded.style.bottom ='265px';
-            margen3.style.top ='-285px';
-            margen4.style.top='-328px';
+        repetirCapturaId.style.display = 'none';
+        btnUploadId.style.display = 'none';
+        btn2.style.backgroundColor = '#FFFFFF';
+        btn2.style.color = '#572EE5';
+        btn3.style.backgroundColor = '#572EE5';
+        btn3.style.color = '#FFFFFF';
+        pasoUnoId.style.display = 'none';
+        pasoTresId.style.display = 'inline';
+        gifRecorded.style.bottom = '265px';
+        margen3.style.top = '-285px';
+        margen4.style.top = '-328px';
 
-            gifRecorded.classList.add('uploading');
+        gifRecorded.classList.add('uploading');
         uploadGif(form)
-        .then((id)=>{
-            pasoTresId.style.display = 'none';
-            pasoCuatroId.style.display='inline';
-        })
+            .then((id) => {
+                pasoTresId.style.display = 'none';
+                pasoCuatroId.style.display = 'inline';
+            })
 
-    }else{alert('No se grabó nada. Reinicia la página')}
+    } else { alert('No se grabó nada. Reinicia la página') }
 })
 
-async function uploadGif(gif){
-    const res = await fetch('https://upload.giphy.com/v1/gifs?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf',{
-        method:'POST',
-        body:gif
+async function uploadGif(gif) {
+    const res = await fetch('https://upload.giphy.com/v1/gifs?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf', {
+        method: 'POST',
+        body: gif
     });
 
     const uploadResults = await verificarUpload(res);
 
-    if(uploadResults.meta.status ===200){
-    sendToLocalStorage(uploadResults.data.id)
-    return Promise.resolve(uploadResults.data.id)
+    if (uploadResults.meta.status === 200) {
+        sendToLocalStorage(uploadResults.data.id)
+        return Promise.resolve(uploadResults.data.id)
     }
     return Promise.reject('Algo malo sucedio');
-} 
-
-let misGifos=[];
-function sendToLocalStorage(gifId){
-    misGifos.push(gifId);
-    localStorage.setItem('misGifos',JSON.stringify(misGifos));
 }
 
-const verificarUpload = (res)=> {
-    if(!res.ok){
-        throw {status:res.status,msg:"Algo salió mal"};
+let misGifos = [];
+function sendToLocalStorage(gifId) {
+    misGifos.push(gifId);
+    localStorage.setItem('misGifos', JSON.stringify(misGifos));
+}
+
+const verificarUpload = (res) => {
+    if (!res.ok) {
+        throw { status: res.status, msg: "Algo salió mal" };
     }
     return res.json();
 }
@@ -232,37 +232,74 @@ const verificarUpload = (res)=> {
 
 //funcionalidad al temporizador
 /*----------------------------------------*/
-let timer =document.getElementById('cronometroId'),
-    counter =0,
+let timer = document.getElementById('cronometroId'),
+    counter = 0,
     interval;
 
-const counterFormat = (num)=> (num <10?"0"+num:num);
+const counterFormat = (num) => (num < 10 ? "0" + num : num);
 
-function convertSeconds (seconds){
+function convertSeconds(seconds) {
     let hours = Math.floor(seconds / 3600);
     let min = Math.floor((seconds % 3600) / 60);
     let sec = seconds % 60;
     return `${counterFormat(hours)}:${counterFormat(min)}:${counterFormat(sec)}`;
 }
 
-function timeIt(){
+function timeIt() {
     counter++;
     timer.innerText = convertSeconds(counter);
 }
 
-function setUpTimer(){
+function setUpTimer() {
     counter = 0;
     timer.innerText = "00:00:00";
-    interval = setInterval(timeIt,1000);
+    interval = setInterval(timeIt, 1000);
 }
 
-function stopTimer(){
+function stopTimer() {
     clearInterval(interval);
 }
 
+let myGifsGotted = [],
+    misGifsSinContenido = document.getElementById('misGifsSinContenido'),
+    misGifosId = document.getElementById('misGifosId'),
+    misGifosContainer = document.getElementById('misGifosContainer');
 
-misGifosId = document.getElementById('misGifosId');
-misGifos.addEventListener('click',()=>{
+misGifosId.addEventListener('click', () => {
+
+    containerSustituido.style.display = 'none';
+    misGifosContainer.style.display = 'block';
+    misFavoritosContainerId.style.display = 'none';
+
+    returToHome();
+    let recuperarIds = localStorage.getItem('misGifos');
+
+    recuperarIds ? misGifsSinContenido.style.display = 'none' : misGifosId.style.display = 'block';
 
 
+    console.log(recuperarIds)
+    let urlForIds = `https://api.giphy.com/v1/gifs?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&ids=${recuperarIds}`;
+    fetch(urlForIds)
+        .then(response => response.json())
+        .then(data => loadingMyGifs(data))
+        .catch((error) => {
+            console.error("Ha habido un error", error);
+        })
+    //funcion que crea un arreglo de objetos filtrado
+    function loadingMyGifs(response) {
+
+        if (response.data.length) {
+            const requestResponse = response.data;
+            requestResponse.forEach((image) => {
+                let myGifInfo = {
+                    url: image.images.downsized_medium.url,
+                    user: image.username,
+                    title: image.title,
+                    fav: false
+                }
+                myGifsGotted.push(myGifInfo);
+            })
+            createNewCard(myGifsGotted, searchGifContainer, 0, 'gif-container-child');
+        }
+    }
 })

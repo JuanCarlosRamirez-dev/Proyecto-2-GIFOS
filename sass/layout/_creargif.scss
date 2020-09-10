@@ -61,7 +61,7 @@
       position: relative;
       top: -373px;
       width: 27px;
-      z-index: 3;      
+      z-index: 3;
     }
 
     h2 {
@@ -91,29 +91,28 @@
       position: relative;
       width: 640px;
     }
-    .gif-recorded{
+    .gif-recorded {
       bottom: 310px;
       height: 290px;
       position: relative;
       width: 460px;
-     
     }
-    .uploading{
+    .uploading {
       opacity: 0.6;
     }
-    #pasoTresId{
+    #pasoTresId {
       position: relative;
-      z-index: 100;      
+      z-index: 100;
       font-size: 15px;
-      & h2{
+      & h2 {
         color: #fff;
       }
     }
-    #pasoCuatroId{
+    #pasoCuatroId {
       position: relative;
-      z-index: 100;      
+      z-index: 100;
       font-size: 15px;
-      & h2{
+      & h2 {
         color: #fff;
       }
     }
@@ -135,7 +134,6 @@
         background-color: #572ee5;
         color: #fff;
       }
-     
     }
   }
   .cronometro {
@@ -146,7 +144,7 @@
     position: relative;
     left: 310px;
   }
-  .cronometro:hover{
+  .cronometro:hover {
     text-decoration: 1.5px underline #5ed7c6;
   }
   hr {
@@ -178,6 +176,26 @@
     &:hover {
       color: #fff;
       background-color: #572ee5;
+    }
+  }
+}
+
+#misGifosContainer {
+  display: none;
+  text-align: center;
+  font-weight: bolder;
+  & p {
+    font-size: 25px;
+    color: #572ee5;
+    line-height: 30px;
+    margin-bottom: 80px;
+    margin-top: 15px;
+  }
+  #misGifsSinContenidoId {
+    & p {
+      font-size: 22px;
+      color: #50e3c2;
+      line-height: 33px;
     }
   }
 }
