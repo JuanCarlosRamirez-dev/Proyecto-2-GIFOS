@@ -1,0 +1,86 @@
+//estilo para botones en pantalla completa
+/*--------------------------------------------*/
+.full-size-modal {
+  text-align: center;
+  position: fixed;
+  z-index: 1;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: none;
+  overflow: hidden;
+  .full-size-modal-content {
+    width: 80%;
+    max-width: 600px;
+  }
+
+  .full-size-modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+
+  & .fav-btn-full:hover {
+    opacity: 1;
+  }
+
+  & .download-btn-full {
+    margin-left: 10px;
+  }
+  & .download-btn-full:hover {
+    opacity: 1;
+  }
+  & .gif-user-full {
+    color: #000;
+    margin-top: 10px;
+    display: block;
+  }
+  & .gif-title-full {
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: block;
+  }
+  & .card-btn-full {
+    opacity: 0.7;
+    background: #ffffff;
+    padding: 7px;
+    border: 1px solid #9cafc3;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  & .close-search-full {
+    margin-bottom: 15px;
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+  }
+}
+
+.captions-for-modal {
+  display: flex;
+  justify-content: center;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/*--------------------------------------------*/

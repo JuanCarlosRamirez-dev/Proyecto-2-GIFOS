@@ -1,5 +1,7 @@
 /* mobile version*/
 
+//parte superior de la pantalla de inicio
+/*--------------------------------------------*/
 #topLogoId {
   cursor: pointer;
 }
@@ -223,7 +225,10 @@
     color: #572ee5;
   }
 }
+/*--------------------------------------------*/
 
+//trending gifs
+/*--------------------------------------------*/
 .trending-GIFOS {
   background: #f3f5f8;
   height: 430px;
@@ -327,6 +332,7 @@
 .display-none {
   display: none;
 }
+/*--------------------------------------------*/
 
 /*tablet version*/
 

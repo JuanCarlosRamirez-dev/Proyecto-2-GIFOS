@@ -84,7 +84,6 @@ btnRecordId.setAttribute('onclick', 'stepTwo()');
 
 function stepTwo() {
 
-
     timer.style.display = 'inline';
     btnRecordId.style.display = 'none';
     btnFinishId.style.display = 'inline';
@@ -177,7 +176,6 @@ btnUploadId.addEventListener('click', () => {
         let form = new FormData();
         form.append('file', blob, 'MyGif.gif');
 
-
         repetirCapturaId.style.display = 'none';
         btnUploadId.style.display = 'none';
         btn2.style.backgroundColor = '#FFFFFF';
@@ -201,9 +199,8 @@ btnUploadId.addEventListener('click', () => {
     } else { alert('No se grabó nada. Reinicia la página') }
 })
 
-
- async function uploadGif(gif) {
-     const res = await fetch('https://upload.giphy.com/v1/gifs?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf', {
+async function uploadGif(gif) {
+    const res = await fetch('https://upload.giphy.com/v1/gifs?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf', {
         method: 'POST',
         body: gif
     });
@@ -214,22 +211,20 @@ btnUploadId.addEventListener('click', () => {
         sendToLocalStorage(uploadResults.data.id)
         return Promise.resolve(uploadResults.data.id)
     }
-    return Promise.reject('Algo malo sucedio'); 
-    
-} 
+    return Promise.reject('Algo malo sucedio');
 
-
+}
 
 let ArrayDeMisGifos = [];
 function sendToLocalStorage(gifId) {
     const sinGifPrevio = localStorage.getItem('misGifos')
-    if(sinGifPrevio==null){
+    if (sinGifPrevio == null) {
         ArrayDeMisGifos.push(gifId);
-        localStorage.setItem('misGifos',ArrayDeMisGifos);
-    }else{
+        localStorage.setItem('misGifos', ArrayDeMisGifos);
+    } else {
         ArrayDeMisGifos.push(localStorage.getItem('misGifos'));
         ArrayDeMisGifos.push(gifId);
-        localStorage.setItem('misGifos',(ArrayDeMisGifos))
+        localStorage.setItem('misGifos', (ArrayDeMisGifos))
     }
 }
 
@@ -282,17 +277,17 @@ let myGifsGotted = [],
 misGifosId.setAttribute('onclick', 'mostrarSeccion()')
 
 function mostrarSeccion() {
-    
+
     containerSustituido.style.display = 'none';
     misGifosContainer.style.display = 'block';
     misFavoritosContainerId.style.display = 'none';
     returToHome();
-    
+
     let recuperarIds = localStorage.getItem('misGifos');
 
     recuperarIds ? misGifsSinContenido.style.display = 'none' : misGifosId.style.display = 'block';
 
-    console.log("[CP316]=> recuperarIds",recuperarIds)
+    //console.log("[CP316]=> recuperarIds", recuperarIds)
 
     let urlForIds = `https://api.giphy.com/v1/gifs?api_key=HsdndAAeztqsmgGVBlrXavpjIoeADOCf&ids=${recuperarIds}`;
     fetch(urlForIds)
@@ -303,7 +298,7 @@ function mostrarSeccion() {
         })
     //funcion que crea un arreglo de objetos filtrado
     function loadingMyGifs(response) {
-        
+
         if (response.data.length) {
             const requestResponse = response.data;
             requestResponse.forEach((image) => {
@@ -315,15 +310,16 @@ function mostrarSeccion() {
                 }
                 myGifsGotted.push(myGifInfo);
             })
-            myGifsGotted=eliminarGifsDuplicados(myGifsGotted,'url')
+            myGifsGotted = eliminarGifsDuplicados(myGifsGotted, 'url')
             createNewCard(myGifsGotted, searchGifContainer, 0, 'gif-container-child');
+            searchGifContainer.style.marginBottom = '20px';
         }
     }
-    
+
 }
 
 
-    
-    
+
+
 
 /*----------------------------------------*/

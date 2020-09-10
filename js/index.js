@@ -1,4 +1,6 @@
 
+
+
 //captura de evento en la lupa
 /*------------------------------------------*/
 let searchBtn = document.getElementById('searchBtnId'),
@@ -81,7 +83,7 @@ function newSearchBtnRequest(value) {
                 }
                 imagesGotted.push(imageWorked);
             })
-            
+
             createNewCard(imagesGotted, searchGifContainer, offsetRequestIndex, 'gif-container-child');
             // sendToFavs(imagesGotted);
             offsetCounter += 1;
@@ -277,6 +279,20 @@ function createNewCard(arr, node, index, extraclass) {
             downloadBnt.download = 'MyGif.gif';
         }).catch(console.error);
         /*----------------------------------------*/
+
+        /*Evento de estilo al boton favoritos*/
+        /*----------------------------------------*/
+        favBtn.addEventListener('click', () => {
+            removeContainer(favBtn);
+            favBtn.innerHTML = '<img src="imagenes/icon-fav-active.svg"/>';
+        })
+        arr.forEach(gif => {
+            if (gif.fav == true) {
+                removeContainer(favBtn);
+                favBtn.innerHTML = '<img src="imagenes/icon-fav-active.svg"/>';
+            }
+        })
+        /*----------------------------------------*/
     }
 }
 /*------------------------------------------*/
@@ -317,30 +333,24 @@ function agregarFavoritos(arr) {
     localStorage.setItem('favoritosSeleccionados', mandarGifsALocal)
 }
 
-function eliminarGifsDuplicados(arr, prop) {
-    let sinDuplicados = [],
-        lookup = {};
-
-    for (let i in arr) {
-        lookup[arr[i][prop]] = arr[i];
-    }
-    for (i in lookup) {
-        sinDuplicados.push(lookup[i]);
-    }
-    return sinDuplicados
-}
-
 misFavoritosBtnId.addEventListener('click', () => {
 
     misFavoritosContainerId.style.display = 'block';
     containerSustituido.style.display = 'none';
     misGifosContainer.style.display = 'none';
 
-    let recuperarGifsDeLocal = localStorage.getItem('favoritosSeleccionados')
-    let gifsRecuperados = JSON.parse(recuperarGifsDeLocal)
+    let recuperarGifsDeLocal = localStorage.getItem('favoritosSeleccionados'),
+        gifsRecuperados = JSON.parse(recuperarGifsDeLocal);
+
     gifsRecuperados ? favSinContenidoId.style.display = 'none' : misFavoritosContainerId.style.display = 'block';
     returToHome();
+
+    gifsRecuperados.forEach(localGif => {
+        localGif.fav = true;
+    })
+
     createNewCard(gifsRecuperados, searchGifContainer, 0, 'gif-container-child')
+
     searchGifContainer.style.marginBottom = '20px';
 
 })
@@ -353,7 +363,6 @@ function returToHome() {
     hideWhenCreateGif.style.display = 'block';
 
 }
-
 /*------------------------------------------*/
 
 //funcionalidad al logotipo para reiniciar estilos
@@ -375,7 +384,22 @@ topLogoId.addEventListener('click', () => {
     misGifosContainer.style.display = 'none';
 
 })
+/*------------------------------------------*/
 
+//funcion que elimina objetos duplicados de un arreglo
+/*------------------------------------------*/
+function eliminarGifsDuplicados(arr, prop) {
+    let sinDuplicados = [],
+        lookup = {};
+
+    for (let i in arr) {
+        lookup[arr[i][prop]] = arr[i];
+    }
+    for (i in lookup) {
+        sinDuplicados.push(lookup[i]);
+    }
+    return sinDuplicados
+}
 /*------------------------------------------*/
 
 //funcion que muestra el texto ingresado

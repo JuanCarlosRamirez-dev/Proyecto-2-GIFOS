@@ -176,14 +176,14 @@
       brightness(109%) contrast(101%);
   }
 
-  .header li a:active,
-  .header .menu-btn:active {
+  .header li a:focus,
+  .header .menu-btn:focus {
     color: #9cafc3;
     text-decoration: none;
   }
 
-  .header .createGIF:active,
-  .header .menu-btn:active {
+  .header .createGIF:focus,
+  .header .menu-btn:focus {
     background-color: #9cafc3;
     background-image: url("/imagenes/button-crear-gifo-white.svg");
     border: none;
